@@ -4,7 +4,7 @@
     h3 {{ title }}
     Tags(:items="tags")
     p.description {{ description }}
-  a(:href="url") Open on GitHub >
+  a(:href="url", target="_blank", rel="noopener") Open on GitHub >
 </template>
 
 <script>
@@ -77,7 +77,7 @@ export default {
     margin-right: 0;
     padding: 1rem;
     border-radius: 0;
-    border-top: 1px solid rgba(0, 0, 0, .5);
+    border-top: 1px solid rgba(black, .5);
     text-decoration: none;
     text-align: right;
     color: black;
@@ -85,6 +85,24 @@ export default {
     &:hover {
       background-color: black;
       color: $yellow;
+    }
+  }
+
+  .project-grid--black & {
+    border-color: $yellow;
+
+    .tag {
+      border-color: rgba($yellow, .5);
+    }
+
+    a {
+      border-top-color: rgba($yellow, .5);
+      color: $yellow;
+
+      &:hover {
+        background-color: $yellow;
+        color: black;
+      }
     }
   }
 }

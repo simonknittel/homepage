@@ -2,7 +2,9 @@
 .project-teaser(:class="{'project-teaser--black': black}")
   .inner
     .text
-      h3 {{ title }}
+      h3
+        | {{ title }}
+        span.wip(v-if="wip") work in progress
       Tags(:items="tags")
       p.description {{ description }}
       a(v-for="link in links", :href="link.url", target="_blank", rel="noopener") {{ link.title }} >
@@ -21,6 +23,10 @@ export default {
     title: {
       type: String,
       default: 'Project title'
+    },
+    wip: {
+      type: Boolean,
+      default: false
     },
     tags: {
       type: Array,
@@ -53,9 +59,9 @@ export default {
   @import '../styles/_variables.scss';
 
   .project-teaser {
-    clip-path: polygon(0 0, 100% 10%, 100% 90%, 0 100%);
+    clip-path: polygon(0 0, 100% 3rem, 100% calc(100% - 3rem), 0 100%);
     margin-top: -4rem;
-    padding-top: 7rem;
+    padding-top: 8rem;
     background-color: $yellow;
 
     .inner {
@@ -75,6 +81,17 @@ export default {
 
     h3 {
       margin-top: 0;
+    }
+
+    .wip {
+      display: inline-block;
+      margin-left: 0.5rem;
+      padding: .1rem .3rem .1rem .3rem;
+      border-radius: .25rem;
+      background-color: black;
+      color: $yellow;
+      font-size: .8em;
+      font-weight: 400;
     }
 
     .tag {
@@ -120,6 +137,11 @@ export default {
 
       .inner {
         grid-template-areas: 'image text';
+      }
+
+      .wip {
+        background-color: $yellow;
+        color: black;
       }
 
       .tag {

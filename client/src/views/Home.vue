@@ -1,27 +1,33 @@
 <template lang="pug">
 div
   Hero
-  .heading
-    h2 Some of my open source projects
+  SocialMediaProfiles
+  //- .heading
+  //-   h2 Here are some of my projects
   ProjectTeaser(
     title="YouTube Playlist Manager",
-    :tags="['Vue.js', 'Frontend', 'Backend', 'UX', 'Design', 'Open Source']",
-    description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    :links="[{title: 'Open XXX', url: '#'}, {title: 'Open on GitHub', url: 'https://github.com/simonknittel/youtube-playlist-manager'}]"
+    :wip="true"
+    :tags="['Vue.js', 'Frontend', 'Backend', 'UX', 'Design', 'CI/CD', 'Open Source']",
+    description="Tired of the sluggish interface of YouTube itself and in need of some features which YouTube doesn't provide I decided to create my own interface for YouTube's playlists. Written in Vue.js. It's still early in development so not much to see yet.",
+    :links="[{title: 'Open on GitHub', url: 'https://github.com/simonknittel/youtube-playlist-manager'}]"
   )
   ProjectTeaser(
     title="SB Builds",
-    :tags="['Vue.js', 'Frontend', 'Backend', 'UX', 'Design', 'Open Source']",
-    description="This online tools helps to create and share builds for the video game Spellbreak. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    :links="[{title: 'Open sb-builds.de', url: 'https://staging.sb-builds.de'}, {title: 'Open on GitHub', url: '#'}]"
+    :wip="true"
+    :tags="['Vue.js', 'Frontend', 'Backend', 'UX', 'Design', 'CI/CD']",
+    description="This tool helps to create and share builds for the video game Spellbreak. It's fully written in Vue.js and runs completely in the client as it doesn't need any server-side functions. The work on is still ongoing as the game itself also is still in development. Will be published on GitHub later on.",
+    :links="[{title: 'Open staging.sb-builds.de', url: 'https://staging.sb-builds.de'}]"
     :black="true"
   )
-  ProjectGrid
+  ProjectGrid(
+    :black="false"
+  )
   Footer
 </template>
 
 <script>
 import Hero from '@/components/Hero.vue'
+import SocialMediaProfiles from '@/components/SocialMediaProfiles.vue'
 import ProjectTeaser from '@/components/ProjectTeaser.vue'
 import ProjectGrid from '@/components/ProjectGrid.vue'
 import Footer from '@/components/Footer.vue'
@@ -29,6 +35,7 @@ import Footer from '@/components/Footer.vue'
 export default {
   components: {
     Hero,
+    SocialMediaProfiles,
     ProjectTeaser,
     ProjectGrid,
     Footer
@@ -39,18 +46,18 @@ export default {
 <style lang="scss">
 @import '../styles/_variables.scss';
 
-.heading {
-  clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 90%);
-  margin-top: -4rem;
-  padding-top: 6rem;
-  padding-bottom: 7rem;
-  background-color: black;
-  color: $yellow;
-  text-align: center;
+// .heading {
+//   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 3rem));
+//   margin-top: -4rem;
+//   padding-top: 6rem;
+//   padding-bottom: 7rem;
+//   background-color: $yellow;
+//   color: black;
+//   text-align: center;
 
-  h2 {
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-}
+//   h2 {
+//     margin-top: 0;
+//     margin-bottom: 0;
+//   }
+// }
 </style>
