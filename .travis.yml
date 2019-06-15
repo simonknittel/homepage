@@ -15,17 +15,17 @@ before_deploy:
 
 deploy:
 - provider: script
-  script: rsync -r --delete-after --quiet $TRAVIS_BUILD_DIR/dist $NIGHTLY_TARGET
+  script: rsync -r --delete-after --quiet $TRAVIS_BUILD_DIR/dist/ $NIGHTLY_TARGET
   skip_cleanup: true
   on:
     branch: nightly
 - provider: script
-  script: rsync -r --delete-after --quiet $TRAVIS_BUILD_DIR/dist $BETA_TARGET
+  script: rsync -r --delete-after --quiet $TRAVIS_BUILD_DIR/dist/ $BETA_TARGET
   skip_cleanup: true
   on:
     branch: beta
 - provider: script
-  script: rsync -r --delete-after --quiet $TRAVIS_BUILD_DIR/dist $MASTER_TARGET
+  script: rsync -r --delete-after --quiet $TRAVIS_BUILD_DIR/dist/ $MASTER_TARGET
   skip_cleanup: true
   on:
     branch: master
