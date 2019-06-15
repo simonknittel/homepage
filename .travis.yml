@@ -1,4 +1,31 @@
 language: node_js
 cache: npm
+
+addons:
+  ssh_known_hosts: "$DEPLOY_HOST"
+
 script:
-  - npm run build
+- npm run build
+
+before_deploy:
+- openssl aes-256-cbc -K $encrypted_478fffb56983_key -iv $encrypted_478fffb56983_iv -in id_ed25519.enc -out id_ed25519 -d
+- eval "$(ssh-agent -s)"
+- chmod 600 id_ed25519
+- ssh-add id_ed25519
+
+deploy:
+- provider: script
+  script: rsync -r --delete-after --quiet $TRAVIS_BUILD_DIR/dist $NIGHTLY_TARGET
+  skip_cleanup: true
+  on:
+    branch: nightly
+- provider: script
+  script: rsync -r --delete-after --quiet $TRAVIS_BUILD_DIR/dist $BETA_TARGET
+  skip_cleanup: true
+  on:
+    branch: beta
+- provider: script
+  script: rsync -r --delete-after --quiet $TRAVIS_BUILD_DIR/dist $MASTER_TARGET
+  skip_cleanup: true
+  on:
+    branch: master
