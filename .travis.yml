@@ -2,7 +2,7 @@ language: node_js
 cache: npm
 
 addons:
-  ssh_known_hosts: "$DEPLOY_HOST"
+  ssh_known_hosts: tempel.uberspace.de
 
 script:
 - npm run build
