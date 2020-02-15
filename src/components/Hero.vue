@@ -3,16 +3,17 @@
     h1
       span Simon Knittel
       span Web Developer
-    Tags(:items="['JavaScript', 'Node.js', 'SCRUM', 'UX', 'Design', 'Open Source']")
+    //- Tags(:items="['JavaScript', 'Node.js', 'SCRUM', 'UX', 'Design', 'Open Source']")
+    sk-tags(:items.prop="['JavaScript', 'Node.js', 'SCRUM', 'UX', 'Design', 'Open Source']")
 </template>
 
 <script>
-import Tags from '@/components/Tags.vue'
+// import Tags from '@/components/Tags.vue'
 
 export default {
-  components: {
-    Tags
-  }
+  // components: {
+  //   Tags
+  // }
 }
 </script>
 
