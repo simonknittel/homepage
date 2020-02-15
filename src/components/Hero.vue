@@ -3,18 +3,11 @@
     h1
       span Simon Knittel
       span Web Developer
-    //- Tags(:items="['JavaScript', 'Node.js', 'SCRUM', 'UX', 'Design', 'Open Source']")
-    sk-tags(:items.prop="['JavaScript', 'Node.js', 'SCRUM', 'UX', 'Design', 'Open Source']")
+    sk-tag-list(:items.prop="['JavaScript', 'Node.js', 'SCRUM', 'UX', 'Design', 'Open Source']")
 </template>
 
 <script>
-// import Tags from '@/components/Tags.vue'
-
-export default {
-  // components: {
-  //   Tags
-  // }
-}
+export default {}
 </script>
 
 <style lang="scss">
@@ -41,15 +34,11 @@ export default {
       }
     }
 
-    .tags {
+    .sk-tag-list {
       justify-content: center;
       max-width: 21rem;
       margin-left: auto;
       margin-right: auto;
-    }
-
-    .tag {
-      border-color: rgba(black, .5);
     }
   }
 </style>
