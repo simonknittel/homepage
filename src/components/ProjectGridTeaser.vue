@@ -2,18 +2,13 @@
 .project-grid-teaser
   .text
     h3 {{ title }}
-    Tags(:items="tags")
+    sk-tag-list(:items.prop="tags")
     p.description {{ description }}
   a(:href="url", target="_blank", rel="noopener") Open on GitHub >
 </template>
 
 <script>
-import Tags from '@/components/Tags.vue'
-
 export default {
-  components: {
-    Tags
-  },
   props: {
     title: {
       type: String,
@@ -59,10 +54,6 @@ export default {
     margin-bottom: .5rem;
   }
 
-  .tag {
-    border-color: rgba(black, .5);
-  }
-
   p {
     margin-top: 0;
     margin-bottom: 0;
@@ -91,10 +82,6 @@ export default {
   .project-grid--black & {
     border-color: $yellow;
 
-    .tag {
-      border-color: rgba($yellow, .5);
-    }
-
     a {
       border-top-color: rgba($yellow, .5);
       color: $yellow;
@@ -104,6 +91,9 @@ export default {
         color: black;
       }
     }
+
+    --sk-tag-border-color: rgba(#fc0, .5);
+    --sk-tag-color: #fc0;
   }
 }
 </style>

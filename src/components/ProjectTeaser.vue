@@ -5,7 +5,7 @@
       h3
         | {{ title }}
         span.wip(v-if="wip") work in progress
-      Tags(:items="tags")
+      sk-tag-list(:items.prop="tags")
       p.description {{ description }}
       a(v-for="link in links", :href="link.url", target="_blank", rel="noopener") {{ link.title }} >
     .iframe-container
@@ -13,12 +13,7 @@
 </template>
 
 <script>
-import Tags from '@/components/Tags.vue'
-
 export default {
-  components: {
-    Tags
-  },
   props: {
     title: {
       type: String,
@@ -94,10 +89,6 @@ export default {
       font-weight: 400;
     }
 
-    .tag {
-      border-color: rgba(black ,.5);
-    }
-
     .description {
       line-height: 1.5;
     }
@@ -144,10 +135,6 @@ export default {
         color: black;
       }
 
-      .tag {
-        border-color: rgba($yellow, .5);
-      }
-
       a {
         background-color: $yellow;
         color: black;
@@ -160,6 +147,9 @@ export default {
       .iframe-container {
         box-shadow: 0 0 20px 0 rgba($yellow, .5);
       }
+
+      --sk-tag-border-color: rgba(#fc0, .5);
+      --sk-tag-color: #fc0;
     }
   }
 </style>
