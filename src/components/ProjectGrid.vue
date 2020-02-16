@@ -15,7 +15,7 @@
     )
     ProjectGridTeaser(
       title='simonknittel.de'
-      :tags="['Vue.js', 'Frontend', 'Backend', 'UX', 'Design', 'CI/CD', 'Open Source']",
+      :tags="['Vue.js', 'Web Components', 'Frontend', 'Backend', 'UX', 'Design', 'CI/CD', 'Open Source']",
       description='The source code for this website. Written in Vue.js. Why? Because I can... I just want to get used to it.',
       url='https://github.com/simonknittel/streaming-server'
     )
