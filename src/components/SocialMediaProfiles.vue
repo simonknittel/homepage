@@ -16,7 +16,6 @@ export default {
 </script>
 
 <style lang="scss">
-// @import '../../node_modules/@simonknittel/components/dist/components/assets/stack-overflow-brands.svg';
 @import '../styles/_variables.scss';
 
 .social-media-profiles {

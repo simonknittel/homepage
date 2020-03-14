@@ -9,6 +9,7 @@
       :url="project.url",
       :urlDescription="project.urlDescription",
       :tags="project.tags.map(tag => tag.title)"
+      :key="project.id"
     )
     ProjectGridMore
 </template>

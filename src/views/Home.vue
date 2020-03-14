@@ -65,6 +65,7 @@ export default {
           }
           ... on ProjectGridRecord {
             projects {
+              id
               title
               description
               url
