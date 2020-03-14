@@ -3,7 +3,7 @@ ul.social-media-profiles
   li
     sk-social-link(url="https://github.com/simonknittel", text="GitHub", icon="github-square", iconViewbox="448 512")
   li
-    sk-social-link(url="https://twitter.com/simknittel", text="Twitter", icon="github-square", iconViewbox="448 512")
+    sk-social-link(url="https://twitter.com/simknittel", text="Twitter", icon="twitter-square", iconViewbox="448 512")
   li
     sk-social-link(url="https://www.patreon.com/simonknittel", text="Patreon", icon="patreon", iconViewbox="512 512")
   li

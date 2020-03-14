@@ -2,8 +2,6 @@
 div
   Hero
   SocialMediaProfiles
-  //- .heading
-  //-   h2 Here are some of my projects
   ProjectTeaser(
     title="YouTube Playlist Manager",
     :wip="true"
