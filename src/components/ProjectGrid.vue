@@ -2,22 +2,13 @@
 .project-grid(:class="{'project-grid--black': black}")
   .project-grid__inner
     ProjectGridTeaser(
-      title='static-site-generator'
-      :tags="['Gulp.js', 'Babel', 'Linter', 'Jest', 'Open Source']",
-      description='Static site generator / project skeleton for creating production-ready sites. All necessary files and build tasks are already in place and fitted with good practices.',
-      url='https://github.com/simonknittel/static-site-generator'
-    )
-    ProjectGridTeaser(
-      title='streaming-server'
-      :tags="['nginx', 'rtmp', 'Docker', 'Open Source']",
-      description='Custom nginx server for streaming with e.g. OBS. Does have a web view. In case you don\'t want to stream to Twitch or similar but having it only inhouse.',
-      url='https://github.com/simonknittel/streaming-server'
-    )
-    ProjectGridTeaser(
-      title='simonknittel.de'
-      :tags="['Vue.js', 'Web Components', 'Frontend', 'Backend', 'UX', 'Design', 'CI/CD', 'Open Source']",
-      description='The source code for this website. Written in Vue.js. Why? Because I can... I just want to get used to it.',
-      url='https://github.com/simonknittel/streaming-server'
+      v-for="project in projects",
+      :title="project.title",
+      :description="project.description",
+      :wip="project.workInProgress",
+      :url="project.url",
+      :urlDescription="project.urlDescription",
+      :tags="project.tags.map(tag => tag.title)"
     )
     ProjectGridMore
 </template>
@@ -35,6 +26,10 @@ export default {
     black: {
       type: Boolean,
       default: false
+    },
+    projects: {
+      type: Array,
+      default: () => []
     }
   }
 }

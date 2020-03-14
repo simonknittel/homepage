@@ -1,13 +1,28 @@
 <template lang="pug">
   .hero
     h1
-      span Simon Knittel
-      span Web Developer
-    sk-tag-list(:items.prop="['JavaScript', 'Node.js', 'SCRUM', 'UX', 'Design', 'Open Source']")
+      span {{ name }}
+      span {{ description }}
+    sk-tag-list(:items.prop="tags")
 </template>
 
 <script>
-export default {}
+export default {
+  props: {
+    name: {
+      type: String,
+      required: true
+    },
+    description: {
+      type: String,
+      default: ''
+    },
+    tags: {
+      type: Array,
+      default: () => []
+    }
+  }
+}
 </script>
 
 <style lang="scss">

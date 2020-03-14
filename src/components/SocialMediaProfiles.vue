@@ -1,20 +1,22 @@
 <template lang="pug">
 ul.social-media-profiles
-  li
-    sk-social-link(url="https://github.com/simonknittel", text="GitHub", icon="github-square", iconViewbox="448 512")
-  li
-    sk-social-link(url="https://twitter.com/simknittel", text="Twitter", icon="twitter-square", iconViewbox="448 512")
-  li
-    sk-social-link(url="https://www.patreon.com/simonknittel", text="Patreon", icon="patreon", iconViewbox="512 512")
-  li
-   sk-social-link(url="https://stackoverflow.com/users/3942401/simon-knittel", text="Stack Overflow", icon="stack-overflow", iconViewbox="384 512")
-  li
-    sk-social-link(url="https://www.xing.com/profile/Simon_Knittel", text="XING", icon="xing-square", iconViewbox="448 512")
-  li
-    sk-social-link(url="https://www.linkedin.com/in/simon-knittel-b8b693108/", text="LinkedIn", icon="linkedin", iconViewbox="448 512")
+  li(v-for="link in links")
+    sk-social-link(:url="link.link", :text="link.title", :icon="link.icon")
 </template>
 
+<script>
+export default {
+  props: {
+    links: {
+      type: Array,
+      default: () => []
+    }
+  }
+}
+</script>
+
 <style lang="scss">
+// @import '../../node_modules/@simonknittel/components/dist/components/assets/stack-overflow-brands.svg';
 @import '../styles/_variables.scss';
 
 .social-media-profiles {

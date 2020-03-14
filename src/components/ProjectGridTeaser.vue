@@ -1,10 +1,12 @@
 <template lang="pug">
 .project-grid-teaser
   .text
-    h3 {{ title }}
+    h3
+        | {{ title }}
+        span.wip(v-if="wip") work in progress
     sk-tag-list(:items.prop="tags")
     p.description {{ description }}
-  a(:href="url", target="_blank", rel="noopener") Open on GitHub >
+  a(:href="url", target="_blank", rel="noopener") {{ urlDescription }} >
 </template>
 
 <script>
@@ -27,6 +29,14 @@ export default {
     url: {
       type: String,
       default: '#'
+    },
+    urlDescription: {
+      type: String,
+      default: 'Open'
+    },
+    wip: {
+      type: Boolean,
+      default: false
     }
   }
 }
@@ -48,6 +58,17 @@ export default {
   h3 {
     margin-top: 0;
     margin-bottom: 1rem;
+  }
+
+  .wip {
+    display: inline-block;
+    margin-left: 0.5rem;
+    padding: .1rem .3rem .1rem .3rem;
+    border-radius: .25rem;
+    background-color: black;
+    color: $yellow;
+    font-size: .8em;
+    font-weight: 400;
   }
 
   .tags {
