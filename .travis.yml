@@ -5,7 +5,8 @@ addons:
   ssh_known_hosts: tempel.uberspace.de
 
 before_install:
-  - echo "@simonknittel:registry=https://npm.pkg.github.com/:_authToken=${TRAVISCICOM_READ_PACKAGES}" > ~/.npmrc
+  - echo "//npm.pkg.github.com/:_authToken=${TRAVISCICOM_READ_PACKAGES}" > ~/.npmrc
+  - echo "@simonknittel:registry=https://npm.pkg.github.com" > .npmrc
 
 script:
 - npm run build
