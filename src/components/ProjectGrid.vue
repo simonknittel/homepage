@@ -40,8 +40,6 @@ export default {
 @import '../styles/_variables.scss';
 
 .project-grid {
-  clip-path: polygon(0 0, 100% 3rem, 100% 100%, 0 100%);
-  margin-top: -4rem;
   padding-top: 8rem;
   padding-bottom: 7rem;
   background-color: $yellow;

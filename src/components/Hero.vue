@@ -29,7 +29,7 @@ export default {
   @import '../styles/_variables.scss';
 
   .hero {
-    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 3rem), 0 100%);
+    // clip-path: polygon(0 0, 100% 0, 100% calc(100% - 3rem), 0 100%);
     padding-top: 15rem;
     padding-bottom: 15rem;
     background-color: $yellow;

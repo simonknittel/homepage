@@ -4,6 +4,8 @@
 </template>
 
 <style lang="scss">
+  @import './styles/_variables.scss';
+
   *,
   *::before,
   *::after {
@@ -11,7 +13,7 @@
   }
 
   html {
-    font-family: sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-weight: 400;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -19,7 +21,7 @@
 
     min-height: 100%;
 
-    font-family: 'Open Sans', sans-serif;
+    background-color: $yellow;
   }
 
   body {
