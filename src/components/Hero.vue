@@ -6,7 +6,11 @@
     sk-tag-list(:items.prop="tags")
 
     ul.hero__locales
-      li(v-for="locale in locales", :key="locale").hero__locale
+      li(
+        v-for="locale in locales",
+        :key="locale",
+        :class="{ 'hero__locale--active': locale === activeLocale }"
+      ).hero__locale
         a(
           href="#",
           @click.prevent="$store.commit('setLocale', locale)"
@@ -14,7 +18,7 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex'
+import { mapMutations, mapState } from 'vuex'
 
 export default {
   props: {
@@ -35,6 +39,9 @@ export default {
       default: () => []
     }
   },
+  computed: mapState({
+    activeLocale: 'locale'
+  }),
   methods: {
     ...mapMutations([
       'setLanguage'
@@ -90,9 +97,16 @@ export default {
         padding: .5rem;
         text-transform: uppercase;
         color: black;
+        text-decoration: none;
 
         &:hover {
           color: rgba(0, 0, 0, .5);
+        }
+      }
+
+      &--active {
+        a {
+          text-decoration: underline;
         }
       }
     }
