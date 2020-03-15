@@ -3,7 +3,7 @@
   .text
     h3
         | {{ title }}
-        span.wip(v-if="wip") work in progress
+        span.badge(v-if="badge") {{ badge }}
     sk-tag-list(:items.prop="tags")
     p.description {{ description }}
   a(:href="url", target="_blank", rel="noopener") {{ urlDescription }} >
@@ -34,9 +34,9 @@ export default {
       type: String,
       default: 'Open'
     },
-    wip: {
-      type: Boolean,
-      default: false
+    badge: {
+      type: String,
+      default: ''
     }
   }
 }
@@ -49,7 +49,7 @@ export default {
   overflow: hidden;
   position: relative;
   border-radius: 1rem;
-  border: 1px solid black;
+  border: 1px solid rgba(0, 0, 0, .5);
 
   .text {
     padding: 1rem 1rem 4.3rem 1rem;
@@ -60,7 +60,7 @@ export default {
     margin-bottom: 1rem;
   }
 
-  .wip {
+  .badge {
     display: inline-block;
     margin-left: 0.5rem;
     padding: .1rem .3rem .1rem .3rem;

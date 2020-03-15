@@ -4,7 +4,7 @@
     .text
       h3
         | {{ title }}
-        span.wip(v-if="wip") work in progress
+        span.badge(v-if="badge") {{ badge }}
       sk-tag-list(:items.prop="tags")
       p.description {{ description }}
       a(v-for="link in links", :href="link.url", target="_blank", rel="noopener") {{ link.title }} >
@@ -19,9 +19,9 @@ export default {
       type: String,
       default: 'Project title'
     },
-    wip: {
-      type: Boolean,
-      default: false
+    badge: {
+      type: String,
+      default: ''
     },
     tags: {
       type: Array,
@@ -78,7 +78,7 @@ export default {
       margin-top: 0;
     }
 
-    .wip {
+    .badge {
       display: inline-block;
       margin-left: 0.5rem;
       padding: .1rem .3rem .1rem .3rem;

@@ -6,6 +6,7 @@ div
       :name="module.name",
       :description="module.description"
       :tags="module.tags.map(tag => tag.title)"
+      :locales="globalConfiguration.locales.map(locale => locale.locale)"
     )
 
     SocialMediaProfiles(
@@ -48,38 +49,48 @@ export default {
     }
   },
   apollo: {
-    globalConfiguration: gql`query {
-      globalConfiguration {
-        moduleOrderFrontPage {
-          ... on HeroRecord {
-            name
-            description
-            tags { title }
-          }
-          ... on SocialMediaRowRecord {
-            socialMediaLinks {
-              title
-              link
-              icon
-            }
-          }
-          ... on ProjectGridRecord {
-            projects {
-              id
-              title
+    globalConfiguration: {
+      query: gql`query ($locale: SiteLocale!) {
+        globalConfiguration {
+          moduleOrderFrontPage(locale: $locale) {
+            ... on HeroRecord {
+              name
               description
-              url
-              urlDescription
               tags { title }
-              workInProgress
+            }
+            ... on SocialMediaRowRecord {
+              socialMediaLinks {
+                title
+                link
+                icon
+              }
+            }
+            ... on ProjectGridRecord {
+              projects {
+                id
+                title
+                description(locale: $locale)
+                url
+                urlDescription(locale: $locale)
+                tags { title }
+                badge(locale: $locale)
+              }
+            }
+            ... on FooterRecord {
+              content
             }
           }
-          ... on FooterRecord {
-            content
+          locales {
+            locale
           }
         }
+      }`,
+      variables () {
+        return {
+          locale: this.$store.state.locale
+        }
       }
-    }`
+    }
   }
 }
 </script>

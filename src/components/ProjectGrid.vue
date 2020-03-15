@@ -5,23 +5,23 @@
       v-for="project in projects",
       :title="project.title",
       :description="project.description",
-      :wip="project.workInProgress",
+      :badge="project.badge",
       :url="project.url",
       :urlDescription="project.urlDescription",
       :tags="project.tags.map(tag => tag.title)"
       :key="project.id"
     )
-    ProjectGridMore
+
+  .project-grid__more
+    a(href="https://github.com/simonknittel", target="_blank", rel="noopener") More on GitHub >
 </template>
 
 <script>
 import ProjectGridTeaser from '@/components/ProjectGridTeaser.vue'
-import ProjectGridMore from '@/components/ProjectGridMore.vue'
 
 export default {
   components: {
-    ProjectGridTeaser,
-    ProjectGridMore
+    ProjectGridTeaser
   },
   props: {
     black: {
@@ -52,6 +52,25 @@ export default {
     max-width: 1280px;
     margin-left: auto;
     margin-right: auto;
+  }
+
+  &__more {
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1rem;
+    text-align: center;
+
+    a {
+      display: inline-block;
+      padding: 1rem;
+
+      color: black;
+
+      &:hover {
+        color: rgba(0, 0, 0, .5);
+      }
+    }
   }
 
   &--black {

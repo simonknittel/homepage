@@ -4,9 +4,18 @@
       span {{ name }}
       span {{ description }}
     sk-tag-list(:items.prop="tags")
+
+    ul.hero__locales
+      li(v-for="locale in locales", :key="locale").hero__locale
+        a(
+          href="#",
+          @click.prevent="$store.commit('setLocale', locale)"
+        ) {{ locale }}
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
+
 export default {
   props: {
     name: {
@@ -20,7 +29,16 @@ export default {
     tags: {
       type: Array,
       default: () => []
+    },
+    locales: {
+      type: Array,
+      default: () => []
     }
+  },
+  methods: {
+    ...mapMutations([
+      'setLanguage'
+    ])
   }
 }
 </script>
@@ -29,7 +47,6 @@ export default {
   @import '../styles/_variables.scss';
 
   .hero {
-    // clip-path: polygon(0 0, 100% 0, 100% calc(100% - 3rem), 0 100%);
     padding-top: 15rem;
     padding-bottom: 15rem;
     background-color: $yellow;
@@ -54,6 +71,30 @@ export default {
       max-width: 21rem;
       margin-left: auto;
       margin-right: auto;
+    }
+
+    &__locales {
+      display: flex;
+      list-style: none;
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      margin-top: 0;
+      margin-bottom: 0;
+      padding-left: 0;
+    }
+
+    &__locale {
+      a {
+        display: inline-block;
+        padding: .5rem;
+        text-transform: uppercase;
+        color: black;
+
+        &:hover {
+          color: rgba(0, 0, 0, .5);
+        }
+      }
     }
   }
 </style>
