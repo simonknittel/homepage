@@ -20,7 +20,7 @@ const AUTH_TOKEN = 'apollo-token'
 let httpEndpoint = process.env.VUE_APP_GRAPHQL_HTTP || 'http://graphql.datocms.com/'
 
 const urlParams = new URLSearchParams(window.location.search)
-if (urlParams.has('preview')) httpEndpoint = 'http://graphql.datocms.com/preview'
+if (urlParams.has('preview')) httpEndpoint += 'preview'
 
 // Config
 const defaultOptions = {
