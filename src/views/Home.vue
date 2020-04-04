@@ -1,6 +1,6 @@
 <template lang="pug">
-div(v-if="pagesLoaded")
-  div(v-if="pageExists()")
+fragment(v-if="pagesLoaded")
+  fragment(v-if="pageExists()")
     component(
       v-for="module in modules"
       :key="module.id"
@@ -20,25 +20,31 @@ div(v-if="pagesLoaded")
 
       :heading="module.__typename === 'NotFoundRecord' ? module.heading : null"
       :subheading="module.__typename === 'NotFoundRecord' ? module.subheading : null"
+
+      :html="module.__typename === 'HtmlRecord' ? module.html : null"
     )
 </template>
 
 <script>
 import gql from 'graphql-tag'
+import { Fragment } from 'vue-fragment'
 
 import Hero from '@/components/Hero.vue'
 import SocialMediaProfiles from '@/components/SocialMediaProfiles.vue'
 import ProjectGrid from '@/components/ProjectGrid.vue'
 import Footer from '@/components/Footer.vue'
 import NotFound from '@/components/NotFound.vue'
+import HTML from '@/components/HTML.vue'
 
 export default {
   components: {
+    Fragment,
     Hero,
     SocialMediaProfiles,
     ProjectGrid,
     Footer,
-    NotFound
+    NotFound,
+    HTML
   },
   data: (foo) => {
     return {
@@ -78,6 +84,7 @@ export default {
       if (__typename === 'ProjectGridRecord') return 'ProjectGrid'
       if (__typename === 'FooterRecord') return 'Footer'
       if (__typename === 'NotFoundRecord') return 'NotFound'
+      if (__typename === 'HtmlRecord') return 'HTML'
 
       return ''
     }
@@ -123,6 +130,10 @@ export default {
                 id
                 heading
                 subheading
+              }
+              ... on HtmlRecord {
+                id
+                html
               }
             }
           }

@@ -1,1 +1,1 @@
-{"__schema":{"types":[{"kind":"UNION","name":"GlobalConfigurationModelModuleOrderFrontPageField","possibleTypes":[{"name":"HeroRecord"},{"name":"FooterRecord"},{"name":"SingleProjectRecord"},{"name":"SocialMediaRowRecord"},{"name":"ProjectGridRecord"}]}]}}
+{"__schema":{"types":[{"kind":"UNION","name":"PageModelModuleOrderField","possibleTypes":[{"name":"HeroRecord"},{"name":"FooterRecord"},{"name":"SingleProjectRecord"},{"name":"SocialMediaRowRecord"},{"name":"ProjectGridRecord"},{"name":"NotFoundRecord"},{"name":"HtmlRecord"}]}]}}
