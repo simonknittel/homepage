@@ -54,10 +54,22 @@ export default {
   @import '../styles/_variables.scss';
 
   .hero {
+    position: relative;
     padding-top: 15rem;
     padding-bottom: 20rem; // 15rem + margin-top of sk-slanted
     background-color: $yellow;
     text-align: center;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 100%;
+      transform: translateY(-50%);
+      width: 100%;
+      height: 3rem;
+      background-color: $black;
+    }
 
     h1 {
       margin-top: 0;
