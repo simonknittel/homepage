@@ -1,22 +1,26 @@
 <template lang="pug">
-div(v-if="globalConfiguration.pages")
-  component(
-    v-for="module in modules"
-    :key="module.id"
+div(v-if="pagesLoaded")
+  div(v-if="pageExists()")
+    component(
+      v-for="module in modules"
+      :key="module.id"
 
-    :is="isComponent(module.__typename)"
+      :is="isComponent(module.__typename)"
 
-    :name="module.__typename === 'HeroRecord' ? module.name : null"
-    :description="module.__typename === 'HeroRecord' ? module.description : null"
-    :tags="module.__typename === 'HeroRecord' ? module.tags.map(tag => tag.title) : null"
-    :locales="module.__typename === 'HeroRecord' ? globalConfiguration.locales.map(locale => locale.locale) : null"
+      :name="module.__typename === 'HeroRecord' ? module.name : null"
+      :description="module.__typename === 'HeroRecord' ? module.description : null"
+      :tags="module.__typename === 'HeroRecord' ? module.tags.map(tag => tag.title) : null"
+      :locales="module.__typename === 'HeroRecord' ? globalConfiguration.locales.map(locale => locale.locale) : null"
 
-    :links="module.__typename === 'SocialMediaRowRecord' ? module.socialMediaLinks : null"
+      :links="module.__typename === 'SocialMediaRowRecord' ? module.socialMediaLinks : null"
 
-    :projects="module.__typename === 'ProjectGridRecord' ? module.projects : null"
+      :projects="module.__typename === 'ProjectGridRecord' ? module.projects : null"
 
-    :content="module.__typename === 'FooterRecord' ? module.content : null"
-  )
+      :content="module.__typename === 'FooterRecord' ? module.content : null"
+
+      :heading="module.__typename === 'NotFoundRecord' ? module.heading : null"
+      :subheading="module.__typename === 'NotFoundRecord' ? module.subheading : null"
+    )
 </template>
 
 <script>
@@ -26,13 +30,15 @@ import Hero from '@/components/Hero.vue'
 import SocialMediaProfiles from '@/components/SocialMediaProfiles.vue'
 import ProjectGrid from '@/components/ProjectGrid.vue'
 import Footer from '@/components/Footer.vue'
+import NotFound from '@/components/NotFound.vue'
 
 export default {
   components: {
     Hero,
     SocialMediaProfiles,
     ProjectGrid,
-    Footer
+    Footer,
+    NotFound
   },
   data: (foo) => {
     return {
@@ -40,9 +46,11 @@ export default {
     }
   },
   computed: {
+    pagesLoaded: function () {
+      if (!this.globalConfiguration.pages) return false
+      return true
+    },
     modules: function () {
-      if (!this.globalConfiguration.pages) return []
-
       for (let i = 0; i < this.globalConfiguration.pages.length; i++) {
         const page = this.globalConfiguration.pages[i]
 
@@ -50,15 +58,26 @@ export default {
         return page.moduleOrder
       }
 
-      return []
+      return null // Will never run
     }
   },
   methods: {
+    pageExists: function () {
+      for (let i = 0; i < this.globalConfiguration.pages.length; i++) {
+        const page = this.globalConfiguration.pages[i]
+        if (page.url !== this.$route.path) continue
+        return true
+      }
+
+      this.$router.push('/404')
+      return false
+    },
     isComponent: function (__typename) {
       if (__typename === 'HeroRecord') return 'Hero'
       if (__typename === 'SocialMediaRowRecord') return 'SocialMediaProfiles'
       if (__typename === 'ProjectGridRecord') return 'ProjectGrid'
       if (__typename === 'FooterRecord') return 'Footer'
+      if (__typename === 'NotFoundRecord') return 'NotFound'
 
       return ''
     }
@@ -99,6 +118,11 @@ export default {
               ... on FooterRecord {
                 id
                 content
+              }
+              ... on NotFoundRecord {
+                id
+                heading
+                subheading
               }
             }
           }
