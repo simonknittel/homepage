@@ -1,29 +1,22 @@
 <template lang="pug">
-div
-  div(v-for="module in globalConfiguration.moduleOrderFrontPage")
-    Hero(
-      v-if="module.__typename === 'HeroRecord'",
-      :name="module.name",
-      :description="module.description"
-      :tags="module.tags.map(tag => tag.title)"
-      :locales="globalConfiguration.locales.map(locale => locale.locale)"
-    )
+div(v-if="globalConfiguration.pages")
+  component(
+    v-for="module in modules"
+    :key="module.id"
 
-    SocialMediaProfiles(
-      v-else-if="module.__typename === 'SocialMediaRowRecord'",
-      :links="module.socialMediaLinks"
-    )
+    :is="isComponent(module.__typename)"
 
-    ProjectGrid(
-      v-else-if="module.__typename === 'ProjectGridRecord'",
-      :black="false",
-      :projects="module.projects"
-    )
+    :name="module.__typename === 'HeroRecord' ? module.name : null"
+    :description="module.__typename === 'HeroRecord' ? module.description : null"
+    :tags="module.__typename === 'HeroRecord' ? module.tags.map(tag => tag.title) : null"
+    :locales="module.__typename === 'HeroRecord' ? globalConfiguration.locales.map(locale => locale.locale) : null"
 
-    Footer(
-      v-else-if="module.__typename === 'FooterRecord'",
-      :content="module.content"
-    )
+    :links="module.__typename === 'SocialMediaRowRecord' ? module.socialMediaLinks : null"
+
+    :projects="module.__typename === 'ProjectGridRecord' ? module.projects : null"
+
+    :content="module.__typename === 'FooterRecord' ? module.content : null"
+  )
 </template>
 
 <script>
@@ -31,7 +24,6 @@ import gql from 'graphql-tag'
 
 import Hero from '@/components/Hero.vue'
 import SocialMediaProfiles from '@/components/SocialMediaProfiles.vue'
-import ProjectTeaser from '@/components/ProjectTeaser.vue'
 import ProjectGrid from '@/components/ProjectGrid.vue'
 import Footer from '@/components/Footer.vue'
 
@@ -39,45 +31,75 @@ export default {
   components: {
     Hero,
     SocialMediaProfiles,
-    ProjectTeaser,
     ProjectGrid,
     Footer
   },
-  data: () => {
+  data: (foo) => {
     return {
       globalConfiguration: {}
+    }
+  },
+  computed: {
+    modules: function () {
+      if (!this.globalConfiguration.pages) return []
+
+      for (let i = 0; i < this.globalConfiguration.pages.length; i++) {
+        const page = this.globalConfiguration.pages[i]
+
+        if (page.url !== this.$route.path) continue
+        return page.moduleOrder
+      }
+
+      return []
+    }
+  },
+  methods: {
+    isComponent: function (__typename) {
+      if (__typename === 'HeroRecord') return 'Hero'
+      if (__typename === 'SocialMediaRowRecord') return 'SocialMediaProfiles'
+      if (__typename === 'ProjectGridRecord') return 'ProjectGrid'
+      if (__typename === 'FooterRecord') return 'Footer'
+
+      return ''
     }
   },
   apollo: {
     globalConfiguration: {
       query: gql`query ($locale: SiteLocale!) {
         globalConfiguration {
-          moduleOrderFrontPage(locale: $locale) {
-            ... on HeroRecord {
-              name
-              description
-              tags { title }
-            }
-            ... on SocialMediaRowRecord {
-              socialMediaLinks {
-                title
-                link
-                icon
-              }
-            }
-            ... on ProjectGridRecord {
-              projects {
+          pages(locale: $locale) {
+            url
+            moduleOrder {
+              ... on HeroRecord {
                 id
-                title
-                description(locale: $locale)
-                url
-                urlDescription(locale: $locale)
+                name
+                description
                 tags { title }
-                badge(locale: $locale)
               }
-            }
-            ... on FooterRecord {
-              content
+              ... on SocialMediaRowRecord {
+                id
+                socialMediaLinks {
+                  title
+                  link
+                  icon
+                }
+              }
+              ... on ProjectGridRecord {
+                id
+                projects {
+                  id
+                  title
+                  description(locale: $locale)
+                  url
+                  urlDescription(locale: $locale)
+                  tags { title }
+                  badge(locale: $locale)
+                }
+              }
+              ... on FooterRecord {
+                id
+                content
+              }
             }
           }
           locales {

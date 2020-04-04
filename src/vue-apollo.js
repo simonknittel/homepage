@@ -17,10 +17,10 @@ Vue.use(VueApollo)
 const AUTH_TOKEN = 'apollo-token'
 
 // Http endpoint
-let httpEndpoint = process.env.VUE_APP_GRAPHQL_HTTP || 'https://graphql.datocms.com/'
+let httpEndpoint = process.env.VUE_APP_GRAPHQL_HTTP || 'http://graphql.datocms.com/'
 
 const urlParams = new URLSearchParams(window.location.search)
-if (urlParams.has('preview')) httpEndpoint = 'https://graphql.datocms.com/preview'
+if (urlParams.has('preview')) httpEndpoint = 'http://graphql.datocms.com/preview'
 
 // Config
 const defaultOptions = {

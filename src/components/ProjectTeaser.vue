@@ -83,7 +83,7 @@ export default {
       margin-left: 0.5rem;
       padding: .1rem .3rem .1rem .3rem;
       border-radius: .25rem;
-      background-color: black;
+      background-color: $black;
       color: $yellow;
       font-size: .8em;
       font-weight: 400;
@@ -100,11 +100,11 @@ export default {
       padding: .6rem .8rem .6rem .8rem;
       border-radius: .25rem;
       text-decoration: none;
-      background-color: black;
+      background-color: $black;
       color: $yellow;
 
       &:hover {
-        background-color: lighten(#000, 25%);
+        background-color: lighten($black, 25%);
       }
     }
 
@@ -113,7 +113,7 @@ export default {
       grid-area: image;
       border-top-left-radius: 3rem;
       border-top-right-radius: 3rem;
-      box-shadow: 0 0 20px 0 rgba(0, 0, 0, .5);
+      box-shadow: 0 0 20px 0 rgba($black, .5);
     }
 
     iframe {
@@ -123,7 +123,7 @@ export default {
 
     &--black {
       clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 90%);
-      background-color: black;
+      background-color: $black;
       color: $yellow;
 
       .inner {
@@ -132,12 +132,12 @@ export default {
 
       .wip {
         background-color: $yellow;
-        color: black;
+        color: $black;
       }
 
       a {
         background-color: $yellow;
-        color: black;
+        color: $black;
 
         &:hover {
           background-color: lighten($yellow, 25%);
@@ -148,8 +148,8 @@ export default {
         box-shadow: 0 0 20px 0 rgba($yellow, .5);
       }
 
-      --sk-tag-border-color: rgba(#fc0, .5);
-      --sk-tag-color: #fc0;
+      --sk-tag-border-color: rgba($yellow, .5);
+      --sk-tag-color: $yellow;
     }
   }
 </style>

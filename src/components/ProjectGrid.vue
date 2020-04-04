@@ -1,28 +1,25 @@
 <template lang="pug">
 .project-grid(:class="{'project-grid--black': black}")
   .project-grid__inner
-    ProjectGridTeaser(
-      v-for="project in projects",
-      :title="project.title",
-      :description="project.description",
-      :badge="project.badge",
-      :url="project.url",
-      :urlDescription="project.urlDescription",
-      :tags="project.tags.map(tag => tag.title)"
+    sk-slanted-teaser(
+      v-for="project in projects"
       :key="project.id"
+      :heading="project.title"
+      :badge="project.badge"
+      :tags.prop="project.tags.map(tag => tag.title)"
+      :href="project.url"
+      target="_blank"
+      rel="noopener"
+      :link-text="project.urlDescription"
     )
+      sk-typography(as="p") {{ project.description }}
 
   .project-grid__more
-    a(href="https://github.com/simonknittel", target="_blank", rel="noopener") More on GitHub >
+    a(href="https://github.com/simonknittel" target="_blank" rel="noopener") More on GitHub >
 </template>
 
 <script>
-import ProjectGridTeaser from '@/components/ProjectGridTeaser.vue'
-
 export default {
-  components: {
-    ProjectGridTeaser
-  },
   props: {
     black: {
       type: Boolean,
@@ -42,8 +39,6 @@ export default {
 .project-grid {
   padding-top: 8rem;
   padding-bottom: 7rem;
-  background-color: $yellow;
-  color: black;
 
   &__inner {
     display: grid;
@@ -65,17 +60,12 @@ export default {
       display: inline-block;
       padding: 1rem;
 
-      color: black;
+      color: $black;
 
       &:hover {
-        color: rgba(0, 0, 0, .5);
+        color: rgba($black, .5);
       }
     }
-  }
-
-  &--black {
-    background-color: black;
-    color: $yellow;
   }
 }
 </style>

@@ -55,7 +55,7 @@ export default {
 
   .hero {
     padding-top: 15rem;
-    padding-bottom: 15rem;
+    padding-bottom: 20rem; // 15rem + margin-top of sk-slanted
     background-color: $yellow;
     text-align: center;
 
@@ -96,11 +96,11 @@ export default {
         display: inline-block;
         padding: .5rem;
         text-transform: uppercase;
-        color: black;
+        color: $black;
         text-decoration: none;
 
         &:hover {
-          color: rgba(0, 0, 0, .5);
+          color: rgba($black, .5);
         }
       }
 
@@ -109,6 +109,11 @@ export default {
           text-decoration: underline;
         }
       }
+    }
+
+    + sk-slanted {
+      z-index: 1;
+      margin-top: -5rem;
     }
   }
 </style>

@@ -1,6 +1,5 @@
 <template lang="pug">
-  div
-    router-view
+  router-view
 </template>
 
 <style lang="scss">
@@ -21,7 +20,7 @@
 
     min-height: 100%;
 
-    background-color: $yellow;
+    background-color: hsl(48, 100%, 95%);
   }
 
   body {

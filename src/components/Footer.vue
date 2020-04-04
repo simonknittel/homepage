@@ -19,7 +19,7 @@ export default {
   footer {
     padding-top: 4rem;
     padding-bottom: 4rem;
-    background-color: black;
+    background-color: $black;
     color: $yellow;
     text-align: center;
 
