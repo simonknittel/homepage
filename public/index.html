@@ -7,10 +7,36 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap" rel="stylesheet">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <title>Simon Knittel - Web Developer</title>
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      html {
+        overflow-x: hidden;
+
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 400;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        font-display: swap;
+
+        min-height: 100%;
+
+        background-color: hsl(48, 100%, 90%);
+        color: #222;
+      }
+
+      body {
+        margin: 0;
+      }
+    </style>
   </head>
   <body>
     <noscript>
-      <strong>I'm sorry but my doesn't work without JavaScript enabled. Please enable it to continue.</strong>
+      <p style="text-align:center;font-weight:700;">I'm sorry but my homepage doesn't work without JavaScript enabled. Please enable it to continue.</p>
     </noscript>
     <div id="app"></div>
     <!-- built files will be auto injected -->

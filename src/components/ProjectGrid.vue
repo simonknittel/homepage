@@ -37,17 +37,8 @@ export default {
 @import '../styles/_variables.scss';
 
 .project-grid {
-  padding-top: 8rem;
-  padding-bottom: 7rem;
-
-  &__inner {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5rem;
-    max-width: 1280px;
-    margin-left: auto;
-    margin-right: auto;
-  }
+  padding-top: 4rem;
+  padding-bottom: 3rem;
 
   &__more {
     max-width: 1280px;
@@ -65,6 +56,38 @@ export default {
       &:hover {
         color: rgba($black, .5);
       }
+    }
+  }
+
+  sk-slanted-teaser {
+    max-width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3rem;
+
+    &:first-of-type {
+      margin-top: 0;
+    }
+  }
+}
+
+@media (min-width: $bp--medium) {
+  .project-grid {
+    padding-top: 8rem;
+    padding-bottom: 7rem;
+
+    &__inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      max-width: 1280px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    sk-slanted-teaser {
+      max-width: none;
+      margin-top: 0;
     }
   }
 }
