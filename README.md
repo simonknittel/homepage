@@ -1,29 +1,21 @@
 # homepage
 
 ## Project setup
-```
-npm install
-```
+
+    nvm use
+    npm install
 
 ### Compiles and hot-reloads for development
-```
-npm run serve
-```
+
+    npm run serve
 
 ### Compiles and minifies for production
-```
-npm run build
-```
 
-### Run your tests
-```
-npm run test
-```
+    npm run build
 
-### Lints and fixes files
-```
-npm run lint
-```
+#### Notes
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+* `--modern` flag seems to be resulting in no different build at all. Also it breaks because of webpack's copy plugin in vue.config.js
+* `--https` flag fails hot reloading etc. during development
+* `--no-unsafe-inline` flag seems to make no difference since there is no inline script to begin with.
+* The _prerender-spa_ plugin seems to do nothing.

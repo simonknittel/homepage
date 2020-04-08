@@ -2,9 +2,11 @@ const path = require('path')
 
 module.exports = {
   productionSourceMap: false,
+
   css: {
     sourceMap: true
   },
+
   chainWebpack: config => {
     config
       .plugin('copy')
@@ -17,5 +19,11 @@ module.exports = {
 
         return args
       })
+  },
+
+  pluginOptions: {
+    apollo: {
+      lintGQL: true
+    }
   }
 }
