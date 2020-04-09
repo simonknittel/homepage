@@ -154,7 +154,12 @@ export default {
         }
       },
       skip () {
-        return window.response || false
+        if (
+          window.response &&
+          this.$store.state.pristine
+        ) return true
+
+        return false
       }
     }
   }
