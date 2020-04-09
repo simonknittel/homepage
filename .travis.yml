@@ -36,4 +36,5 @@ deploy:
 
 notifications:
   webhooks:
-  - https://webhooks.datocms.com/kmKA1jTb4E/deploy-results
+  - https://webhooks.datocms.com/kmKA1jTb4E/deploy-results # Nightly
+  - https://webhooks.datocms.com/TukcJ1llgm/deploy-results # Nightly - Custom Travis
