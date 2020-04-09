@@ -33,3 +33,7 @@ deploy:
   skip_cleanup: true
   on:
     branch: master
+
+notifications:
+  webhooks:
+  - https://webhooks.datocms.com/kmKA1jTb4E/deploy-results

@@ -154,6 +154,7 @@ export default {
         }
       },
       skip () {
+        // TODO: Fix preview
         if (
           window.response &&
           this.$store.state.pristine
