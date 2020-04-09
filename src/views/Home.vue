@@ -46,10 +46,10 @@ export default {
     NotFound,
     HTML
   },
-  data: (foo) => {
-    return {
-      globalConfiguration: {}
-    }
+  data: () => {
+    if (window.response) return { globalConfiguration: window.response.data.globalConfiguration }
+
+    return { globalConfiguration: {} }
   },
   computed: {
     pagesLoaded: function () {
@@ -101,6 +101,7 @@ export default {
                 name
                 description
                 tags { title }
+                __typename
               }
               ... on SocialMediaRowRecord {
                 id
@@ -109,6 +110,7 @@ export default {
                   link
                   icon
                 }
+                __typename
               }
               ... on ProjectGridRecord {
                 id
@@ -121,19 +123,23 @@ export default {
                   tags { title }
                   badge(locale: $locale)
                 }
+                __typename
               }
               ... on FooterRecord {
                 id
                 content
+                __typename
               }
               ... on NotFoundRecord {
                 id
                 heading
                 subheading
+                __typename
               }
               ... on HtmlRecord {
                 id
                 html
+                __typename
               }
             }
           }
@@ -146,6 +152,9 @@ export default {
         return {
           locale: this.$store.state.locale
         }
+      },
+      skip () {
+        return window.response || false
       }
     }
   }

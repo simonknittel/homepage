@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "serve": "node fragmentTypes.js && vue-cli-service serve --open",
-    "build": "node fragmentTypes.js && vue-cli-service build",
+    "build": "node fragmentTypes.js && vue-cli-service build && node graphql-request.js",
     "lint": "vue-cli-service lint",
     "start": "npm run serve"
   },
