@@ -12,8 +12,10 @@ import { createProvider } from './vue-apollo'
 Sentry.init({
   dsn: 'https://41376f858c454bc4951e9d45d0ccdc4f@o77506.ingest.sentry.io/5196082',
   integrations: [new Integrations.Vue({ Vue })],
-  environment: process.env.SENTRY_ENVIRONMENT || 'localhost'
+  environment: process.env.VUE_APP_SENTRY_ENVIRONMENT || 'localhost'
 })
+
+console.log(process.env)
 
 Vue.config.productionTip = false
 

@@ -1,5 +1,7 @@
 const path = require('path')
 
+process.env.VUE_APP_TRAVIS_COMMIT = process.env.TRAVIS_COMMIT
+
 module.exports = {
   productionSourceMap: false,
 
