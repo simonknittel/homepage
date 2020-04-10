@@ -9,9 +9,9 @@ before_install:
   - echo "@simonknittel:registry=https://npm.pkg.github.com" > .npmrc
 
   - curl -sL https://sentry.io/get-cli/ | bash
-  - sentry-cli releases new -p $VUE_APP_SENTRY_PROJECT $TRAVIS_BUILD_NUMBER
-  - sentry-cli releases set-commits --auto $TRAVIS_BUILD_NUMBER
-  - sentry-cli releases finalize $TRAVIS_BUILD_NUMBER
+  - sentry-cli releases new -p $VUE_APP_SENTRY_PROJECT "$VUE_APP_SENTRY_PROJECT@$TRAVIS_BUILD_NUMBER"
+  - sentry-cli releases set-commits --auto "$VUE_APP_SENTRY_PROJECT@$TRAVIS_BUILD_NUMBER"
+  - sentry-cli releases finalize "$VUE_APP_SENTRY_PROJECT@$TRAVIS_BUILD_NUMBER"
 
 script:
 - npm run build
