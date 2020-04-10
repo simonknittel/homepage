@@ -12,6 +12,7 @@ before_install:
   - sentry-cli releases new -p $VUE_APP_SENTRY_PROJECT "$VUE_APP_SENTRY_PROJECT@$TRAVIS_BUILD_NUMBER"
   - sentry-cli releases set-commits --auto "$VUE_APP_SENTRY_PROJECT@$TRAVIS_BUILD_NUMBER"
   - sentry-cli releases finalize "$VUE_APP_SENTRY_PROJECT@$TRAVIS_BUILD_NUMBER"
+  - sentry-cli releases deploys "$VUE_APP_SENTRY_PROJECT@$TRAVIS_BUILD_NUMBER" new -e $VUE_APP_SENTRY_ENVIRONMENT
 
 script:
 - npm run build
