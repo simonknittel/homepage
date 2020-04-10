@@ -21,6 +21,9 @@ deploy:
 - provider: script
   script: rsync -r --delete-after --quiet $TRAVIS_BUILD_DIR/dist/ $DEPLOYMENT_TARGET
   skip_cleanup: true
+  on:
+    all_branches: true
+    condition: $TRAVIS_BRANCH =~ ^(nightly|beta|master)$
 
 notifications:
   webhooks:
