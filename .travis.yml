@@ -34,4 +34,4 @@ after_deploy:
 
 notifications:
   webhooks:
-  - https://webhooks.datocms.com/6272816dc5a2ecd9cc18/deploy-results # Nightly - Custom Travis
+  - $DATOCMS_NOTIFICATION
