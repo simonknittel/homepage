@@ -154,7 +154,9 @@ export default {
         }
       },
       skip () {
-        // TODO: Fix preview
+        const urlParams = new URLSearchParams(window.location.search)
+        if (urlParams.has('preview')) return false
+
         if (
           window.response &&
           this.$store.state.pristine
