@@ -34,4 +34,4 @@ after_deploy:
 
 notifications:
   webhooks:
-  - $DATOCMS_NOTIFICATION
+  - https://webhooks.datocms.com/3e17ba2f791b63dacca2/deploy-results
