@@ -1,69 +1,14 @@
 const fs = require('fs')
 const path = require('path')
 const https = require('https')
+const query = require('./query').query
 
 fs.readFile(path.join(__dirname, './dist/index.html'), 'utf8', function (err, html) {
   if (err) throw err
 
   const data = JSON.stringify({
     variables: { locale: 'en' },
-    query: `query ($locale: SiteLocale!) {
-      globalConfiguration {
-        pages(locale: $locale) {
-          url
-          moduleOrder {
-            ... on HeroRecord {
-              id
-              name
-              description
-              tags { title }
-              __typename
-            }
-            ... on SocialMediaRowRecord {
-              id
-              socialMediaLinks {
-                title
-                link
-                icon
-              }
-              __typename
-            }
-            ... on ProjectGridRecord {
-              id
-              projects {
-                id
-                title
-                description(locale: $locale)
-                url
-                urlDescription(locale: $locale)
-                tags { title }
-                badge(locale: $locale)
-              }
-              __typename
-            }
-            ... on FooterRecord {
-              id
-              content
-              __typename
-            }
-            ... on NotFoundRecord {
-              id
-              heading
-              subheading
-              __typename
-            }
-            ... on HtmlRecord {
-              id
-              html
-              __typename
-            }
-          }
-        }
-        locales {
-          locale
-        }
-      }
-    }`
+    query
   })
 
   const options = {

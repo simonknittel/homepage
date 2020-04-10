@@ -36,6 +36,8 @@ import Footer from '@/components/Footer.vue'
 import NotFound from '@/components/NotFound.vue'
 import HTML from '@/components/HTML.vue'
 
+import { query } from '../../query'
+
 export default {
   components: {
     Fragment,
@@ -64,7 +66,8 @@ export default {
         return page.moduleOrder
       }
 
-      return null // Will never run
+      // Doesn't matter what it will return since it will never reach this point
+      return null
     }
   },
   methods: {
@@ -91,63 +94,7 @@ export default {
   },
   apollo: {
     globalConfiguration: {
-      query: gql`query ($locale: SiteLocale!) {
-        globalConfiguration {
-          pages(locale: $locale) {
-            url
-            moduleOrder {
-              ... on HeroRecord {
-                id
-                name
-                description
-                tags { title }
-                __typename
-              }
-              ... on SocialMediaRowRecord {
-                id
-                socialMediaLinks {
-                  title
-                  link
-                  icon
-                }
-                __typename
-              }
-              ... on ProjectGridRecord {
-                id
-                projects {
-                  id
-                  title
-                  description(locale: $locale)
-                  url
-                  urlDescription(locale: $locale)
-                  tags { title }
-                  badge(locale: $locale)
-                }
-                __typename
-              }
-              ... on FooterRecord {
-                id
-                content
-                __typename
-              }
-              ... on NotFoundRecord {
-                id
-                heading
-                subheading
-                __typename
-              }
-              ... on HtmlRecord {
-                id
-                html
-                __typename
-              }
-            }
-          }
-          locales {
-            locale
-          }
-        }
-      }`,
+      query: gql`${query}`,
       variables () {
         return {
           locale: this.$store.state.locale
