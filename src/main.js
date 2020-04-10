@@ -15,8 +15,6 @@ Sentry.init({
   environment: process.env.VUE_APP_SENTRY_ENVIRONMENT || 'localhost'
 })
 
-console.log(process.env)
-
 Vue.config.productionTip = false
 
 // Tell Vue to ignore all components defined in the @simonknittel/components
