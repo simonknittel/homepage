@@ -12,7 +12,7 @@ export default new Vuex.Store({
     setLocale (state, payload) {
       state.locale = payload
       state.pristine = false
-      throw new Error('foo ' + process.env.VUE_APP_SENTRY_RELEASE)
+      throw new Error('foo 62')
     }
   },
   actions: {
