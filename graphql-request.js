@@ -26,9 +26,7 @@ fs.readFile(path.join(__dirname, './dist/index.html'), 'utf8', function (err, ht
     res.on('data', d => { jsonString += d })
 
     res.on('end', () => {
-      let newHtml = html.replace('</head>', `<script>window.response=${jsonString}</script></head>`)
-      newHtml = newHtml.replace('<script src=/js/chunk-vendors', '<script defer src=/js/chunk-vendors')
-      newHtml = newHtml.replace('<script src=/js/app', '<script defer src=/js/app')
+      const newHtml = html.replace('</head>', `<script>window.response=${jsonString}</script></head>`)
       fs.writeFile(path.join(__dirname, 'dist', 'index.html'), newHtml, 'utf8', () => {})
     })
   })
