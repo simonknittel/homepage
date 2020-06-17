@@ -1,3 +1,5 @@
+import 'regenerator-runtime/runtime'
+
 import * as Sentry from '@sentry/browser'
 import * as Integrations from '@sentry/integrations'
 
