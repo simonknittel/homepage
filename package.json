@@ -9,8 +9,8 @@
     "start": "npm run serve"
   },
   "dependencies": {
-    "@sentry/browser": "5.20.0",
-    "@sentry/integrations": "5.20.0",
+    "@sentry/browser": "5.20.1",
+    "@sentry/integrations": "5.20.1",
     "@simonknittel/components": "0.6.0",
     "core-js": "3.6.5",
     "vue": "2.6.11",
