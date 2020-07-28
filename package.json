@@ -9,12 +9,12 @@
     "start": "npm run serve"
   },
   "dependencies": {
-    "@sentry/browser": "5.20.0",
-    "@sentry/integrations": "5.20.0",
+    "@sentry/browser": "5.20.1",
+    "@sentry/integrations": "5.20.1",
     "@simonknittel/components": "0.7.0",
     "core-js": "3.6.5",
     "vue": "2.6.11",
-    "vue-apollo": "3.0.3",
+    "vue-apollo": "3.0.4",
     "vue-fragment": "1.5.1",
     "vue-router": "3.3.4",
     "vuex": "3.5.1"
