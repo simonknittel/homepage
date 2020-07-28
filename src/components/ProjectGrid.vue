@@ -12,7 +12,7 @@
       rel="noopener"
       :link-text="project.urlDescription"
     )
-      sk-typography(as="p", size="1-responsive") {{ project.description }}
+      sk-typography(as="p", size="16-responsive") {{ project.description }}
 
   .project-grid__more
     sk-link(href="https://github.com/simonknittel" target="_blank" rel="noopener" icon-position="right" icon=">") More on GitHub

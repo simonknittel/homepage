@@ -6,6 +6,7 @@
       :link-href="href"
       link-icon="<"
       :link-text="goToHome"
+      :link-prevent-click="true"
       @clicked="navigate"
     )
 </template>
