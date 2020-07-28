@@ -4,6 +4,7 @@
 
     nvm use
     npm install
+    npm link path/to/local/@simonknittel/components/repository
 
 ### Compiles and hot-reloads for development
 

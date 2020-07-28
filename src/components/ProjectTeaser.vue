@@ -7,7 +7,7 @@
         span.badge(v-if="badge") {{ badge }}
       sk-tag-list(:items.prop="tags")
       p.description {{ description }}
-      a(v-for="link in links", :href="link.url", target="_blank", rel="noopener") {{ link.title }} >
+      a(v-for="link in links", :key="link.id", :href="link.url", target="_blank", rel="noopener") {{ link.title }} >
     .iframe-container
       iframe(src="https://staging.sb-builds.de")
 </template>

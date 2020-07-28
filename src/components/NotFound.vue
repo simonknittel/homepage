@@ -1,7 +1,13 @@
 <template lang="pug">
-  section.notfound
-    h1.notfound__heading {{ heading }}
-    h2.notfound__subheading {{ subheading }}
+  router-link(:to="{ name: 'home' }" v-slot="{ href, navigate }")
+    sk-not-found(
+      :heading="heading"
+      :subheading="subheading"
+      :link-href="href"
+      link-icon="<"
+      :link-text="goToHome"
+      @clicked="navigate"
+    )
 </template>
 
 <script>
@@ -14,30 +20,18 @@ export default {
     subheading: {
       type: String,
       required: true
+    },
+    goToHome: {
+      type: String,
+      required: true
     }
   }
 }
 </script>
 
 <style lang="scss">
-  @import '../styles/_variables.scss';
-
-  .notfound {
-    padding-top: 7rem;
-    padding-bottom: 8rem;
-
-    text-align: center;
-
-    &__heading,
-    &__subheading {
-      margin-top: 0;
-      margin-bottom: 0;
-      line-height: 1;
-    }
-
-    &__heading {
-      font-size: 7rem;
-      color: $yellow;
-    }
+  sk-not-found {
+    margin-top: 7rem;
+    margin-bottom: 8rem;
   }
 </style>

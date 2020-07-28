@@ -8,7 +8,12 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
-import { applyPolyfills, defineCustomElements } from '@simonknittel/components/loader'
+/**
+ * TODO: Not working until Webpack 5 lands in vue-cli: https://github.com/webpack/webpack/issues/6719
+ * Using https://babeljs.io/docs/en/babel-plugin-syntax-import-meta didn't work
+ */
+// import { applyPolyfills, defineCustomElements } from '@simonknittel/components/loader'
+import { applyPolyfills, defineCustomElements } from '@simonknittel/components/loader/index.cjs'
 import { createProvider } from './vue-apollo'
 
 if (process.env.NODE_ENV === 'production') {

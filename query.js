@@ -2,18 +2,23 @@ module.exports = {
   query: `query ($locale: SiteLocale!) {
     globalConfiguration {
       pages(locale: $locale) {
+        id
         url
         moduleOrder {
           ... on HeroRecord {
             id
             name
             description
-            tags { title }
+            tags {
+              id
+              title
+            }
             __typename
           }
           ... on SocialMediaRowRecord {
             id
             socialMediaLinks {
+              id
               title
               link
               icon
@@ -28,7 +33,10 @@ module.exports = {
               description(locale: $locale)
               url
               urlDescription(locale: $locale)
-              tags { title }
+              tags {
+                id
+                title
+              }
               badge(locale: $locale)
             }
             __typename
@@ -42,6 +50,7 @@ module.exports = {
             id
             heading
             subheading
+            goToHome
             __typename
           }
           ... on HtmlRecord {

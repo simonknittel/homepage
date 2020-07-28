@@ -24,6 +24,10 @@ module.exports = {
       })
   },
 
+  configureWebpack: {
+    resolve: { symlinks: false } // https://github.com/webpack/webpack/issues/1866#issuecomment-284571531
+  },
+
   pluginOptions: {
     apollo: {
       lintGQL: true

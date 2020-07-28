@@ -11,7 +11,7 @@
   "dependencies": {
     "@sentry/browser": "5.20.0",
     "@sentry/integrations": "5.20.0",
-    "@simonknittel/components": "0.6.0",
+    "@simonknittel/components": "0.7.0",
     "core-js": "3.6.5",
     "vue": "2.6.11",
     "vue-apollo": "3.0.3",
@@ -34,7 +34,7 @@
     "eslint-plugin-vue": "6.2.2",
     "graphql-tag": "2.10.4",
     "node-sass": "4.14.1",
-    "sass-loader": "8.0.2",
+    "sass-loader": "9.0.2",
     "vue-cli-plugin-apollo": "0.22.2",
     "vue-cli-plugin-pug": "1.0.7",
     "vue-template-compiler": "2.6.11"

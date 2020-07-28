@@ -15,7 +15,7 @@
       sk-typography(as="p", size="1-responsive") {{ project.description }}
 
   .project-grid__more
-    a(href="https://github.com/simonknittel" target="_blank" rel="noopener") More on GitHub >
+    sk-link(href="https://github.com/simonknittel" target="_blank" rel="noopener" icon-position="right" icon=">") More on GitHub
 </template>
 
 <script>
@@ -46,17 +46,6 @@ export default {
     margin-right: auto;
     margin-top: 1rem;
     text-align: center;
-
-    a {
-      display: inline-block;
-      padding: 1rem;
-
-      color: $black;
-
-      &:hover {
-        color: rgba($black, .5);
-      }
-    }
   }
 
   sk-slanted-teaser {

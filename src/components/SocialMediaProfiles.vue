@@ -1,7 +1,7 @@
 <template lang="pug">
 sk-slanted.social-media-profiles
   ul
-    li(v-for="link in links")
+    li(v-for="link in links" :key="link.id")
       sk-social-link(
         :url="link.link"
         :text="link.title"

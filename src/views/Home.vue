@@ -20,6 +20,7 @@ fragment(v-if="pagesLoaded")
 
       :heading="module.__typename === 'NotFoundRecord' ? module.heading : null"
       :subheading="module.__typename === 'NotFoundRecord' ? module.subheading : null"
+      :goToHome="module.__typename === 'NotFoundRecord' ? module.goToHome : null"
 
       :html="module.__typename === 'HtmlRecord' ? module.html : null"
     )
@@ -48,17 +49,20 @@ export default {
     NotFound,
     HTML
   },
-  data: () => {
+  data () {
     if (window.response) return { globalConfiguration: window.response.data.globalConfiguration }
 
     return { globalConfiguration: {} }
   },
   computed: {
-    pagesLoaded: function () {
-      if (!this.globalConfiguration.pages) return false
+    pagesLoaded () {
+      if (
+        !this.globalConfiguration ||
+        !this.globalConfiguration.pages
+      ) return false
       return true
     },
-    modules: function () {
+    modules () {
       for (let i = 0; i < this.globalConfiguration.pages.length; i++) {
         const page = this.globalConfiguration.pages[i]
 
@@ -71,7 +75,7 @@ export default {
     }
   },
   methods: {
-    pageExists: function () {
+    pageExists () {
       for (let i = 0; i < this.globalConfiguration.pages.length; i++) {
         const page = this.globalConfiguration.pages[i]
         if (page.url !== this.$route.path) continue
@@ -81,7 +85,7 @@ export default {
       this.$router.push('/404')
       return false
     },
-    isComponent: function (__typename) {
+    isComponent (__typename) {
       if (__typename === 'HeroRecord') return 'Hero'
       if (__typename === 'SocialMediaRowRecord') return 'SocialMediaProfiles'
       if (__typename === 'ProjectGridRecord') return 'ProjectGrid'

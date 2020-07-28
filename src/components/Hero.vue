@@ -55,6 +55,7 @@ export default {
 
 .hero {
   position: relative;
+  margin-bottom: 3rem;
   padding-top: 5rem;
   padding-bottom: 10rem; // 15rem + margin-top of sk-slanted
   background-color: $yellow;
@@ -65,7 +66,6 @@ export default {
     position: absolute;
     left: 0;
     top: 100%;
-    transform: translateY(-50%);
     width: 100%;
     height: 3rem;
     background-color: $black;
@@ -125,7 +125,7 @@ export default {
 
   + sk-slanted {
     z-index: 1;
-    margin-top: -5rem;
+    margin-top: -7rem;
   }
 }
 
