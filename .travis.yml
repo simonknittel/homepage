@@ -12,7 +12,7 @@ before_script:
   # Use latest commit within master branch of @simonknittel/components
   - wget -O - https://github.com/simonknittel/components/tarball/master | tar xz
   - for file in simonknittel-components-* ; do mv $file simonknittel-components ; done
-  - mv simonknittel-components/stencil node_modules/@simonknittel/components
+  - mv simonknittel-components/stencil/* node_modules/@simonknittel/components
   - cd node_modules/@simonknittel/components
   - npm install
   - npm run build
