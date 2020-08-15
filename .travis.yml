@@ -9,7 +9,10 @@ before_install:
   - echo "@simonknittel:registry=https://npm.pkg.github.com" > .npmrc
 
 before_script:
-  - npm install @simonknittel/components#master
+  # Use latest commit within master branch of @simonknittel/components
+  - wget -O - https://github.com/simonknittel/components/tarball/master | tar xz
+  - for file in simonknittel-components-* ; do mv $file simonknittel-components ; done
+  - npm install ./simonknittel-components/stencil
 
 script:
 - npm run build
