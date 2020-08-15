@@ -3,7 +3,8 @@
     h1
       span {{ name }}
       span {{ description }}
-    sk-tag-list(:items.prop="tags")
+    sk-tag-list
+      sk-tag(v-for="tag in tags" :key="tag") {{ tag }}
 
     ul.hero__locales
       li(
