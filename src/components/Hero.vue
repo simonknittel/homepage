@@ -3,7 +3,7 @@
     h1
       span {{ name }}
       span {{ description }}
-    sk-tag-list
+    div.hero__tags
       sk-tag(v-for="tag in tags" :key="tag") {{ tag }}
 
     ul.hero__locales
@@ -87,11 +87,17 @@ export default {
     }
   }
 
-  .sk-tag-list {
+  &__tags {
     justify-content: center;
     max-width: 21rem;
     margin-left: auto;
     margin-right: auto;
+  }
+
+  sk-tag {
+    margin-left: .25rem;
+    margin-right: .25rem;
+    margin-bottom: .5rem;
   }
 
   &__locales {

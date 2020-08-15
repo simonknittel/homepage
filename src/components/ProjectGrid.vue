@@ -12,7 +12,7 @@
       rel="noopener"
       :link-text="project.urlDescription"
     )
-      sk-typography(as="p", size="16-responsive") {{ project.description }}
+      sk-typography(as="p") {{ project.description }}
 
   .project-grid__more
     sk-link(href="https://github.com/simonknittel" target="_blank" rel="noopener" icon-position="right" icon=">") More on GitHub
@@ -44,7 +44,7 @@ export default {
     max-width: 1280px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 1rem;
+    margin-top: 5rem;
     text-align: center;
   }
 
