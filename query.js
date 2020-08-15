@@ -19,6 +19,7 @@ module.exports = {
             id
             socialMediaLinks {
               id
+              text
               title
               link
               icon

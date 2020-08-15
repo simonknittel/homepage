@@ -8,6 +8,9 @@ before_install:
   - echo "//npm.pkg.github.com/:_authToken=${TRAVISCICOM_READ_PACKAGES}" > ~/.npmrc
   - echo "@simonknittel:registry=https://npm.pkg.github.com" > .npmrc
 
+before_script:
+  - npm install git+https://github.com/simonknittel/components.git#master
+
 script:
 - npm run build
 
