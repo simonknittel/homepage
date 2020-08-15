@@ -37,7 +37,7 @@ import Footer from '@/components/Footer.vue'
 import NotFound from '@/components/NotFound.vue'
 import HTML from '@/components/HTML.vue'
 
-import { query } from '../../query'
+import { query } from '../../query.js'
 
 export default {
   components: {

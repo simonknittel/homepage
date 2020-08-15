@@ -1,7 +1,7 @@
 const fs = require('fs')
 const path = require('path')
 const https = require('https')
-const query = require('./query').query
+const query = require('./query.js').query
 
 fs.readFile(path.join(__dirname, './dist/index.html'), 'utf8', function (err, html) {
   if (err) throw err
