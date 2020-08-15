@@ -12,7 +12,12 @@ before_script:
   # Use latest commit within master branch of @simonknittel/components
   - wget -O - https://github.com/simonknittel/components/tarball/master | tar xz
   - for file in simonknittel-components-* ; do mv $file simonknittel-components ; done
+  - cd simonknittel-components/stencil
+  - npm install
+  - npm run build
+  - cd ../../
   - npm install ./simonknittel-components/stencil
+  - rm -rf simonknittel-components
 
 script:
 - npm run build
@@ -32,6 +37,7 @@ deploy:
     condition: $TRAVIS_BRANCH =~ ^(nightly|beta|master)$
 
 after_deploy:
+  # Notify Sentry of successful deployment
   - curl -sL https://sentry.io/get-cli/ | bash
   - sentry-cli releases new -p $VUE_APP_SENTRY_PROJECT "$VUE_APP_SENTRY_PROJECT@$TRAVIS_BUILD_NUMBER"
   - sentry-cli releases set-commits --auto "$VUE_APP_SENTRY_PROJECT@$TRAVIS_BUILD_NUMBER"
