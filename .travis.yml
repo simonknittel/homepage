@@ -9,7 +9,7 @@ before_install:
   - echo "@simonknittel:registry=https://npm.pkg.github.com" > .npmrc
 
 before_script:
-  - npm install https://github.com/simonknittel/components#master
+  - npm install @simonknittel/components#master
 
 script:
 - npm run build
