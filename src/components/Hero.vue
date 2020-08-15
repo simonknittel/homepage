@@ -14,6 +14,7 @@
         a(
           href="#",
           @click.prevent="$store.commit('setLocale', locale)"
+          :title="'Set language to ' + locale"
         ) {{ locale }}
 </template>
 
