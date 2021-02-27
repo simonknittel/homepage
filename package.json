@@ -18,6 +18,7 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
+    "@simonknittel/components-react": "0.8.0",
     "gatsby": "2.32.8",
     "gatsby-plugin-react-helmet": "3.10.0",
     "gatsby-plugin-sass": "3.2.0",
