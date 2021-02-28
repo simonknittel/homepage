@@ -1,6 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: "Simon Knittel",
+    siteUrl: "https://nightly.simonknittel.de",
   },
   plugins: [
     {
