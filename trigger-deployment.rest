@@ -1,13 +1,10 @@
 # https://docs.github.com/en/rest/reference/actions#create-a-workflow-dispatch-event
 
-POST https://api.github.com/repos/simonknittel/homepage/actions/workflows/build_and_deploy/dispatches
+POST https://api.github.com/repos/simonknittel/homepage/actions/workflows/build_and_deploy.yml/dispatches
 Accept: application/vnd.github.v3+json
 Content-Type: application/json
-Authorization: Basic simonknittel:
+Authorization: Basic simonknittel:ffd49ce17fba994e9f73ad77859bb0b8bea3e449
 
 {
-  "ref": "nightly",
-  "inputs": {
-    "environment": "nightly"
-  }
+  "ref": "nightly"
 }

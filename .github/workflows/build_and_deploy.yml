@@ -2,11 +2,6 @@ name: build_and_deploy
 
 on:
   workflow_dispatch:
-    inputs:
-      environment:
-        description: 'Environment to deploy'
-        required: true
-        default: 'nightly'
 
 jobs:
 
@@ -17,7 +12,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
       with:
-        ref: ${{ github.event.inputs.environment }}
+        ref: ${{ github.event.ref }}
 
     - name: Set up Node.js
       uses: actions/setup-node@v2
@@ -29,7 +24,7 @@ jobs:
     - run: npm ci
 
     - run: |
-        export SENTRY_ENVIRONMENT=${{ github.event.inputs.environment }}
+        export SENTRY_ENVIRONMENT=${{ github.event.ref }}
         npm run build
 
     - name: Set up Cloud SDK
