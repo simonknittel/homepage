@@ -44,7 +44,7 @@ jobs:
     - name: Invalidate cache
       run: |
         gcloud compute url-maps invalidate-cdn-cache simonknittelde \
-          --host ${{ github.event.inputs.environment }}
+          --host ${{ github.event.inputs.environment }} \
           --path "/*"
 
     - name: Notify Dato CMS (Success)
