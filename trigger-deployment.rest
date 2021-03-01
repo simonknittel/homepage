@@ -6,5 +6,8 @@ Content-Type: application/json
 Authorization: Basic simonknittel:
 
 {
-  "ref": "nightly"
+  "ref": "nightly",
+  "inputs": {
+    "environment": "nightly.simonknittel.de"
+  }
 }
