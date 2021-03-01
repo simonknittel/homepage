@@ -41,6 +41,12 @@ jobs:
     - name: Upload to Cloud Storage
       run: gsutil -m rsync -r -d public gs://${{ github.event.inputs.environment }}
 
+    - name: Invalidate cache
+      run: |
+        gcloud compute url-maps invalidate-cdn-cache simonknittelde \
+          --host ${{ github.event.inputs.environment }}
+          --path "/*"
+
     - name: Notify Dato CMS (Success)
       if: ${{ success() }}
       run: |
