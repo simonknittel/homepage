@@ -3,7 +3,7 @@
 POST https://api.github.com/repos/simonknittel/homepage/actions/workflows/build_and_deploy.yml/dispatches
 Accept: application/vnd.github.v3+json
 Content-Type: application/json
-Authorization: Basic simonknittel:ffd49ce17fba994e9f73ad77859bb0b8bea3e449
+Authorization: Basic simonknittel:
 
 {
   "ref": "nightly"
