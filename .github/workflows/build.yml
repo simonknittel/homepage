@@ -17,6 +17,8 @@ jobs:
       with:
         node-version: 14.16.0
 
+    - run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> .npmrc
+
     - run: npm ci
 
     - run: npm run build
