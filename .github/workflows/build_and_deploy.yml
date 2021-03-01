@@ -26,7 +26,8 @@ jobs:
 
     - run: npm ci
 
-    - run: |
+    - name: Build
+      run: |
         export SENTRY_ENVIRONMENT=${{ github.event.inputs.environment }}
         npm run build
 
@@ -39,3 +40,17 @@ jobs:
 
     - name: Upload to Cloud Storage
       run: gsutil -m rsync -r -d public gs://${{ github.event.inputs.environment }}
+
+    - name: Notify Dato CMS (Success)
+      if: ${{ success() }}
+      run: |
+        curl -n -X POST https://webhooks.datocms.com/${{ secrets.DATO_CMS_NIGHTLY_WEBHOOK }}/deploy-results \
+          -H 'Content-Type: application/json' \
+          -d '{ "status": "success" }'
+
+    - name: Notify Dato CMS (Failure)
+      if: ${{ failure() }}
+      run: |
+        curl -n -X POST https://webhooks.datocms.com/${{ secrets.DATO_CMS_NIGHTLY_WEBHOOK }}/deploy-results \
+          -H 'Content-Type: application/json' \
+          -d '{ "status": "error" }'
