@@ -9,26 +9,3 @@
 
 //   actions.replaceWebpackConfig(config)
 // }
-
-exports.createPages = async function ({ actions, graphql }) {
-  const { data } = await graphql(`
-    query {
-      datoCmsGlobalConfiguration {
-        pages {
-          id
-          url
-        }
-      }
-    }
-  `)
-
-  data.datoCmsGlobalConfiguration.pages.forEach(page => {
-    const slug = page.url
-
-    actions.createPage({
-      path: slug,
-      component: require.resolve("./src/templates/Default.jsx"),
-      context: { id: page.id }
-    })
-  })
-}

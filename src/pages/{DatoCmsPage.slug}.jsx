@@ -7,9 +7,7 @@ import NotFound from "../components/NotFound"
 import ProjectGrid from "../components/ProjectGrid"
 import SocialMediaProfiles from "../components/SocialMediaProfiles"
 
-import "./Default.scss"
-
-export default function DefaultPage({ data }) {
+export default function Page({ data }) {
   const modules = data.datoCmsPage.moduleOrder.map(module => {
     switch (module.__typename) {
       case "DatoCmsHero":
@@ -61,9 +59,7 @@ export default function DefaultPage({ data }) {
 }
 
 export const query = graphql`
-  query PageById(
-    $id: String!
-  ) {
+  query ($id: String!) {
     datoCmsPage(id: { eq: $id }) {
       id
       moduleOrder {
