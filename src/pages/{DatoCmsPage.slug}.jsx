@@ -51,7 +51,7 @@ export default function Page({ data }) {
         />
 
       default:
-        return null
+        return <pre><code>{ JSON.stringify(module, null, 2) }</code></pre>
     }
   })
 
