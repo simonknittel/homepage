@@ -1,14 +1,14 @@
 import { graphql } from "gatsby"
 import * as React from "react"
-import Footer from "../components/Footer"
 import Hero from "../components/Hero"
 import HTML from "../components/HTML"
+import Layout from "../components/Layout"
 import NotFound from "../components/NotFound"
 import ProjectGrid from "../components/ProjectGrid"
 import SocialMediaProfiles from "../components/SocialMediaProfiles"
 
-export default function Page({ data }) {
-  const modules = data.datoCmsPage.moduleOrder.map(module => {
+export default function Page({ data: { datoCmsPage: page } }) {
+  const modules = page.moduleOrder.map(module => {
     switch (module.__typename) {
       case "DatoCmsHero":
         return <Hero
@@ -27,12 +27,6 @@ export default function Page({ data }) {
       case "DatoCmsProjectGrid":
         return <ProjectGrid
           projects={ module.projects }
-          key={ module.id }
-        />
-
-      case "DatoCmsFooter":
-        return <Footer
-          content={ module.content }
           key={ module.id }
         />
 
@@ -55,13 +49,16 @@ export default function Page({ data }) {
     }
   })
 
-  return modules
+  return <Layout hideHeader={ page.slug === 'index' }>
+    { modules }
+  </Layout>
 }
 
 export const query = graphql`
   query ($id: String!) {
     datoCmsPage(id: { eq: $id }) {
       id
+      slug
       moduleOrder {
         ... on DatoCmsHtml {
           id
@@ -112,10 +109,6 @@ export const query = graphql`
               title
             }
           }
-        }
-        ... on DatoCmsFooter {
-          content
-          id
         }
         ... on DatoCmsHero {
           id

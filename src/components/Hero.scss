@@ -1,6 +1,6 @@
 @import '../styles/_variables.scss';
 
-.hero {
+.Hero {
   position: relative;
   margin-bottom: 3rem;
   padding-top: 5rem;
@@ -80,7 +80,7 @@
 }
 
 @media (min-width: $bp--medium) {
-  .hero {
+  .Hero {
     padding-top: 15rem;
     padding-bottom: 20rem; // 15rem + margin-top of sk-slanted
   }

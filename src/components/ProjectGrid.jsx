@@ -6,8 +6,8 @@ import "./ProjectGrid.scss"
 export default function ProjectGrid({
   projects
 }) {
-  return <div className="project-grid">
-    <div className="project-grid__inner">
+  return <div className="ProjectGrid">
+    <div className="ProjectGrid__inner">
       { projects.map(project => (
         <SkSlantedTeaser
           heading={ project.title }
@@ -26,7 +26,7 @@ export default function ProjectGrid({
       )) }
     </div>
 
-    <div className="project-grid__more">
+    <div className="ProjectGrid__more">
       <SkLink
         href="https://github.com/simonknittel"
         target="_blank"

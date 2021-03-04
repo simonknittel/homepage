@@ -6,7 +6,7 @@ import "./SocialMediaProfiles.scss"
 export default function SocialMediaProfiles({
   links=[]
 }) {
-  return <SkSlanted className="social-media-profiles">
+  return <SkSlanted className="SocialMediaProfiles">
     <ul>
       { links.map(link => (
         <li key={ link.id }>

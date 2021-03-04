@@ -9,22 +9,22 @@ export default function Hero({
   tags = [],
   locales = [],
 }) {
-  return <div className="hero">
+  return <div className="Hero">
     <h1>
       <span>{ name }</span>
       { description ? <span>{ description }</span> : null }
     </h1>
 
     { tags.length > 0 ? (
-      <div className="hero__tags">
+      <div className="Hero__tags">
         { tags.map(tag => <SkTag key={ tag }>{ tag }</SkTag>)}
       </div>
     ) : null}
 
     { locales.length > 0 ? (
-      <ul className="hero__locales">
+      <ul className="Hero__locales">
         { locales.map(locale => (
-          <li className="hero__locale" key={ locale }>
+          <li className="Hero__locale" key={ locale }>
             <a href="#" title={ `Switch language to ${ locale }` }>{ locale }</a>
           </li>
         ))}
