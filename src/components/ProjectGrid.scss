@@ -27,7 +27,8 @@
 @media (min-width: $bp--medium) {
   .ProjectGrid {
     padding-top: 8rem;
-    padding-bottom: 7rem;
+    padding-bottom: 0;
+    margin-bottom: 7rem;
 
     &__inner {
       display: grid;

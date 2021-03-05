@@ -1,6 +1,7 @@
 @import '../styles/_variables.scss';
 
 .Footer {
+  margin-top: 6rem;
   padding-top: 4rem;
   padding-bottom: 4rem;
   background-color: $black;
@@ -9,7 +10,7 @@
 
   p {
     margin-top: 0;
-      margin-bottom: 0;
+    margin-bottom: 0;
   }
 
   a {
