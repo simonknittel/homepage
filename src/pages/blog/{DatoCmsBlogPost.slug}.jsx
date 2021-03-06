@@ -5,6 +5,7 @@ import HTML from "../../components/HTML"
 import Layout from "../../components/Layout"
 
 import "./BlogPost.scss"
+import { Helmet } from "react-helmet"
 
 /**
  * TODO: Figure out how to implement locales
@@ -17,8 +18,14 @@ import "./BlogPost.scss"
 
 export default function BlogPost({ data: { datoCmsBlogPost: post } }) {
   if (!post) return null
+  // console.log(post)
 
   return <Layout>
+    <Helmet>
+      <title>{ post.seo?.title || post.title } | Simon Knittel</title>
+      { post.seo?.description ? <meta name="description" content={ post.seo.description } /> : null }
+    </Helmet>
+
     <article className="BlogPost">
       <header>
         <h1 className="BlogPost__heading">{ post.title }</h1>

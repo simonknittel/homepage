@@ -1,5 +1,6 @@
 import { graphql } from "gatsby"
 import * as React from "react"
+import { Helmet } from "react-helmet"
 import Hero from "../components/Hero"
 import HTML from "../components/HTML"
 import Layout from "../components/Layout"
@@ -7,7 +8,19 @@ import NotFound from "../components/NotFound"
 import ProjectGrid from "../components/ProjectGrid"
 import SocialMediaProfiles from "../components/SocialMediaProfiles"
 
+/**
+ * TODO: Figure out how to implement locales
+ *
+ * Source: https://www.gatsbyjs.com/docs/reference/routing/file-system-route-api/
+ * If you need to customize the query used for collecting the nodes (e.g.
+ * filtering out any product of type "Food"), you should use the createPages API
+ * instead as File System Route API doesn’t support this at the moment."
+ */
+
 export default function Page({ data: { datoCmsPage: page } }) {
+  if (!page) return null
+  // console.log(page)
+
   const modules = page.moduleOrder.map(module => {
     switch (module.__typename) {
       case "DatoCmsHero":
@@ -50,15 +63,22 @@ export default function Page({ data: { datoCmsPage: page } }) {
   })
 
   return <Layout hideHeader={ page.slug === 'index' }>
+    <Helmet>
+      <title>{ page.title }{ page.slug === 'index' ? '' : ' | Simon Knittel'}</title>
+      { page.description ? <meta name="description" content={ page.description } /> : null }
+    </Helmet>
+
     { modules }
   </Layout>
 }
 
 export const query = graphql`
   query ($id: String!) {
-    datoCmsPage(id: { eq: $id }) {
+    datoCmsPage(id: { eq: $id }, locale: { eq: "en" }) {
       id
       slug
+      title
+      description
       moduleOrder {
         ... on DatoCmsHtml {
           id
