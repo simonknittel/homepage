@@ -50,6 +50,8 @@ export default function BlogPost({ data: { site, datoCmsBlogPost: post } }) {
           }
         `}
       </script>
+
+      {/* TODO: Add preload/preconnect */}
     </Helmet>
 
     <Breadcrumb items={[
@@ -66,6 +68,10 @@ export default function BlogPost({ data: { site, datoCmsBlogPost: post } }) {
     <article className="BlogPost">
       <header>
         <h1 className="BlogPost__heading">{ post.title }</h1>
+
+        <div className="BlogPost__article-image">
+          <img className="BlogPost__article-image__img" src={ post.articleImage.url } alt={ post.articleImage.alt } />
+        </div>
       </header>
 
       <StructuredText
@@ -115,7 +121,7 @@ export const query = graphql`
       articleImage {
         alt
         title
-        url
+        url(imgixParams: {ar: "21:9", w: "1440", fit: "crop", crop: "focalpoint"})
         width
         mimeType
         height

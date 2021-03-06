@@ -70,6 +70,8 @@ export default function Page({ data: { site, datoCmsPage: page } }) {
     >
       <title>{ page.slug === 'index' ? page.title : `${ page.title } | ${ site.siteMetadata.title }`}</title>
       { page.description ? <meta name="description" content={ page.description } /> : null }
+
+      {/* TODO: Add preload/preconnect */}
     </Helmet>
 
     { modules }
