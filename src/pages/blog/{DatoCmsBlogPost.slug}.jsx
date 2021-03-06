@@ -6,6 +6,7 @@ import Layout from "../../components/Layout"
 
 import "./BlogPost.scss"
 import { Helmet } from "react-helmet"
+import Breadcrumb from "../../components/Breadcrumb"
 
 /**
  * TODO: Figure out how to implement locales
@@ -16,9 +17,11 @@ import { Helmet } from "react-helmet"
  * instead as File System Route API doesn’t support this at the moment."
  */
 
-export default function BlogPost({ data: { datoCmsBlogPost: post } }) {
+export default function BlogPost({ data: { site, datoCmsBlogPost: post } }) {
   if (!post) return null
   // console.log(post)
+
+  const pageTitle =  post.seo?.title || post.title
 
   return <Layout>
     <Helmet
@@ -26,7 +29,7 @@ export default function BlogPost({ data: { datoCmsBlogPost: post } }) {
         lang: 'en',
       }}
     >
-      <title>{ post.seo?.title || post.title } | Simon Knittel</title>
+      <title>{ pageTitle } | Simon Knittel</title>
       { post.seo?.description ? <meta name="description" content={ post.seo.description } /> : null }
 
       <script type="application/ld+json">
@@ -34,19 +37,30 @@ export default function BlogPost({ data: { datoCmsBlogPost: post } }) {
           {
             "@context": "https://schema.org",
             "@type": "BlogPosting",
-            "headline": "${ post.title }",
+            "headline": "${ pageTitle }",
             "datePublished": "${ post.meta.firstPublishedAt }",
             "dateModified": "${ post.meta.updatedAt }",
             "author": {
               "@type": "Person",
               "givenName": "Simon",
               "familyName": "Knittel",
-              "url": "https://simonknittel.de"
+              "url": "${ site.siteMetadata.siteUrl }"
             }
           }
         `}
       </script>
     </Helmet>
+
+    <Breadcrumb items={[
+      {
+        "name": "Blog",
+        "href": "blog"
+      },
+      {
+        "name": pageTitle,
+        "href": `blog/${ post.slug }`
+      }
+    ]} />
 
     <article className="BlogPost">
       <header>
@@ -78,6 +92,12 @@ export default function BlogPost({ data: { datoCmsBlogPost: post } }) {
 
 export const query = graphql`
   query ($id: String!) {
+    site {
+      siteMetadata {
+        siteUrl
+      }
+    }
+
     datoCmsBlogPost(id: { eq: $id }, locale: { eq: "en" } ) {
       id
       slug

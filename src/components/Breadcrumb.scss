@@ -1,0 +1,52 @@
+@import '../styles/_variables.scss';
+
+.Breadcrumb {
+  max-width: 768px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1rem;
+
+  &__heading {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  &__list {
+    list-style: none;
+    display: flex;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: .25rem;
+    padding-right: 0.25rem;
+  }
+
+  &__item {
+    &::before {
+      content: '>'
+    }
+
+    &:first-of-type {
+      &::before {
+        display: none;
+      }
+    }
+  }
+
+  &__link {
+    display: inline-block;
+    margin-left: .25rem;
+    margin-right: .25rem;
+    padding-left: .5rem;
+    padding-right: .5rem;
+    padding-top: .25rem;
+    padding-bottom: .25rem;
+    text-decoration: none;
+
+    border-radius: $border-radius;
+    color: $black;
+
+    &:hover {
+      background-color: hsl(48, 100%, 70%);
+    }
+  }
+}

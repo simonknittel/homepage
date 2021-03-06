@@ -9,6 +9,11 @@ const plugins = [
   "gatsby-plugin-react-helmet",
 ]
 
+const siteMetadata = {
+  title: "Simon Knittel",
+  siteUrl: "http://localhost:8000",
+}
+
 if (process.env.NODE_ENV === "production") {
   plugins.push(...[
     // "gatsby-plugin-sitemap",
@@ -28,12 +33,11 @@ if (process.env.NODE_ENV === "production") {
       }
     },
   ])
+
+  siteMetadata.siteUrl = "https://nightly.simonknittel.de"
 }
 
 module.exports = {
-  siteMetadata: {
-    title: "Simon Knittel",
-    siteUrl: "https://nightly.simonknittel.de",
-  },
+  siteMetadata,
   plugins,
 }
