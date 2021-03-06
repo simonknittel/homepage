@@ -69,9 +69,11 @@ export default function BlogPost({ data: { site, datoCmsBlogPost: post } }) {
       <header>
         <h1 className="BlogPost__heading">{ post.title }</h1>
 
-        <div className="BlogPost__article-image">
-          <img className="BlogPost__article-image__img" src={ post.articleImage.url } alt={ post.articleImage.alt } />
-        </div>
+        { post.articleImage ?
+          <div className="BlogPost__article-image">
+            <img className="BlogPost__article-image__img" src={ post.articleImage.url } alt={ post.articleImage.alt } />
+          </div>
+        : null }
       </header>
 
       <StructuredText
