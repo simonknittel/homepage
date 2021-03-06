@@ -29,7 +29,7 @@ export default function BlogPost({ data: { site, datoCmsBlogPost: post } }) {
         lang: 'en',
       }}
     >
-      <title>{ pageTitle } | Simon Knittel</title>
+      <title>{ pageTitle } | { site.siteMetadata.title }</title>
       { post.seo?.description ? <meta name="description" content={ post.seo.description } /> : null }
 
       <script type="application/ld+json">
@@ -94,6 +94,7 @@ export const query = graphql`
   query ($id: String!) {
     site {
       siteMetadata {
+        title
         siteUrl
       }
     }

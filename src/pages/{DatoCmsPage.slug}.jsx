@@ -17,7 +17,7 @@ import SocialMediaProfiles from "../components/SocialMediaProfiles"
  * instead as File System Route API doesn’t support this at the moment."
  */
 
-export default function Page({ data: { datoCmsPage: page } }) {
+export default function Page({ data: { site, datoCmsPage: page } }) {
   if (!page) return null
   // console.log(page)
 
@@ -68,7 +68,7 @@ export default function Page({ data: { datoCmsPage: page } }) {
         lang: 'en',
       }}
     >
-      <title>{ page.slug === 'index' ? page.title : `${ page.title } | Simon Knittel`}</title>
+      <title>{ page.slug === 'index' ? page.title : `${ page.title } | ${ site.siteMetadata.title }`}</title>
       { page.description ? <meta name="description" content={ page.description } /> : null }
     </Helmet>
 
@@ -78,6 +78,12 @@ export default function Page({ data: { datoCmsPage: page } }) {
 
 export const query = graphql`
   query ($id: String!) {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+
     datoCmsPage(id: { eq: $id }, locale: { eq: "en" }) {
       id
       slug
