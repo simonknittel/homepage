@@ -25,7 +25,7 @@ export default function Hero({
       <ul className="Hero__locales">
         { locales.map(locale => (
           <li className="Hero__locale" key={ locale }>
-            <a href="#" title={ `Switch language to ${ locale }` }>{ locale }</a>
+            <a href={ `/${ locale }` } title={ `Switch language to ${ locale }` }>{ locale }</a>
           </li>
         ))}
       </ul>

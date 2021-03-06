@@ -6,6 +6,15 @@ import Layout from "../../components/Layout"
 
 import "./BlogPost.scss"
 
+/**
+ * TODO: Figure out how to implement locales
+ *
+ * Source: https://www.gatsbyjs.com/docs/reference/routing/file-system-route-api/
+ * If you need to customize the query used for collecting the nodes (e.g.
+ * filtering out any product of type "Food"), you should use the createPages API
+ * instead as File System Route API doesn’t support this at the moment."
+ */
+
 export default function BlogPost({ data: { datoCmsBlogPost: post } }) {
   return <Layout>
     <article className="BlogPost">

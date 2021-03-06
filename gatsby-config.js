@@ -11,7 +11,7 @@ const plugins = [
 
 if (process.env.NODE_ENV === "production") {
   plugins.push(...[
-    "gatsby-plugin-sitemap",
+    // "gatsby-plugin-sitemap",
     {
       resolve: "@sentry/gatsby",
       options: {
