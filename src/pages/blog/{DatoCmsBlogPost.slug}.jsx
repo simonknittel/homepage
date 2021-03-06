@@ -112,6 +112,18 @@ export const query = graphql`
         title
         description
       }
+      articleImage {
+        alt
+        title
+        url
+        width
+        mimeType
+        height
+        focalPoint {
+          x
+          y
+        }
+      }
       content {
         value
         blocks {
