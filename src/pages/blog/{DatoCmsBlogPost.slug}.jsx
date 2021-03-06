@@ -21,7 +21,11 @@ export default function BlogPost({ data: { datoCmsBlogPost: post } }) {
   // console.log(post)
 
   return <Layout>
-    <Helmet>
+    <Helmet
+      htmlAttributes={{
+        lang: 'en',
+      }}
+    >
       <title>{ post.seo?.title || post.title } | Simon Knittel</title>
       { post.seo?.description ? <meta name="description" content={ post.seo.description } /> : null }
     </Helmet>

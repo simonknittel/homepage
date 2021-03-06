@@ -63,8 +63,12 @@ export default function Page({ data: { datoCmsPage: page } }) {
   })
 
   return <Layout hideHeader={ page.slug === 'index' }>
-    <Helmet>
-      <title>{ page.title }{ page.slug === 'index' ? '' : ' | Simon Knittel'}</title>
+    <Helmet
+      htmlAttributes={{
+        lang: 'en',
+      }}
+    >
+      <title>{ page.slug === 'index' ? page.title : `${ page.title } | Simon Knittel`}</title>
       { page.description ? <meta name="description" content={ page.description } /> : null }
     </Helmet>
 
