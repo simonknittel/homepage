@@ -1,12 +1,12 @@
 import { graphql } from "gatsby"
+import { Helmet } from "react-helmet"
 import { StructuredText } from "react-datocms"
 import * as React from "react"
+import Breadcrumb from "../../components/Breadcrumb"
 import HTML from "../../components/HTML"
 import Layout from "../../components/Layout"
 
 import "./BlogPost.scss"
-import { Helmet } from "react-helmet"
-import Breadcrumb from "../../components/Breadcrumb"
 
 /**
  * TODO: Figure out how to implement locales

@@ -57,7 +57,7 @@ export default function Breadcrumb({ items }) {
           </Link>
         </li>
 
-        { items.map(item => <li className="Breadcrumb__item">
+        { items.map((item, index) => <li className="Breadcrumb__item" key={ "breadcrumb_" + index }>
           <Link className="Breadcrumb__link" to={ "/" + item.href }>
             { item.name }
           </Link>
