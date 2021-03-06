@@ -17,6 +17,7 @@ const siteMetadata = {
 if (process.env.NODE_ENV === "production") {
   plugins.push(...[
     // "gatsby-plugin-sitemap",
+
     {
       resolve: "@sentry/gatsby",
       options: {
@@ -24,6 +25,7 @@ if (process.env.NODE_ENV === "production") {
         release: process.env.SENTRY_ENVIRONMENT || "development",
       }
     },
+
     {
       resolve: 'gatsby-plugin-robots-txt',
       options: {
@@ -31,6 +33,63 @@ if (process.env.NODE_ENV === "production") {
         sitemap: null,
         host: null
       }
+    },
+
+    {
+      resolve: `gatsby-plugin-feed`,
+      options: {
+        query: `
+          {
+            site {
+              siteMetadata {
+                title
+                description
+                siteUrl
+              }
+            }
+          }
+        `,
+        feeds: [
+          {
+            serialize: ({ query: { site, allDatoCmsBlogPost } }) => {
+              return allDatoCmsBlogPost.edges.map(edge => {
+                return Object.assign({}, {
+                  // description: edge.node.excerpt, // TODO: Generate excerpt automatically
+                  title: edge.node.seo?.title || edge.node.title,
+                  date: edge.node.meta.firstPublishedAt,
+                  url: `${ site.siteMetadata.siteUrl }/blog/${ edge.node.slug }`,
+                  guid: `${ site.siteMetadata.siteUrl }/blog/${ edge.node.slug }`,
+                  // custom_elements: [{ "content:encoded": edge.node.html }],
+                })
+              })
+            },
+            query: `
+              {
+                allDatoCmsBlogPost(
+                  sort: { order: DESC, fields: [meta___firstPublishedAt] },
+                ) {
+                  edges {
+                    node {
+                      id
+                      title
+                      slug
+                      meta {
+                        firstPublishedAt
+                      }
+                      seo {
+                        title
+                        description
+                      }
+                    }
+                  }
+                }
+              }
+            `,
+            output: "/rss.xml",
+            title: "Simon Knittel - Web Development",
+          },
+        ],
+      },
     },
   ])
 

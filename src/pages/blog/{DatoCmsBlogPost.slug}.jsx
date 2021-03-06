@@ -30,7 +30,7 @@ export default function BlogPost({ data: { site, datoCmsBlogPost: post } }) {
       }}
     >
       <title>{ pageTitle } | { site.siteMetadata.title }</title>
-      { post.seo?.description ? <meta name="description" content={ post.seo.description } /> : null }
+      { post.seo?.description ? <meta name="description" content={ post.seo.description } /> : null } {/* TODO: Generate excerpt automatically */}
 
       <script type="application/ld+json">
         {`
@@ -40,6 +40,7 @@ export default function BlogPost({ data: { site, datoCmsBlogPost: post } }) {
             "headline": "${ pageTitle }",
             "datePublished": "${ post.meta.firstPublishedAt }",
             "dateModified": "${ post.meta.updatedAt }",
+            "articleBody": "${ post.seo?.description /* TODO: Generate excerpt automatically */ }",
             "author": {
               "@type": "Person",
               "givenName": "Simon",
@@ -110,7 +111,6 @@ export const query = graphql`
       seo {
         title
         description
-        twitterCard
       }
       content {
         value
