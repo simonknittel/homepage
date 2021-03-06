@@ -16,6 +16,8 @@ import "./BlogPost.scss"
  */
 
 export default function BlogPost({ data: { datoCmsBlogPost: post } }) {
+  if (!post) return null
+
   return <Layout>
     <article className="BlogPost">
       <header>
@@ -47,7 +49,7 @@ export default function BlogPost({ data: { datoCmsBlogPost: post } }) {
 
 export const query = graphql`
   query ($id: String!) {
-    datoCmsBlogPost(id: { eq: $id }) {
+    datoCmsBlogPost(id: { eq: $id }, locale: { eq: "en" } ) {
       id
       slug
       title
