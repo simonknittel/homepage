@@ -35,62 +35,62 @@ if (process.env.NODE_ENV === "production") {
       }
     },
 
-    {
-      resolve: `gatsby-plugin-feed`,
-      options: {
-        query: `
-          {
-            site {
-              siteMetadata {
-                title
-                description
-                siteUrl
-              }
-            }
-          }
-        `,
-        feeds: [
-          {
-            serialize: ({ query: { site, allDatoCmsBlogPost } }) => {
-              return allDatoCmsBlogPost.edges.map(edge => {
-                return Object.assign({}, {
-                  // description: edge.node.excerpt, // TODO: Generate excerpt automatically
-                  title: edge.node.seo?.title || edge.node.title,
-                  date: edge.node.meta.firstPublishedAt,
-                  url: `${ site.siteMetadata.siteUrl }/blog/${ edge.node.slug }`,
-                  guid: `${ site.siteMetadata.siteUrl }/blog/${ edge.node.slug }`,
-                  // custom_elements: [{ "content:encoded": edge.node.html }],
-                })
-              })
-            },
-            query: `
-              {
-                allDatoCmsBlogPost(
-                  sort: { order: DESC, fields: [meta___firstPublishedAt] },
-                ) {
-                  edges {
-                    node {
-                      id
-                      title
-                      slug
-                      meta {
-                        firstPublishedAt
-                      }
-                      seo {
-                        title
-                        description
-                      }
-                    }
-                  }
-                }
-              }
-            `,
-            output: "/rss.xml",
-            title: "Simon Knittel - Web Development",
-          },
-        ],
-      },
-    },
+    // {
+    //   resolve: `gatsby-plugin-feed`,
+    //   options: {
+    //     query: `
+    //       {
+    //         site {
+    //           siteMetadata {
+    //             title
+    //             description
+    //             siteUrl
+    //           }
+    //         }
+    //       }
+    //     `,
+    //     feeds: [
+    //       {
+    //         serialize: ({ query: { site, allDatoCmsBlogPost } }) => {
+    //           return allDatoCmsBlogPost.edges.map(edge => {
+    //             return Object.assign({}, {
+    //               // description: edge.node.excerpt, // TODO: Generate excerpt automatically
+    //               title: edge.node.seo?.title || edge.node.title,
+    //               date: edge.node.meta.firstPublishedAt,
+    //               url: `${ site.siteMetadata.siteUrl }/blog/${ edge.node.slug }`,
+    //               guid: `${ site.siteMetadata.siteUrl }/blog/${ edge.node.slug }`,
+    //               // custom_elements: [{ "content:encoded": edge.node.html }],
+    //             })
+    //           })
+    //         },
+    //         query: `
+    //           {
+    //             allDatoCmsBlogPost(
+    //               sort: { order: DESC, fields: [meta___firstPublishedAt] },
+    //             ) {
+    //               edges {
+    //                 node {
+    //                   id
+    //                   title
+    //                   slug
+    //                   meta {
+    //                     firstPublishedAt
+    //                   }
+    //                   seo {
+    //                     title
+    //                     description
+    //                   }
+    //                 }
+    //               }
+    //             }
+    //           }
+    //         `,
+    //         output: "/rss.xml",
+    //         title: "Simon Knittel - Web Development",
+    //       },
+    //     ],
+    //   },
+    // },
   ])
 
   siteMetadata.siteUrl = "https://nightly.simonknittel.de"

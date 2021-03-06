@@ -90,6 +90,7 @@ export const query = graphql`
       title
       description
       moduleOrder {
+        __typename
         ... on DatoCmsHtml {
           id
           html
