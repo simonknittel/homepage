@@ -19,6 +19,14 @@ if (process.env.NODE_ENV === "production") {
         release: process.env.SENTRY_ENVIRONMENT || "development",
       }
     },
+    {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        policy: [{ userAgent: '*', disallow: ['/'] }],
+        sitemap: null,
+        host: null
+      }
+    },
   ])
 }
 
