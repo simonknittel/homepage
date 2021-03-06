@@ -28,6 +28,24 @@ export default function BlogPost({ data: { datoCmsBlogPost: post } }) {
     >
       <title>{ post.seo?.title || post.title } | Simon Knittel</title>
       { post.seo?.description ? <meta name="description" content={ post.seo.description } /> : null }
+
+      <script type="application/ld+json">
+        {`
+          {
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": "${ post.title }",
+            "datePublished": "${ post.meta.firstPublishedAt }",
+            "dateModified": "${ post.meta.updatedAt }",
+            "author": {
+              "@type": "Person",
+              "givenName": "Simon",
+              "familyName": "Knittel",
+              "url": "https://simonknittel.de"
+            }
+          }
+        `}
+      </script>
     </Helmet>
 
     <article className="BlogPost">
@@ -64,6 +82,10 @@ export const query = graphql`
       id
       slug
       title
+      meta {
+        updatedAt
+        firstPublishedAt
+      }
       seo {
         title
         description
