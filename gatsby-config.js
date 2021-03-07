@@ -54,12 +54,11 @@ if (process.env.NODE_ENV === "production") {
     //         serialize: ({ query: { site, allDatoCmsBlogPost } }) => {
     //           return allDatoCmsBlogPost.edges.map(edge => {
     //             return Object.assign({}, {
-    //               // description: edge.node.excerpt, // TODO: Generate excerpt automatically
-    //               title: edge.node.seo?.title || edge.node.title,
+    //               title: edge.node.title,
+    //               description: edge.node.excerpt,
     //               date: edge.node.meta.firstPublishedAt,
     //               url: `${ site.siteMetadata.siteUrl }/blog/${ edge.node.slug }`,
     //               guid: `${ site.siteMetadata.siteUrl }/blog/${ edge.node.slug }`,
-    //               // custom_elements: [{ "content:encoded": edge.node.html }],
     //             })
     //           })
     //         },
@@ -73,12 +72,9 @@ if (process.env.NODE_ENV === "production") {
     //                   id
     //                   title
     //                   slug
+    //                   excerpt
     //                   meta {
     //                     firstPublishedAt
-    //                   }
-    //                   seo {
-    //                     title
-    //                     description
     //                   }
     //                 }
     //               }

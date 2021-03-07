@@ -19,7 +19,6 @@ import SocialMediaProfiles from "../components/SocialMediaProfiles"
 
 export default function Page({ data: { site, datoCmsPage: page } }) {
   if (!page) return null
-  // console.log(page)
 
   const modules = page.moduleOrder.map(module => {
     switch (module.__typename) {

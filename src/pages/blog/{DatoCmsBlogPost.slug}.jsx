@@ -20,9 +20,6 @@ import BlogPostImage from "../../components/BlogPostImage"
 
 export default function BlogPost({ data: { site, datoCmsBlogPost: post } }) {
   if (!post) return null
-  // console.log(post)
-
-  const pageTitle =  post.seo?.title || post.title
 
   return <Layout>
     <Helmet
@@ -30,18 +27,18 @@ export default function BlogPost({ data: { site, datoCmsBlogPost: post } }) {
         lang: 'en',
       }}
     >
-      <title>{ pageTitle } | { site.siteMetadata.title }</title>
-      { post.seo?.description ? <meta name="description" content={ post.seo.description } /> : null } {/* TODO: Generate excerpt automatically */}
+      <title>{ post.title } | { site.siteMetadata.title }</title>
+      <meta name="description" content={ post.excerpt } />
 
       <script type="application/ld+json">
         {`
           {
             "@context": "https://schema.org",
             "@type": "BlogPosting",
-            "headline": "${ pageTitle }",
+            "headline": "${ post.title }",
             "datePublished": "${ post.meta.firstPublishedAt }",
             "dateModified": "${ post.meta.updatedAt }",
-            "articleBody": "${ post.seo?.description /* TODO: Generate excerpt automatically */ }",
+            "articleBody": "${ post.excerpt }",
             "author": {
               "@type": "Person",
               "givenName": "Simon",
@@ -61,7 +58,7 @@ export default function BlogPost({ data: { site, datoCmsBlogPost: post } }) {
         "href": "blog"
       },
       {
-        "name": pageTitle,
+        "name": post.title,
         "href": `blog/${ post.slug }`
       }
     ]} />
@@ -115,15 +112,12 @@ export const query = graphql`
 
     datoCmsBlogPost(id: { eq: $id }, locale: { eq: "en" } ) {
       id
-      slug
       title
+      slug
+      excerpt
       meta {
         updatedAt
         firstPublishedAt
-      }
-      seo {
-        title
-        description
       }
       articleImage {
         alt
