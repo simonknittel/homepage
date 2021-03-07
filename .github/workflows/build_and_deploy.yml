@@ -39,17 +39,17 @@ jobs:
         export_default_credentials: true
 
     - name: Upload to Cloud Storage
-      run: gsutil -m rsync -r -d public gs://${{ github.event.inputs.environment }}
+      run: gsutil -m -q rsync -r -d public gs://${{ github.event.inputs.environment }}
 
       # Source: https://www.gatsbyjs.com/docs/caching/
     - name: Set Cache-Control headers
       run: |
-        gsutil -m setmeta -h "Cache-Control: public, max-age=31536000, immutable" \
+        gsutil -m -q setmeta -h "Cache-Control: public, max-age=31536000, immutable" \
           gs://nightly.simonknittel.de/static/** \
           gs://nightly.simonknittel.de/**.css \
           gs://nightly.simonknittel.de/**.js || :
 
-        gsutil -m setmeta -h "Cache-Control: public, max-age=0, must-revalidate" \
+        gsutil -m -q setmeta -h "Cache-Control: public, max-age=0, must-revalidate" \
           gs://nightly.simonknittel.de/**.html \
           gs://nightly.simonknittel.de/page-data/** \
           gs://nightly.simonknittel.de/robots.txt \
