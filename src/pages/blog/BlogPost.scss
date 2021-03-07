@@ -9,13 +9,21 @@
 
   &__heading {
     margin-top: 2rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0;
     font-size: 2rem;
 
     @media (min-width: $bp--small) {
       margin-top: 4rem;
-      margin-bottom: 2rem;
       font-size: 3rem;
+    }
+  }
+
+  &__date {
+    display: block;
+    margin-bottom: 1rem;
+
+    @media (min-width: $bp--small) {
+      margin-bottom: 2rem;
     }
   }
 

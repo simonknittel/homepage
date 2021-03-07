@@ -21,6 +21,27 @@ import BlogPostImage from "../../components/BlogPostImage"
 export default function BlogPost({ data: { site, datoCmsBlogPost: post } }) {
   if (!post) return null
 
+  const publishedAtDate = new Date(post.meta.firstPublishedAt)
+  const diff = (Date.now() - publishedAtDate.getTime()) / 1000
+
+  const rawDate = publishedAtDate.toLocaleString('en', { year: 'numeric', month: 'long', day: 'numeric', hour12: false, hour: '2-digit', minute: '2-digit', timeZoneName: 'short' })
+  let simpleDate = ''
+  if (diff < 60) {
+    const count = Math.floor(diff)
+    simpleDate = `${ count } seconds${ count > 1 ? 's' : '' } ago`
+  } else if (diff >= 60 && diff < 3_600) {
+    const count = Math.floor(diff / 60)
+    simpleDate = `${ count } minute${ count > 1 ? 's' : '' } ago`
+  } else if (diff >= 3_600 && diff < 86_400) {
+    const count = Math.floor(diff / 60 / 60)
+    simpleDate = `${ count } hour${ count > 1 ? 's' : '' } ago`
+  } else if (diff >= 86_400 && diff < 604_800) {
+    const count = Math.floor(diff / 60 / 60 / 24)
+    simpleDate = `${ count } day${ count > 1 ? 's' : '' } ago`
+  } else {
+    simpleDate = rawDate
+  }
+
   return <Layout>
     <Helmet
       htmlAttributes={{
@@ -66,6 +87,8 @@ export default function BlogPost({ data: { site, datoCmsBlogPost: post } }) {
     <article className="BlogPost">
       <header>
         <h1 className="BlogPost__heading">{ post.title }</h1>
+
+        <time className="BlogPost__date" dateTime={ post.meta.firstPublishedAt } title={ rawDate }>Published { simpleDate }</time>
 
         { post.articleImage ?
           <div className="BlogPost__article-image">
