@@ -7,6 +7,7 @@ import HTML from "../../components/HTML"
 import Layout from "../../components/Layout"
 
 import "./BlogPost.scss"
+import BlogPostImage from "../../components/BlogPostImage"
 
 /**
  * TODO: Figure out how to implement locales
@@ -86,11 +87,15 @@ export default function BlogPost({ data: { site, datoCmsBlogPost: post } }) {
               module = <HTML html={ record.html } />
               break;
 
+            case "DatoCmsBlogPostImage":
+              module = <BlogPostImage record={ record } />
+              break;
+
             default:
               module = <pre><code>{ JSON.stringify(record, null, 2) }</code></pre>
           }
 
-          return <div className="BlogPost__wide">
+          return <div>
             { module }
           </div>
         }}
@@ -139,6 +144,22 @@ export const query = graphql`
           ... on DatoCmsHtml {
             id: originalId
             html
+          }
+          ... on DatoCmsBlogPostImage {
+            id: originalId
+            image {
+              alt
+              title
+              url(imgixParams: {w: "736", fit: "crop", crop: "focalpoint"})
+              width
+              mimeType
+              height
+              focalPoint {
+                x
+                y
+              }
+            }
+            aspectRatio
           }
         }
       }

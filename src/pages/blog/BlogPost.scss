@@ -69,7 +69,7 @@
     left: 50%;
     transform: translateX(-50%);
     width: 800px;
-    max-width: 100vw;
+    max-width: calc(100vw - 2rem);
 
     @media (min-width: $bp--small) {
       max-width: calc(100vw - 2rem);

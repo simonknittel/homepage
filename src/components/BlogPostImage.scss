@@ -1,0 +1,48 @@
+@import '../styles/_variables.scss';
+
+.BlogPost {
+  &__img {
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+
+    @media (min-width: $bp--small) {
+      margin-top: 4rem;
+      margin-bottom: 3rem;
+    }
+
+    img {
+      width: 100%;
+      background-color: $yellow2;
+    }
+
+    figcaption {
+      text-align: center;
+    }
+
+    &--original {
+      img {
+        height: auto;
+      }
+    }
+
+    &--21to9 {
+      img {
+        aspect-ratio: 21 / 9;
+      }
+    }
+
+    &--16to9 {
+      img {
+        aspect-ratio: 16 / 9;
+      }
+    }
+
+    &--4to3 {
+      img {
+        aspect-ratio: 4 / 3;
+      }
+    }
+  }
+}
