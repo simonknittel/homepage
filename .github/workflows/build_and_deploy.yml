@@ -47,14 +47,14 @@ jobs:
         gsutil -m setmeta -h "Cache-Control: public, max-age=31536000, immutable" \
           gs://nightly.simonknittel.de/static/** \
           gs://nightly.simonknittel.de/**.css \
-          gs://nightly.simonknittel.de/**.js
+          gs://nightly.simonknittel.de/**.js || :
 
         gsutil -m setmeta -h "Cache-Control: public, max-age=0, must-revalidate" \
           gs://nightly.simonknittel.de/**.html \
           gs://nightly.simonknittel.de/page-data/** \
           gs://nightly.simonknittel.de/robots.txt \
           gs://nightly.simonknittel.de/sitemap.xml \
-          gs://nightly.simonknittel.de/rss.xml
+          gs://nightly.simonknittel.de/rss.xml || :
 
     - name: Invalidate cache
       run: |
