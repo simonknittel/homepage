@@ -143,16 +143,12 @@ export const query = graphql`
         firstPublishedAt
       }
       articleImage {
-        alt
         title
-        url(imgixParams: {ar: "21:9", w: "1440", fit: "crop", crop: "focalpoint"})
+        alt
         width
-        mimeType
         height
-        focalPoint {
-          x
-          y
-        }
+
+        url(imgixParams: { ar: "21:9", w: "1440", fit: "crop", crop: "focalpoint" })
       }
       content {
         value
@@ -164,19 +160,15 @@ export const query = graphql`
           }
           ... on DatoCmsBlogPostImage {
             id: originalId
-            image {
-              alt
-              title
-              url(imgixParams: {w: "736", fit: "crop", crop: "focalpoint"})
-              width
-              mimeType
-              height
-              focalPoint {
-                x
-                y
-              }
-            }
             aspectRatio
+            image {
+              title
+              alt
+              width
+              height
+
+              url(imgixParams: { fit: "crop", crop: "focalpoint" })
+            }
           }
         }
       }
