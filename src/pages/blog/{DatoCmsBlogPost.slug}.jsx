@@ -8,6 +8,7 @@ import Layout from "../../components/Layout"
 
 import "./BlogPost.scss"
 import BlogPostImage from "../../components/BlogPostImage"
+import BlogPostArticleImage from "../../components/BlogPostArticleImage"
 
 /**
  * TODO: Figure out how to implement locales
@@ -91,9 +92,7 @@ export default function BlogPost({ data: { site, datoCmsBlogPost: post } }) {
         <time className="BlogPost__date" dateTime={ post.meta.firstPublishedAt } title={ rawDate }>Published { simpleDate }</time>
 
         { post.articleImage ?
-          <div className="BlogPost__article-image">
-            <img className="BlogPost__article-image__img" src={ post.articleImage.url } alt={ post.articleImage.alt } />
-          </div>
+          <BlogPostArticleImage image={ post.articleImage } aspectRatio={ post.articleImageAspectRatio } />
         : null }
       </header>
 
@@ -108,7 +107,7 @@ export default function BlogPost({ data: { site, datoCmsBlogPost: post } }) {
               break;
 
             case "DatoCmsBlogPostImage":
-              module = <BlogPostImage record={ record } />
+              module = <BlogPostImage image={ record.image } aspectRatio={ record.aspectRatio } />
               break;
 
             default:
@@ -143,13 +142,13 @@ export const query = graphql`
         firstPublishedAt
       }
       articleImage {
-        title
         alt
         width
         height
 
-        url(imgixParams: { ar: "21:9", w: "1440", fit: "crop", crop: "focalpoint" })
+        url(imgixParams: { fit: "crop", crop: "focalpoint" })
       }
+      articleImageAspectRatio
       content {
         value
         blocks {
