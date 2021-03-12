@@ -56,12 +56,11 @@ jobs:
           gs://nightly.simonknittel.de/sitemap.xml \
           gs://nightly.simonknittel.de/rss.xml || :
 
-    # Not needed since everything handled by the Cache-Control headers
-    # - name: Invalidate cache
-    #   run: |
-    #     gcloud compute url-maps invalidate-cdn-cache simonknittelde \
-    #       --host ${{ github.event.inputs.environment }} \
-    #       --path "/*"
+    - name: Invalidate cache
+      run: |
+        gcloud compute url-maps invalidate-cdn-cache simonknittelde \
+          --host ${{ github.event.inputs.environment }} \
+          --path "/*"
 
     - name: Notify Dato CMS (Success)
       if: ${{ success() }}
