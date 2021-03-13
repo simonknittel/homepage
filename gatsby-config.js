@@ -1,12 +1,13 @@
 const plugins = [
+  "gatsby-plugin-sass",
+  "gatsby-plugin-react-helmet",
+
   {
     resolve: "gatsby-source-datocms",
     options: {
       apiToken: "83956640cf317cab838d08c35d9767",
     },
   },
-  "gatsby-plugin-sass",
-  "gatsby-plugin-react-helmet",
 ]
 
 const siteMetadata = {
@@ -33,6 +34,19 @@ if (process.env.NODE_ENV === "production") {
         sitemap: null,
         host: null
       }
+    },
+
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `Simon Knittel | Web Developer`,
+        short_name: `Simon Knittel`,
+        start_url: `/`,
+        background_color: `#222`,
+        theme_color: `#ffcc00`,
+        display: `standalone`,
+        icon: 'src/images/icon.svg',
+      },
     },
 
     // {
