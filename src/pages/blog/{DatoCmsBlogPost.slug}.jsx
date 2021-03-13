@@ -9,6 +9,7 @@ import Layout from "../../components/Layout"
 import "./BlogPost.scss"
 import BlogPostImage from "../../components/BlogPostImage"
 import BlogPostArticleImage from "../../components/BlogPostArticleImage"
+import Form from "../../components/Form"
 
 /**
  * TODO: Figure out how to implement locales
@@ -119,6 +120,8 @@ export default function BlogPost({ data: { site, datoCmsBlogPost: post } }) {
           </div>
         }}
       />
+
+      {/* <Form /> */}
     </article>
   </Layout>
 }
