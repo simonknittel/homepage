@@ -1,0 +1,26 @@
+POST https://api.airtable.com/v0/appTy7Hm7Q5EogPtd/Form%201
+Authorization: Bearer
+Content-Type: application/json
+
+{
+  "records": [
+    {
+      "fields": {
+        "Email address": "test@example.com",
+        "Subject": "Foo",
+        "Body": "Bar"
+      }
+    }
+  ]
+}
+
+###
+
+POST https://nightly.simonknittel.de/api/form-submit
+Content-Type: application/x-www-form-urlencoded
+
+baseId=appTy7Hm7Q5EogPtd
+&tableName=Form 1
+&fields[Email%20address]=test@example.com
+&fields[Subject]=Foo
+&fields[Body]=Bar
