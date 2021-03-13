@@ -54,6 +54,7 @@ jobs:
           gs://nightly.simonknittel.de/page-data/** \
           gs://nightly.simonknittel.de/robots.txt \
           gs://nightly.simonknittel.de/sitemap.xml \
+          gs://nightly.simonknittel.de/manifest.webmanifest \
           gs://nightly.simonknittel.de/rss.xml || :
 
     # Source: https://cloud.google.com/cdn/docs/invalidating-cached-content

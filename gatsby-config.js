@@ -8,6 +8,23 @@ const plugins = [
       apiToken: "83956640cf317cab838d08c35d9767",
     },
   },
+
+  {
+    resolve: `gatsby-plugin-manifest`,
+    options: {
+      name: `Simon Knittel | Web Developer`,
+      short_name: `Simon Knittel`,
+      start_url: `/`,
+      background_color: `#fff5cc`,
+      theme_color: `#222`,
+      display: `minimal-ui`,
+      icon: 'src/images/icon.svg',
+      icon_options: {
+        purpose: `any maskable`,
+      },
+      crossOrigin: `use-credentials`, // Enabled so the Cloud-CDN-Cookie cookie can be used
+    },
+  },
 ]
 
 const siteMetadata = {
@@ -34,20 +51,6 @@ if (process.env.NODE_ENV === "production") {
         sitemap: null,
         host: null
       }
-    },
-
-    {
-      resolve: `gatsby-plugin-manifest`,
-      options: {
-        name: `Simon Knittel | Web Developer`,
-        short_name: `Simon Knittel`,
-        start_url: `/`,
-        background_color: `#fff5cc`,
-        theme_color: `#222`,
-        display: `browser`,
-        icon: 'src/images/icon.svg',
-        crossOrigin: `use-credentials`, // Enabled so the Cloud-CDN-Cookie cookie can be used
-      },
     },
 
     // {
