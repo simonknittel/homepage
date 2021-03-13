@@ -15,7 +15,7 @@
     font-size: 2rem;
   }
 
-  label,
+  &__label,
   input,
   textarea {
     display: block;
@@ -24,7 +24,7 @@
     font-size: 18px;
   }
 
-  label {
+  &__label {
     margin-top: 1rem;
     margin-bottom: .5rem;
 
@@ -70,5 +70,12 @@
     order: 1;
 
     background-color: transparent;
+  }
+
+  &__required {
+    display: inline-block;
+    margin-left: .5rem;
+    font-size: 12px;
+    font-weight: normal;
   }
 }

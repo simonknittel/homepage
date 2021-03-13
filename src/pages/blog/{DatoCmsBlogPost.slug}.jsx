@@ -111,6 +111,10 @@ export default function BlogPost({ data: { site, datoCmsBlogPost: post } }) {
               module = <BlogPostImage image={ record.image } aspectRatio={ record.aspectRatio } />
               break;
 
+            case "DatoCmsForm":
+              module = <Form heading={ record.heading } baseId={ record.baseId } tableName={ record.tableName } fields={ JSON.parse(record.formFields) } />
+              break;
+
             default:
               module = <pre><code>{ JSON.stringify(record, null, 2) }</code></pre>
           }
@@ -120,8 +124,6 @@ export default function BlogPost({ data: { site, datoCmsBlogPost: post } }) {
           </div>
         }}
       />
-
-      {/* <Form /> */}
     </article>
   </Layout>
 }
@@ -160,6 +162,7 @@ export const query = graphql`
             id: originalId
             html
           }
+
           ... on DatoCmsBlogPostImage {
             id: originalId
             aspectRatio
@@ -171,6 +174,14 @@ export const query = graphql`
 
               url(imgixParams: { fit: "crop", crop: "focalpoint" })
             }
+          }
+
+          ... on DatoCmsForm {
+            id: originalId
+            heading
+            baseId
+            tableName
+            formFields
           }
         }
       }
