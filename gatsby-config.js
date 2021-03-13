@@ -42,10 +42,11 @@ if (process.env.NODE_ENV === "production") {
         name: `Simon Knittel | Web Developer`,
         short_name: `Simon Knittel`,
         start_url: `/`,
-        background_color: `#222`,
-        theme_color: `#ffcc00`,
-        display: `standalone`,
+        background_color: `#fff5cc`,
+        theme_color: `#222`,
+        display: `browser`,
         icon: 'src/images/icon.svg',
+        crossOrigin: `use-credentials`, // Enabled so the Cloud-CDN-Cookie cookie can be used
       },
     },
 
