@@ -61,11 +61,11 @@ jobs:
         gsutil \
           -m \
           -q \
-        rsync \
-          -r \
           -h "X-Content-Type-Options: nosniff" \
           -h "X-Frame-Options: DENY" \
           -h "X-XSS-Protection: 1; mode=block" \
+        rsync \
+          -r \
           -d public \
         gs://${{ github.event.inputs.environment }}
 
