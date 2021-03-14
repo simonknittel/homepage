@@ -151,7 +151,7 @@ export const query = graphql`
         width
         height
 
-        url(imgixParams: { fit: "crop", crop: "focalpoint" })
+        url(imgixParams: { fit: "crop", crop: "focalpoint", q: 50 })
       }
       articleImageAspectRatio
       content {
@@ -172,7 +172,7 @@ export const query = graphql`
               width
               height
 
-              url(imgixParams: { fit: "crop", crop: "focalpoint" })
+              url(imgixParams: { fit: "crop", crop: "focalpoint", q: 50 })
             }
           }
 
