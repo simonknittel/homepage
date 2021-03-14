@@ -63,11 +63,11 @@ jobs:
           -q \
         rsync \
           -r \
-          -h "X-Content-Type-Options: nosniff"
-          -h "X-Frame-Options: DENY"
-          -h "X-XSS-Protection: 1; mode=block"
+          -h "X-Content-Type-Options: nosniff" \
+          -h "X-Frame-Options: DENY" \
+          -h "X-XSS-Protection: 1; mode=block" \
           -d public \
-          gs://${{ github.event.inputs.environment }}
+        gs://${{ github.event.inputs.environment }}
 
     # Source: https://www.gatsbyjs.com/docs/caching/
     - name: Set Cache-Control headers
