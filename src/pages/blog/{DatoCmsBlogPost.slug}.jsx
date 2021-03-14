@@ -71,8 +71,6 @@ export default function BlogPost({ data: { site, datoCmsBlogPost: post } }) {
           }
         `}
       </script>
-
-      {/* TODO: Add preload/preconnect */}
     </Helmet>
 
     <Breadcrumb items={[
