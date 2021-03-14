@@ -82,17 +82,6 @@ jobs:
           gs://nightly.simonknittel.de/manifest.webmanifest \
           gs://nightly.simonknittel.de/rss.xml || :
 
-    - name: Set security headers
-      run: |
-        gsutil \
-          -m \
-          -q \
-        setmeta \
-          -h "X-Content-Type-Options: nosniff" \
-          -h "X-Frame-Options: DENY" \
-          -h "X-XSS-Protection: 1; mode=block" \
-        gs://nightly.simonknittel.de/**
-
     # Source: https://cloud.google.com/cdn/docs/invalidating-cached-content
     - name: Invalidate cache
       run: |
