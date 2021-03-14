@@ -50,7 +50,7 @@ export default function BlogPost({ data: { site, datoCmsBlogPost: post } }) {
         lang: 'en',
       }}
     >
-      <title>{ post.title } | { site.siteMetadata.title }</title>
+      <title>{ post.title } - { site.siteMetadata.title }</title>
       <meta name="description" content={ post.excerpt } />
 
       <script type="application/ld+json">

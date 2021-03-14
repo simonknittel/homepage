@@ -24,6 +24,15 @@ jobs:
 
     - run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> .npmrc
 
+    # Source: https://github.com/actions/cache/blob/main/examples.md#node---npm
+    - name: Cache
+      uses: actions/cache@v2
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
+
     - run: npm ci
 
     - name: Build
