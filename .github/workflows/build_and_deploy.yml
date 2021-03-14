@@ -24,16 +24,25 @@ jobs:
 
     - run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> .npmrc
 
-    # Source: https://github.com/actions/cache/blob/main/examples.md#node---npm
-    - name: Cache
+    - name: Cache node_modules
+      id: cache
       uses: actions/cache@v2
       with:
-        path: ~/.npm
-        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: |
-          ${{ runner.os }}-node-
+        path: node_modules
+        key: node-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**/.nvmrc') }}
 
     - run: npm ci
+      if: steps.cache.outputs.cache-hit != 'true'
+
+    - name: Cache Gatsby
+      uses: actions/cache@v2
+      with:
+        path: |
+          .cache
+          public
+        key: gatsby-${{ github.run_id }}
+        restore-keys: |
+          gatsby-
 
     - name: Build
       run: |
