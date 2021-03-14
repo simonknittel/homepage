@@ -7,16 +7,31 @@ import "./BlogPostImage.scss"
 export default function BlogPostImage({ image, aspectRatio }) {
   const aspectRatioCssClass = 'BlogPost__img--' + aspectRatio.replace(':', 'to')
 
-  let widthAndHeightAttributes = {
-    width: image.width,
-    height: image.height
-  }
+  let width = 1440
+  let height = null
 
   const url = new URL(image.url)
 
-  if (aspectRatio !== 'original') {
-    url.searchParams.set('ar', aspectRatio)
-    widthAndHeightAttributes = {}
+  switch (aspectRatio) {
+    case '21:9':
+      url.searchParams.set('ar', aspectRatio)
+      height = Math.round(width / 21 * 9)
+      break;
+
+    case '16:9':
+      url.searchParams.set('ar', aspectRatio)
+      height = Math.round(width / 16 * 9)
+      break;
+
+    case '4:3':
+      url.searchParams.set('ar', aspectRatio)
+      height = Math.round(width / 4 * 3)
+      break;
+
+    case 'original':
+    default:
+      height = Math.round(image.height / image.width * width)
+      break;
   }
 
   url.searchParams.set('w', 360)
@@ -46,7 +61,8 @@ export default function BlogPostImage({ image, aspectRatio }) {
         src={ src3 }
         alt={ image.alt }
 
-        { ...widthAndHeightAttributes }
+        width={ width }
+        height={ height }
       />
     </div>
 
