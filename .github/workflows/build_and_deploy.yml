@@ -85,8 +85,8 @@ jobs:
     - name: Set security headers
       run: |
         gsutil \
-          -m
-          -q
+          -m \
+          -q \
         setmeta \
           -h "X-Content-Type-Options: nosniff" \
           -h "X-Frame-Options: DENY" \
