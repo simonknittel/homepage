@@ -2,12 +2,10 @@ import * as React from "react"
 
 import "./BlogPostArticleImage.scss"
 
-// TODO: Implement https://web.dev/browser-level-image-lazy-loading/
-
 export default function BlogPostArticleImage({ image, aspectRatio }) {
   const aspectRatioCssClass = 'BlogPostArticleImage--' + aspectRatio.replace(':', 'to')
 
-  let width = 1440
+  const width = 1440
   let height = null
 
   const url = new URL(image.url)

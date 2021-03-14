@@ -7,7 +7,7 @@ import "./BlogPostImage.scss"
 export default function BlogPostImage({ image, aspectRatio }) {
   const aspectRatioCssClass = 'BlogPost__img--' + aspectRatio.replace(':', 'to')
 
-  let width = 768
+  const width = 768
   let height = null
 
   const url = new URL(image.url)
