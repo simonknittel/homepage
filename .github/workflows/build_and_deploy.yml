@@ -56,11 +56,17 @@ jobs:
         service_account_key: ${{ secrets.GCP_CREDENTIALS }}
         export_default_credentials: true
 
+    - name: Gzip files
+      run: |
+        gzip -r public
+        find dist -type f -name "*.*" -exec sh -c 'for pathname; do mv -i "$pathname" "${pathname%.*}"; done' sh {} +
+
     - name: Upload to Cloud Storage
       run: |
         gsutil \
           -m \
           -q \
+          -h "Content-Encoding: gzip" \
         rsync \
           -r \
           -d public \
@@ -71,6 +77,8 @@ jobs:
       run: |
         gsutil -m -q setmeta -h "Cache-Control: public, max-age=31536000, immutable" \
           gs://nightly.simonknittel.de/static/** \
+          gs://nightly.simonknittel.de/icons/** \
+          gs://nightly.simonknittel.de/favicon** \
           gs://nightly.simonknittel.de/**.css \
           gs://nightly.simonknittel.de/**.js || :
 
@@ -83,11 +91,11 @@ jobs:
           gs://nightly.simonknittel.de/rss.xml || :
 
     # Source: https://cloud.google.com/cdn/docs/invalidating-cached-content
-    # - name: Invalidate cache
-    #   run: |
-    #     gcloud compute url-maps invalidate-cdn-cache simonknittelde \
-    #       --host ${{ github.event.inputs.environment }} \
-    #       --path "/*"
+    - name: Invalidate cache
+      run: |
+        gcloud compute url-maps invalidate-cdn-cache simonknittelde \
+          --host ${{ github.event.inputs.environment }} \
+          --path "/*"
 
     - name: Notify Dato CMS (Success)
       if: ${{ success() }}
