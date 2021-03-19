@@ -59,7 +59,7 @@ jobs:
     - name: Gzip files
       run: |
         gzip -r public
-        find dist -type f -name "*.*" -exec sh -c 'for pathname; do mv -i "$pathname" "${pathname%.*}"; done' sh {} +
+        find public -type f -name "*.*" -exec sh -c 'for pathname; do mv -i "$pathname" "${pathname%.*}"; done' sh {} +
 
     - name: Upload to Cloud Storage
       run: |
