@@ -7,6 +7,10 @@ on:
         description: 'Environment to deploy'
         required: true
         default: 'nightly.simonknittel.de'
+      useCache:
+        description: 'Use cache'
+        required: false
+        default: 'yes'
 
 jobs:
 
@@ -25,6 +29,7 @@ jobs:
     - run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> .npmrc
 
     - name: Cache node_modules
+      if: github.event.inputs.useCache == 'yes'
       id: cache
       uses: actions/cache@v2
       with:
@@ -32,9 +37,10 @@ jobs:
         key: node-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**/.nvmrc') }}
 
     - run: npm ci
-      if: steps.cache.outputs.cache-hit != 'true'
+      if: github.event.inputs.useCache == 'no' || steps.cache.outputs.cache-hit == 'false'
 
     - name: Cache Gatsby
+      if: github.event.inputs.useCache == 'yes'
       uses: actions/cache@v2
       with:
         path: |
