@@ -29,18 +29,20 @@ jobs:
     - run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> .npmrc
 
     - name: Cache node_modules
-      if: github.event.inputs.useCache == 'yes'
       id: cache
       uses: actions/cache@v2
       with:
         path: node_modules
         key: node-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**/.nvmrc') }}
 
+    - name: Clear node_modules
+      if: github.event.inputs.useCache == 'no'
+      run: rm -rf node_modules
+
     - run: npm ci
       if: github.event.inputs.useCache == 'no' || steps.cache.outputs.cache-hit == 'false'
 
     - name: Cache Gatsby
-      if: github.event.inputs.useCache == 'yes'
       uses: actions/cache@v2
       with:
         path: |
@@ -49,6 +51,10 @@ jobs:
         key: gatsby-${{ github.run_id }}
         restore-keys: |
           gatsby-
+
+    - name: Clear Gatsby cache
+      if: github.event.inputs.useCache == 'no'
+      run: rm -rf .cache public
 
     - name: Build
       run: |
@@ -97,7 +103,7 @@ jobs:
           gs://nightly.simonknittel.de/rss.xml || :
 
     # Source: https://cloud.google.com/cdn/docs/invalidating-cached-content
-    - name: Invalidate cache
+    - name: Invalidate CDN cache
       run: |
         gcloud compute url-maps invalidate-cdn-cache simonknittelde \
           --host ${{ github.event.inputs.environment }} \
