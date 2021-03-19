@@ -83,11 +83,11 @@ jobs:
           gs://nightly.simonknittel.de/rss.xml || :
 
     # Source: https://cloud.google.com/cdn/docs/invalidating-cached-content
-    - name: Invalidate cache
-      run: |
-        gcloud compute url-maps invalidate-cdn-cache simonknittelde \
-          --host ${{ github.event.inputs.environment }} \
-          --path "/*"
+    # - name: Invalidate cache
+    #   run: |
+    #     gcloud compute url-maps invalidate-cdn-cache simonknittelde \
+    #       --host ${{ github.event.inputs.environment }} \
+    #       --path "/*"
 
     - name: Notify Dato CMS (Success)
       if: ${{ success() }}
