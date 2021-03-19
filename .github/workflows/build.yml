@@ -24,7 +24,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: node_modules
-        key: node-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**/.nvmrc') }}
+        key: node-${{ hashFiles('package-lock.json', '.nvmrc') }}
 
     - run: npm ci
       if: steps.cache.outputs.cache-hit != 'true'

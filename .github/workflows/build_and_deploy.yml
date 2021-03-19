@@ -33,7 +33,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: node_modules
-        key: node-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**/.nvmrc') }}
+        key: node-${{ hashFiles('package-lock.json', '.nvmrc') }}
 
     - name: Clear node_modules
       if: github.event.inputs.useCache == 'no'
