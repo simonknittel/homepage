@@ -73,7 +73,7 @@ export default function Form({ heading, baseId, tableName, fields }) {
   }
 
   return <form className="Form" onSubmit={ onSubmit } onReset={ onReset }>
-    <h4 className="Form__heading">{ heading }</h4>
+    <h2 className="Form__heading">{ heading }</h2>
 
     {
       Object.keys(fields).map(key => {
