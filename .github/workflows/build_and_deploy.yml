@@ -42,19 +42,19 @@ jobs:
     - run: npm ci
       if: github.event.inputs.useCache == 'no' || steps.cache.outputs.cache-hit == 'false'
 
-    - name: Cache Gatsby
-      uses: actions/cache@v2
-      with:
-        path: |
-          .cache
-          public
-        key: gatsby-${{ github.run_id }}
-        restore-keys: |
-          gatsby-
+    # - name: Cache Gatsby
+    #   uses: actions/cache@v2
+    #   with:
+    #     path: |
+    #       .cache
+    #       public
+    #     key: gatsby-${{ github.run_id }}
+    #     restore-keys: |
+    #       gatsby-
 
-    - name: Clear Gatsby cache
-      if: github.event.inputs.useCache == 'no'
-      run: rm -rf .cache public
+    # - name: Clear Gatsby cache
+    #   if: github.event.inputs.useCache == 'no'
+    #   run: rm -rf .cache public
 
     - name: Build
       run: |
