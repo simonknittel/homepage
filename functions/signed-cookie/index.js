@@ -23,7 +23,7 @@ function createCookiePolicy() {
   const urlPrefix = 'https://' + DOMAIN
 
   const expiresDate = new Date()
-  expiresDate.setDate(expiresDate.getDate() + 1)
+  expiresDate.setHours(expiresDate.getHours() + 8)
 
   const expires = Math.floor(expiresDate.getTime() / 1000)
 
@@ -48,7 +48,7 @@ exports.main = (_, res) => {
       secure: true,
       encode: String,
       httpOnly: true,
-      maxAge: 1000 * 60 * 60 * 24,
+      maxAge: 1000 * 60 * 60 * 8,
     })
     .redirect(303, 'https://' + DOMAIN)
 }
