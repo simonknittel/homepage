@@ -49,6 +49,7 @@ exports.main = (_, res) => {
       encode: String,
       httpOnly: true,
       maxAge: 1000 * 60 * 60 * 8,
+      sameSite: 'Strict'
     })
     .redirect(303, 'https://' + DOMAIN)
 }
