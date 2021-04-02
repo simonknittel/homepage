@@ -58,7 +58,7 @@ jobs:
 
     - name: Build
       run: |
-        export HOST={{ github.event.inputs.host }}
+        export HOST=${{ github.event.inputs.host }}
         npm run build
 
     - name: Set up Cloud SDK
