@@ -41,7 +41,7 @@ if (process.env.NODE_ENV === "production") {
       resolve: `gatsby-plugin-gatsby-cloud`,
       options: {
         allPageHeaders: [
-          `Strict-Transport-Security: max-age=31536000; includeSubDomains; preload`,
+          `Strict-Transport-Security: max-age=31536000; preload`,
         ],
       }
     },
@@ -50,7 +50,7 @@ if (process.env.NODE_ENV === "production") {
       resolve: "@sentry/gatsby",
       options: {
         dsn: "https://6d75b4833b664bf884eeabcbfe4a7ca3@o77506.ingest.sentry.io/5196082",
-        release: process.env.SENTRY_ENVIRONMENT || "development",
+        release: process.env.HOST,
       }
     },
 
@@ -119,7 +119,7 @@ if (process.env.NODE_ENV === "production") {
     // },
   ])
 
-  siteMetadata.siteUrl = "https://nightly.simonknittel.de"
+  siteMetadata.siteUrl = `https://${ process.env.HOST }`
 }
 
 module.exports = {

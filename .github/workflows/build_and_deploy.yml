@@ -3,8 +3,8 @@ name: build_and_deploy
 on:
   workflow_dispatch:
     inputs:
-      environment:
-        description: 'Environment to deploy'
+      host:
+        description: 'Targeted host'
         required: true
         default: 'nightly.simonknittel.de'
       useCache:
@@ -58,7 +58,7 @@ jobs:
 
     - name: Build
       run: |
-        export SENTRY_ENVIRONMENT=${{ github.event.inputs.environment }}
+        export HOST={{ github.event.inputs.host }}
         npm run build
 
     - name: Set up Cloud SDK
