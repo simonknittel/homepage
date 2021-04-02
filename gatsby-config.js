@@ -34,7 +34,17 @@ const siteMetadata = {
 
 if (process.env.NODE_ENV === "production") {
   plugins.push(...[
+    // TODO: Enable on Go-live
     // "gatsby-plugin-sitemap",
+
+    {
+      resolve: `gatsby-plugin-gatsby-cloud`,
+      options: {
+        allPageHeaders: [
+          `Strict-Transport-Security: max-age=31536000; includeSubDomains; preload`,
+        ],
+      }
+    },
 
     {
       resolve: "@sentry/gatsby",
@@ -44,6 +54,7 @@ if (process.env.NODE_ENV === "production") {
       }
     },
 
+    // TODO: Disable on Go-live
     {
       resolve: 'gatsby-plugin-robots-txt',
       options: {
@@ -53,6 +64,7 @@ if (process.env.NODE_ENV === "production") {
       }
     },
 
+    // TODO: Enable on Go-live
     // {
     //   resolve: `gatsby-plugin-feed`,
     //   options: {
