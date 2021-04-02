@@ -7,6 +7,10 @@ on:
         description: 'Targeted host'
         required: true
         default: 'nightly.simonknittel.de'
+      datoCmsEnvironment:
+        description: 'Dato CMS environment'
+        required: true
+        default: 'master'
       useCache:
         description: 'Use cache'
         required: false
@@ -59,6 +63,7 @@ jobs:
     - name: Build
       run: |
         export HOST=${{ github.event.inputs.host }}
+        export DATO_CMS_ENVIRONMENT=${{ github.event.inputs.datoCmsEnvironment }}
         npm run build
 
     - name: Set up Cloud SDK
