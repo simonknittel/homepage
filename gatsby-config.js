@@ -50,7 +50,7 @@ if (process.env.NODE_ENV === "production") {
       resolve: "@sentry/gatsby",
       options: {
         dsn: "https://6d75b4833b664bf884eeabcbfe4a7ca3@o77506.ingest.sentry.io/5196082",
-        release: process.env.HOST,
+        environment: process.env.HOST,
       }
     },
 
