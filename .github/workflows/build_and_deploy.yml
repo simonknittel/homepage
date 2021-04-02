@@ -82,7 +82,7 @@ jobs:
         rsync \
           -r \
           -d public \
-        gs://${{ github.event.inputs.environment }}
+        gs://${{ github.event.inputs.host }}
 
     # Source: https://www.gatsbyjs.com/docs/caching/
     - name: Set Cache-Control headers
