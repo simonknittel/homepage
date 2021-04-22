@@ -6,6 +6,8 @@ const KEY_NAME = process.env.KEY_NAME
 const KEY_VALUE = process.env.KEY_VALUE
 
 const app = express()
+app.disable('x-powered-by')
+
 let cookiePolicy = ''
 let signature = ''
 
