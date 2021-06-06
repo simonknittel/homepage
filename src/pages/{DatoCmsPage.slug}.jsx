@@ -1,7 +1,7 @@
 import { graphql } from "gatsby"
 import { Helmet } from "react-helmet"
 import { Hero } from "../components/Hero"
-import { Html } from "../components/Html"
+import { Html } from "../components/Html.jsx"
 import { Layout } from "../components/Layout"
 import { NotFound } from "../components/NotFound"
 import { ProjectGrid } from "../components/ProjectGrid"
