@@ -1,7 +1,8 @@
 {
   "cSpell.words": [
     "datocms",
-    "gcloud"
+    "gcloud",
+    "imgix"
   ],
   "sonarlint.connectedMode.project": {
     "connectionId": "sonarcloud.io",
