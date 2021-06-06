@@ -8,7 +8,7 @@ export function BlogPostTeaser({ post }) {
   // const publishedAtDate = new Date(post.meta.firstPublishedAt)
   // const diff = (Date.now() - publishedAtDate.getTime()) / 1000
 
-  // const rawDate = publishedAtDate.toLocaleString('en', { year: 'numeric', month: 'long', day: 'numeric', hour12: false, hour: '2-digit', minute: '2-digit', timeZoneName: 'short' })
+  // const rawDate = publishedAtDate.toLocaleString('de', { year: 'numeric', month: 'long', day: 'numeric', hour12: false, hour: '2-digit', minute: '2-digit', timeZoneName: 'short' })
   // let simpleDate = ''
   // if (diff < 60) {
   //   const count = Math.floor(diff)

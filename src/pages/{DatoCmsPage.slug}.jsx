@@ -23,10 +23,16 @@ export default function Page({ data: { site, datoCmsPage: page } }) {
   const modules = page.moduleOrder.map(module => {
     switch (module.__typename) {
       case "DatoCmsHero":
+        // return <Hero
+        //   name={ module.name }
+        //   description={ module.description }
+        //   tags={ module.tags.map(tag => tag.title) }
+        //   key={ module.id }
+        // />
         return <Hero2
           name={ module.name }
           description={ module.description }
-          tags={ module.tags.map(tag => tag.title) }
+          tags={ module.tags }
           key={ module.id }
         />
 
@@ -39,6 +45,7 @@ export default function Page({ data: { site, datoCmsPage: page } }) {
       case "DatoCmsProjectGrid":
         return <ProjectGrid
           projects={ module.projects }
+          moreText={ module.moreText }
           key={ module.id }
         />
 
@@ -64,7 +71,7 @@ export default function Page({ data: { site, datoCmsPage: page } }) {
   return <Layout hideHeader={ page.slug === 'index' }>
     <Helmet
       htmlAttributes={{
-        lang: 'en',
+        lang: 'de',
       }}
     >
       <title>{ page.slug === 'index' ? page.title : `${ page.title } - ${ site.siteMetadata.title }`}</title>
@@ -83,7 +90,7 @@ export const query = graphql`
       }
     }
 
-    datoCmsPage(id: { eq: $id }, locale: { eq: "en" }) {
+    datoCmsPage(id: { eq: $id }, locale: { eq: "de" }) {
       id
       slug
       title
@@ -110,10 +117,12 @@ export const query = graphql`
             tags {
               id
               title
+              description
             }
             description
             badge
           }
+          moreText
         }
         ... on DatoCmsSocialMediaRow {
           id
@@ -137,6 +146,7 @@ export const query = graphql`
             tags {
               id
               title
+              description
             }
           }
         }
@@ -147,6 +157,7 @@ export const query = graphql`
           tags {
             id
             title
+            description
           }
         }
       }

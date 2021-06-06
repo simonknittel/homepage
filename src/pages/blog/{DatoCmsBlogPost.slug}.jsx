@@ -45,7 +45,7 @@ export default function BlogPost({ data: { site, datoCmsBlogPost: post } }) {
   const publishedAtDate = new Date(post.meta.firstPublishedAt)
   const diff = (Date.now() - publishedAtDate.getTime()) / 1000
 
-  const rawDate = publishedAtDate.toLocaleString('en', { year: 'numeric', month: 'long', day: 'numeric', hour12: false, hour: '2-digit', minute: '2-digit', timeZoneName: 'short' })
+  const rawDate = publishedAtDate.toLocaleString('de', { year: 'numeric', month: 'long', day: 'numeric', hour12: false, hour: '2-digit', minute: '2-digit', timeZoneName: 'short' })
   let simpleDate = ''
   if (shorterThan60Seconds(diff)) {
     const count = Math.floor(diff)
@@ -66,7 +66,7 @@ export default function BlogPost({ data: { site, datoCmsBlogPost: post } }) {
   return <Layout>
     <Helmet
       htmlAttributes={{
-        lang: 'en',
+        lang: 'de',
       }}
     >
       <title>{ post.title } - { site.siteMetadata.title }</title>
@@ -154,7 +154,7 @@ export const query = graphql`
       }
     }
 
-    datoCmsBlogPost(id: { eq: $id }, locale: { eq: "en" } ) {
+    datoCmsBlogPost(id: { eq: $id }, locale: { eq: "de" } ) {
       id
       title
       slug

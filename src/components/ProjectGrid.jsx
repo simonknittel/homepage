@@ -4,7 +4,8 @@ import * as React from "react"
 import "./ProjectGrid.scss"
 
 export function ProjectGrid({
-  projects
+  projects,
+  moreText
 }) {
   return <div className="ProjectGrid">
     <div className="ProjectGrid__inner">
@@ -34,7 +35,7 @@ export function ProjectGrid({
         iconPosition="right"
         icon=">"
       >
-        More on GitHub
+        { moreText }
       </SkLink>
     </div>
   </div>

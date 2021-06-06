@@ -9,6 +9,7 @@ export function Hero2({
   tags = [],
   locales = [],
 }) {
+  console.log(tags)
   const innerRef = React.useRef()
 
   React.useEffect(() => {
@@ -16,20 +17,20 @@ export function Hero2({
       perspective: 5000,
       glare: true,
       "max-glare": .2,
-      gyroscope: false // TODO: Somehow doesn't work on my phone anyway
+      gyroscope: false // TODO: For some reason this doesn't work on my phone anyway
     })
   }, [])
 
   return <div className="Hero">
     <div className="Hero__inner" ref={ innerRef }>
       <h1>
-        <span class="Hero__headline">{ name }</span>
-        { description ? <span class="Hero__subheadline">{ description }</span> : null }
+        <span className="Hero__headline">{ name }</span>
+        { description ? <span className="Hero__subheadline">{ description }</span> : null }
       </h1>
 
       { tags.length > 0 ? (
         <div className="Hero__tags">
-          { tags.map(tag => <SkTag key={ tag }>{ tag }</SkTag>)}
+          { tags.map(tag => <SkTag key={ tag.title } description={ tag.description }>{ tag.title }</SkTag>)}
         </div>
       ) : null}
     </div>

@@ -74,7 +74,9 @@
 
   sk-tag {
     --sk-tag-border-color: hsla(48, 100%, 50%, .5);
-    --sk-tag-color: $yellow;
+    --sk-tag-color: #{$yellow};
+    --sk-tag-tooltip-background-color: #{$yellow};
+    --sk-tag-tooltip-color: #{$black};
 
     margin-left: .25rem;
     margin-right: .25rem;

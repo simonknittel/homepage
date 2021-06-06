@@ -9,7 +9,7 @@ export default function Blog({ data: { site, allDatoCmsBlogPost: { edges } } }) 
   return <Layout>
     <Helmet
       htmlAttributes={{
-        lang: 'en',
+        lang: 'de',
       }}
     >
       <title>Blog - { site.siteMetadata.title }</title>
@@ -38,7 +38,7 @@ export const query = graphql`
     }
 
     allDatoCmsBlogPost(
-      filter: { locale: { eq: "en" } }
+      filter: { locale: { eq: "de" } }
     ) {
       edges {
         node {
