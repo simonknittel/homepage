@@ -19,6 +19,12 @@ exports.main = function(req, res) {
 
   const fields = {}
   for (const [ name, value ] of Object.entries(req.body.fields)) {
+    if (fields.hasOwnProperty(name)) {
+      console.error('req.body.fields contains an invalid or duplicate name:', name)
+      res.sendStatus(400)
+      return
+    }
+
     fields[name] = value
   }
 
