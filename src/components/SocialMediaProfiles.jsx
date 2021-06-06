@@ -3,7 +3,7 @@ import * as React from "react"
 
 import "./SocialMediaProfiles.scss"
 
-export default function SocialMediaProfiles({
+export function SocialMediaProfiles({
   links=[]
 }) {
   return <SkSlanted className="SocialMediaProfiles">

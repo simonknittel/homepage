@@ -4,7 +4,7 @@ import "./BlogPostImage.scss"
 
 // TODO: Implement https://web.dev/browser-level-image-lazy-loading/
 
-export default function BlogPostImage({ image, aspectRatio }) {
+export function BlogPostImage({ image, aspectRatio }) {
   const aspectRatioCssClass = 'BlogPost__img--' + aspectRatio.replace(':', 'to')
 
   const width = 768

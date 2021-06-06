@@ -3,7 +3,7 @@ import * as React from "react"
 
 import "./ProjectGrid.scss"
 
-export default function ProjectGrid({
+export function ProjectGrid({
   projects
 }) {
   return <div className="ProjectGrid">

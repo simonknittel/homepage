@@ -4,7 +4,7 @@ import { Helmet } from "react-helmet"
 
 import "./Breadcrumb.scss"
 
-export default function Breadcrumb({ items }) {
+export function Breadcrumb({ items }) {
   const data = useStaticQuery(graphql`
     query {
       site {

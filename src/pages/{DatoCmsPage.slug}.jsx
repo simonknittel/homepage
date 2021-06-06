@@ -1,12 +1,12 @@
 import { graphql } from "gatsby"
-import * as React from "react"
 import { Helmet } from "react-helmet"
-import Hero from "../components/Hero"
-import HTML from "../components/HTML"
-import Layout from "../components/Layout"
-import NotFound from "../components/NotFound"
-import ProjectGrid from "../components/ProjectGrid"
-import SocialMediaProfiles from "../components/SocialMediaProfiles"
+import { Hero } from "../components/Hero"
+import { Html } from "../components/Html"
+import { Layout } from "../components/Layout"
+import { NotFound } from "../components/NotFound"
+import { ProjectGrid } from "../components/ProjectGrid"
+import { SocialMediaProfiles } from "../components/SocialMediaProfiles"
+import * as React from "react"
 
 /**
  * TODO: Figure out how to implement locales
@@ -43,7 +43,7 @@ export default function Page({ data: { site, datoCmsPage: page } }) {
         />
 
       case "DatoCmsHtml":
-        return <HTML
+        return <Html
           html={ module.html }
           key={ module.id }
         />

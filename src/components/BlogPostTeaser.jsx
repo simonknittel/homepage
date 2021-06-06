@@ -1,10 +1,10 @@
 import { Link } from "gatsby"
 import * as React from "react"
-import BlogPostImage from './BlogPostImage'
+import { BlogPostImage } from './BlogPostImage'
 
 import './BlogPostTeaser.scss'
 
-export default function BlogPostTeaser({ post }) {
+export function BlogPostTeaser({ post }) {
   // const publishedAtDate = new Date(post.meta.firstPublishedAt)
   // const diff = (Date.now() - publishedAtDate.getTime()) / 1000
 

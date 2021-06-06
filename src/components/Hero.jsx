@@ -3,7 +3,7 @@ import { SkTag } from "@simonknittel/components-react"
 
 import "./Hero.scss"
 
-export default function Hero({
+export function Hero({
   name,
   description = "",
   tags = [],

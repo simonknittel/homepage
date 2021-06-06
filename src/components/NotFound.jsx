@@ -4,7 +4,7 @@ import * as React from "react"
 
 import "./NotFound.scss"
 
-export default function NotFound({
+export function NotFound({
   heading,
   subheading,
   goToHome

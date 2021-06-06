@@ -1,15 +1,14 @@
+import "./BlogPost.scss"
+import { BlogPostArticleImage } from "../../components/BlogPostArticleImage"
+import { BlogPostImage } from "../../components/BlogPostImage"
+import { Breadcrumb } from "../../components/Breadcrumb"
+import { Form } from "../../components/Form"
 import { graphql } from "gatsby"
 import { Helmet } from "react-helmet"
+import { Html } from "../../components/Html"
+import { Layout } from "../../components/Layout"
 import { StructuredText } from "react-datocms"
 import * as React from "react"
-import Breadcrumb from "../../components/Breadcrumb"
-import HTML from "../../components/HTML"
-import Layout from "../../components/Layout"
-
-import "./BlogPost.scss"
-import BlogPostImage from "../../components/BlogPostImage"
-import BlogPostArticleImage from "../../components/BlogPostArticleImage"
-import Form from "../../components/Form"
 
 /**
  * TODO: Figure out how to implement locales
@@ -122,7 +121,7 @@ export default function BlogPost({ data: { site, datoCmsBlogPost: post } }) {
 
           switch (record.__typename) {
             case "DatoCmsHtml":
-              module = <HTML html={ record.html } />
+              module = <Html html={ record.html } />
               break;
 
             case "DatoCmsBlogPostImage":

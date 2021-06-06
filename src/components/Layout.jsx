@@ -1,9 +1,9 @@
 import { graphql, useStaticQuery } from "gatsby"
 import * as React from "react"
-import Footer from "./Footer"
-import Header from "./Header"
+import { Footer } from "./Footer"
+import { Header } from "./Header"
 
-export default function Layout({
+export function Layout({
   children,
   hideHeader = false
 }) {

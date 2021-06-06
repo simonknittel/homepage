@@ -2,7 +2,7 @@ import * as React from "react"
 
 import "./BlogPostArticleImage.scss"
 
-export default function BlogPostArticleImage({ image, aspectRatio }) {
+export function BlogPostArticleImage({ image, aspectRatio }) {
   const aspectRatioCssClass = 'BlogPostArticleImage--' + aspectRatio.replace(':', 'to')
 
   const width = 1440

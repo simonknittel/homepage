@@ -3,7 +3,7 @@ import * as React from "react"
 
 import "./Navigation.scss"
 
-export default function Navigation() {
+export function Navigation() {
   return <nav className="Navigation">
     <ul className="Navigation__list">
       <li className="Navigation__item">

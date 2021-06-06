@@ -2,7 +2,7 @@ import React, { useState } from "react"
 
 import "./Form.scss"
 
-export default function Form({ heading, baseId, tableName, fields }) {
+export function Form({ heading, baseId, tableName, fields }) {
   const action = 'https://nightly.simonknittel.de/api/form-submit'
   const [ disabled, setDisabled ] = useState(false)
 

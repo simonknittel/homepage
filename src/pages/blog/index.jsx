@@ -1,9 +1,9 @@
+import { BlogPostTeaser } from "../../components/BlogPostTeaser"
+import { Breadcrumb } from "../../components/Breadcrumb"
 import { graphql } from "gatsby"
 import { Helmet } from "react-helmet"
+import { Layout } from "../../components/Layout"
 import * as React from "react"
-import Breadcrumb from "../../components/Breadcrumb"
-import Layout from "../../components/Layout"
-import BlogPostTeaser from "../../components/BlogPostTeaser"
 
 export default function Blog({ data: { site, allDatoCmsBlogPost: { edges } } }) {
   return <Layout>

@@ -1,6 +1,6 @@
 import * as React from "react"
 
-export default function HTML({
+export function Html({
   html
 }) {
   return <div dangerouslySetInnerHTML={{__html: html}} />
