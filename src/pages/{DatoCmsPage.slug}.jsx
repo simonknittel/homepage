@@ -1,6 +1,6 @@
 import { graphql } from "gatsby"
 import { Helmet } from "react-helmet"
-import { Hero } from "../components/Hero"
+import { Hero2 } from "../components/Hero2"
 import { HtmlWrapper } from "../components/HtmlWrapper"
 import { Layout } from "../components/Layout"
 import { NotFound } from "../components/NotFound"
@@ -23,7 +23,7 @@ export default function Page({ data: { site, datoCmsPage: page } }) {
   const modules = page.moduleOrder.map(module => {
     switch (module.__typename) {
       case "DatoCmsHero":
-        return <Hero
+        return <Hero2
           name={ module.name }
           description={ module.description }
           tags={ module.tags.map(tag => tag.title) }
