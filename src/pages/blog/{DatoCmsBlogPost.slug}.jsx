@@ -5,7 +5,7 @@ import { Breadcrumb } from "../../components/Breadcrumb"
 import { Form } from "../../components/Form"
 import { graphql } from "gatsby"
 import { Helmet } from "react-helmet"
-import { Html } from "../../components/Html.jsx"
+import { HtmlWrapper } from "../../components/HtmlWrapper"
 import { Layout } from "../../components/Layout"
 import { StructuredText } from "react-datocms"
 import * as React from "react"
@@ -121,7 +121,7 @@ export default function BlogPost({ data: { site, datoCmsBlogPost: post } }) {
 
           switch (record.__typename) {
             case "DatoCmsHtml":
-              module = <Html html={ record.html } />
+              module = <HtmlWrapper html={ record.html } />
               break;
 
             case "DatoCmsBlogPostImage":

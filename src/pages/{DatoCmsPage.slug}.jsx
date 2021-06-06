@@ -1,7 +1,7 @@
 import { graphql } from "gatsby"
 import { Helmet } from "react-helmet"
 import { Hero } from "../components/Hero"
-import { Html } from "../components/Html.jsx"
+import { HtmlWrapper } from "../components/HtmlWrapper"
 import { Layout } from "../components/Layout"
 import { NotFound } from "../components/NotFound"
 import { ProjectGrid } from "../components/ProjectGrid"
@@ -43,7 +43,7 @@ export default function Page({ data: { site, datoCmsPage: page } }) {
         />
 
       case "DatoCmsHtml":
-        return <Html
+        return <HtmlWrapper
           html={ module.html }
           key={ module.id }
         />
