@@ -20,6 +20,26 @@ import Form from "../../components/Form"
  * instead as File System Route API doesn’t support this at the moment."
  */
 
+function shorterThan60Seconds(diff) {
+  return diff < 60
+}
+
+function between60SecondsAnd1Hour(diff) {
+  return diff >= 60 && diff < 3_600
+}
+
+function between1HourAnd1Day(diff) {
+  return diff >= 3_600 && diff < 86_400
+}
+
+function between1DayAnd1Week(diff) {
+  return diff >= 86_400 && diff < 604_800
+}
+
+function plural(count) {
+  return count > 1 ? 's' : ''
+}
+
 export default function BlogPost({ data: { site, datoCmsBlogPost: post } }) {
   if (!post) return null
 
@@ -28,18 +48,18 @@ export default function BlogPost({ data: { site, datoCmsBlogPost: post } }) {
 
   const rawDate = publishedAtDate.toLocaleString('en', { year: 'numeric', month: 'long', day: 'numeric', hour12: false, hour: '2-digit', minute: '2-digit', timeZoneName: 'short' })
   let simpleDate = ''
-  if (diff < 60) {
+  if (shorterThan60Seconds(diff)) {
     const count = Math.floor(diff)
-    simpleDate = `${ count } seconds${ count > 1 ? 's' : '' } ago`
-  } else if (diff >= 60 && diff < 3_600) {
+    simpleDate = `${ count } second${ plural(count) } ago`
+  } else if (between60SecondsAnd1Hour(diff)) {
     const count = Math.floor(diff / 60)
-    simpleDate = `${ count } minute${ count > 1 ? 's' : '' } ago`
-  } else if (diff >= 3_600 && diff < 86_400) {
+    simpleDate = `${ count } minute${ plural(count) } ago`
+  } else if (between1HourAnd1Day(diff)) {
     const count = Math.floor(diff / 60 / 60)
-    simpleDate = `${ count } hour${ count > 1 ? 's' : '' } ago`
-  } else if (diff >= 86_400 && diff < 604_800) {
+    simpleDate = `${ count } hour${ plural(count) } ago`
+  } else if (between1DayAnd1Week(diff)) {
     const count = Math.floor(diff / 60 / 60 / 24)
-    simpleDate = `${ count } day${ count > 1 ? 's' : '' } ago`
+    simpleDate = `${ count } day${ plural(count) } ago`
   } else {
     simpleDate = rawDate
   }

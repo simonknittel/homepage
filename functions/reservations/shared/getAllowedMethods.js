@@ -13,7 +13,7 @@ function getAllowedMethods() {
 
   const fileNames = files.map(file => {
     return file.name
-      .replace('.js', '')
+      .replace(/\.js$/, '')
       .toUpperCase()
   })
 

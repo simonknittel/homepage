@@ -80,7 +80,7 @@
 
       border-radius: $border-radius ;
       background-color: $yellow;
-      background: linear-gradient(120deg, rgba(255, 226, 111, 1) 0%, $yellow 100%);
+      background-image: linear-gradient(120deg, rgba(255, 226, 111, 1) 0%, $yellow 100%);
 
       @media (min-width: $bp--medium) {
         transform: translateX(-50%) $skew;

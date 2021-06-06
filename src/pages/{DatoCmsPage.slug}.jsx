@@ -57,7 +57,7 @@ export default function Page({ data: { site, datoCmsPage: page } }) {
         />
 
       default:
-        return <pre><code>{ JSON.stringify(module, null, 2) }</code></pre>
+        return <pre key={ module.id }><code>{ JSON.stringify(module, null, 2) }</code></pre>
     }
   })
 

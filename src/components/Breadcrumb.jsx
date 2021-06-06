@@ -31,15 +31,19 @@ export default function Breadcrumb({ items }) {
               },
 
               ${
-                items.map((item, index) => `
-                  {
-                    "@type": "ListItem",
-                    "position": ${ index + 2 },
-                    "name": "${ item.name }"${ index + 1 === items.length ? '' : `,
-                    "item": "${ data.site.siteMetadata.siteUrl }/${ item.href }"
-                    `}
+                items.map((item, index) => {
+                  const jsonObject = {
+                    '@type': 'ListItem',
+                    position: index + 2,
+                    name: item.name
                   }
-                `)
+
+                  if (index + 1 !== items.length)  {
+                    jsonObject.item = `${data.site.siteMetadata.siteUrl}/${item.href}`
+                  }
+
+                  return JSON.stringify(jsonObject, null, 2)
+                })
               }
             ]
           }

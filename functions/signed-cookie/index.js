@@ -13,8 +13,8 @@ function base64(string) {
     .toString('base64')
 }
 
-function urlSafe(base64) {
-  return base64
+function urlSafe(base64String) {
+  return base64String
     .replace(/\+/g, '-')
     .replace(/\//g, '_')
 }
@@ -45,8 +45,10 @@ exports.main = (_, res) => {
     .cookie('Cloud-CDN-Cookie', `${ cookiePolicy }:Signature=${ urlSafe(signature) }`, {
       domain: '.' + DOMAIN,
       path: '/',
+      // file deepcode ignore WebCookieSecureDisabledByDefault: False positive
       secure: true,
       encode: String,
+      // file deepcode ignore WebCookieHttpOnlyDisabledByDefault: False positive
       httpOnly: true,
       maxAge: 1000 * 60 * 60 * 8,
       sameSite: 'Strict'
