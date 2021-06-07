@@ -10,15 +10,6 @@ import { Layout } from "../../components/Layout"
 import { StructuredText } from "react-datocms"
 import * as React from "react"
 
-/**
- * TODO: Figure out how to implement locales
- *
- * Source: https://www.gatsbyjs.com/docs/reference/routing/file-system-route-api/
- * If you need to customize the query used for collecting the nodes (e.g.
- * filtering out any product of type "Food"), you should use the createPages API
- * instead as File System Route API doesn’t support this at the moment."
- */
-
 function shorterThan60Seconds(diff) {
   return diff < 60
 }
@@ -40,8 +31,6 @@ function plural(count) {
 }
 
 export default function BlogPost({ data: { site, datoCmsBlogPost: post } }) {
-  if (!post) return null
-
   const publishedAtDate = new Date(post.meta.firstPublishedAt)
   const diff = (Date.now() - publishedAtDate.getTime()) / 1000
 
@@ -66,7 +55,7 @@ export default function BlogPost({ data: { site, datoCmsBlogPost: post } }) {
   return <Layout>
     <Helmet
       htmlAttributes={{
-        lang: 'de',
+        lang: post.locale,
       }}
     >
       <title>{ post.title } - { site.siteMetadata.title }</title>
@@ -154,11 +143,12 @@ export const query = graphql`
       }
     }
 
-    datoCmsBlogPost(id: { eq: $id }, locale: { eq: "de" } ) {
+    datoCmsBlogPost(id: { eq: $id } ) {
       id
       title
       slug
       excerpt
+      locale
       meta {
         updatedAt
         firstPublishedAt

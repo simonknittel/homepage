@@ -9,7 +9,6 @@ export function Hero2({
   tags = [],
   locales = [],
 }) {
-  console.log(tags)
   const innerRef = React.useRef()
 
   React.useEffect(() => {

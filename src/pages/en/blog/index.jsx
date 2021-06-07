@@ -1,15 +1,15 @@
-import { BlogPostTeaser } from "../../components/BlogPostTeaser"
-import { Breadcrumb } from "../../components/Breadcrumb"
+import { BlogPostTeaser } from "../../../components/BlogPostTeaser"
+import { Breadcrumb } from "../../../components/Breadcrumb"
 import { graphql } from "gatsby"
 import { Helmet } from "react-helmet"
-import { Layout } from "../../components/Layout"
+import { Layout } from "../../../components/Layout"
 import * as React from "react"
 
 export default function Blog({ data: { site, allDatoCmsBlogPost: { nodes } } }) {
   return <Layout>
     <Helmet
       htmlAttributes={{
-        lang: 'de',
+        lang: 'en',
       }}
     >
       <title>Blog - { site.siteMetadata.title }</title>
@@ -41,7 +41,7 @@ export const query = graphql`
     }
 
     allDatoCmsBlogPost(
-      filter: { locale: { eq: "de" } }
+      filter: { locale: { eq: "en" } }
     ) {
       nodes {
         id
