@@ -2,14 +2,18 @@
 
 .Header {
   display: flex;
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  width: 100%;
   justify-content: space-between;
   align-items: center;
   border-bottom: 5px solid $black;
   background-color: $yellow;
 
-  @media (min-width: $bp--small) {
-    justify-content: flex-start;
-  }
+  // @media (min-width: $bp--small) {
+  //   justify-content: flex-start;
+  // }
 
   &__logo {
     padding: 1rem;

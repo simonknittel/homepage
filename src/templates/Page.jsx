@@ -1,6 +1,6 @@
 import { graphql } from "gatsby"
 import { Helmet } from "react-helmet"
-import { Hero2 } from "../components/Hero2"
+import { Hero } from "../components/Hero"
 import { HtmlWrapper } from "../components/HtmlWrapper"
 import { Layout } from "../components/Layout"
 import { NotFound } from "../components/NotFound"
@@ -12,13 +12,7 @@ export default function Page({ data: { site, datoCmsPage: page } }) {
   const modules = page.moduleOrder.map(module => {
     switch (module.__typename) {
       case "DatoCmsHero":
-        // return <Hero
-        //   name={ module.name }
-        //   description={ module.description }
-        //   tags={ module.tags.map(tag => tag.title) }
-        //   key={ module.id }
-        // />
-        return <Hero2
+        return <Hero
           name={ module.name }
           description={ module.description }
           tags={ module.tags }
@@ -60,6 +54,7 @@ export default function Page({ data: { site, datoCmsPage: page } }) {
   const title = page.slug === '/' ? page.title : `${ page.title } - ${ site.siteMetadata.title }`
 
   return <Layout hideHeader={ page.slug === '/' }>
+  {/* return <Layout> */}
     <Helmet
       htmlAttributes={{
         lang: page.locale,
