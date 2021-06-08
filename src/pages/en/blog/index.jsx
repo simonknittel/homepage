@@ -25,7 +25,7 @@ export default function Blog({ data: { site, allDatoCmsBlogPost: { nodes } } }) 
 
     {/* TODO: Sort */}
     { nodes.map( node => {
-      if (node.slug === null) return null // Untranslated pages
+      if (node.slug === null) return null // Untranslated posts
       return <BlogPostTeaser key={ node.id } post={ node } />
     } ) }
   </Layout>

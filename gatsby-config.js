@@ -35,7 +35,7 @@ const siteMetadata = {
 
 if (process.env.NODE_ENV === "production") {
   plugins.push(...[
-    // TODO: Enable on Go-live
+    // TODO: Enable on Go-live of blog
     // "gatsby-plugin-sitemap",
 
     {
@@ -55,17 +55,16 @@ if (process.env.NODE_ENV === "production") {
       }
     },
 
-    // TODO: Disable on Go-live
-    {
-      resolve: 'gatsby-plugin-robots-txt',
-      options: {
-        policy: [{ userAgent: '*', disallow: ['/'] }],
-        sitemap: null,
-        host: null
-      }
-    },
+    // {
+    //   resolve: 'gatsby-plugin-robots-txt',
+    //   options: {
+    //     policy: [{ userAgent: '*', disallow: ['/'] }],
+    //     sitemap: null,
+    //     host: null
+    //   }
+    // },
 
-    // TODO: Enable on Go-live
+    // TODO: Enable on Go-live of blog
     // {
     //   resolve: `gatsby-plugin-feed`,
     //   options: {
