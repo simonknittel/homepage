@@ -29,4 +29,8 @@ jobs:
     - run: npm ci
       if: steps.cache.outputs.cache-hit != 'true'
 
-    - run: npm run build
+    - name: Build
+      run: |
+        export CI=true
+        export NODE_ENV=production
+        npm run build

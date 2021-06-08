@@ -64,6 +64,8 @@ jobs:
       run: |
         export HOST=${{ github.event.inputs.host }}
         export DATO_CMS_ENVIRONMENT=${{ github.event.inputs.datoCmsEnvironment }}
+        export CI=true
+        export NODE_ENV=production
         npm run build
 
     - name: Set up Cloud SDK
