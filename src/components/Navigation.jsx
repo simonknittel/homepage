@@ -22,7 +22,7 @@ export function Navigation() {
       <li className="Navigation__item">
         <a
           className="Navigation__link"
-          href="https://twitter.com/simknittel"
+          href="https://github.com/simonknittel"
           title="Open my GitHub profile"
           rel="noopener nofollow"
         >GitHub</a>
