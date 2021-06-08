@@ -1,5 +1,14 @@
 @import '../styles/_variables.scss';
 
+html,
+body,
+#___gatsby,
+#gatsby-focus-wrapper,
+main,
+.Hero {
+  height: 100%;
+}
+
 .Hero {
   position: relative;
   display: flex;
@@ -10,7 +19,6 @@
   padding-right: 1rem;
   padding-top: 1rem;
   padding-bottom: 4rem;
-  height: 100vh;
   background-color: $yellow;
   // background-image: linear-gradient(330deg, $yellow 0%, rgba(255,226,111,1) 100%);
   background-image: $pattern;
