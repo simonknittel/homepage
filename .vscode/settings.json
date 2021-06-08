@@ -1,8 +1,14 @@
 {
   "cSpell.words": [
+    "Webentwickler",
     "datocms",
+    "favicon",
     "gcloud",
-    "imgix"
+    "gsutil",
+    "imgix",
+    "npmrc",
+    "nvmrc",
+    "rsync"
   ],
   "sonarlint.connectedMode.project": {
     "connectionId": "sonarcloud.io",
