@@ -17,7 +17,7 @@ const plugins = [
       short_name: `Simon Knittel`,
       start_url: `/`,
       background_color: `#fff5cc`,
-      theme_color: `#222`,
+      theme_color: `#ffcc00`,
       display: `minimal-ui`,
       icon: 'src/images/icon.svg',
       icon_options: {

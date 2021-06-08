@@ -18,8 +18,10 @@
     text-decoration: none;
     color: $black;
 
-    &:hover {
-      background-color: $yellow2;
+    @media (any-hover: hover) {
+      &:hover {
+        background-color: $yellow2;
+      }
     }
 
     &--active {
@@ -28,8 +30,10 @@
       background-color: $black;
       color: $yellow;
 
-      &:hover {
-        background-color: $black;
+      @media (any-hover: hover) {
+        &:hover {
+          background-color: $black;
+        }
       }
     }
   }
