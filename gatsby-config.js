@@ -26,6 +26,15 @@ const plugins = [
       crossOrigin: `use-credentials`, // Enabled so the Cloud-CDN-Cookie cookie can be used
     },
   },
+
+  {
+    resolve: "gatsby-plugin-react-svg",
+    options: {
+      rule: {
+        include: /\.inline\.svg$/
+      }
+    }
+  }
 ]
 
 const siteMetadata = {

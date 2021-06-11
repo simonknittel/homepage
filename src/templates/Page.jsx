@@ -53,8 +53,10 @@ export default function Page({ data: { site, datoCmsPage: page } }) {
 
   const title = page.slug === '/' ? page.title : `${ page.title } - ${ site.siteMetadata.title }`
 
-  // return <Layout hideHeader={ page.slug === '/' }>
-  return <Layout>
+  return <Layout
+    locale={ page.locale }
+    overlappingHeader={ page.slug === '/' }
+  >
     <Helmet
       htmlAttributes={{
         lang: page.locale,

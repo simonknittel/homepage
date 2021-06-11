@@ -5,7 +5,8 @@ import { Header } from "./Header"
 
 export function Layout({
   children,
-  hideHeader = false
+  locale,
+  overlappingHeader = false
 }) {
   // const data = useStaticQuery(graphql`
   //   query {
@@ -16,9 +17,11 @@ export function Layout({
   // `)
 
   return <>
-    { hideHeader === true ? null : <Header /> }
+    {/* <Header locale={ locale } /> */}
 
-    <main>
+    <main className={
+      overlappingHeader ? 'main--overlapping-header' : ''
+    }>
       { children }
     </main>
 

@@ -34,7 +34,7 @@ export default function BlogPost({ data: { site, datoCmsBlogPost: post } }) {
   const publishedAtDate = new Date(post.meta.firstPublishedAt)
   const diff = (Date.now() - publishedAtDate.getTime()) / 1000
 
-  const rawDate = publishedAtDate.toLocaleString('de', { year: 'numeric', month: 'long', day: 'numeric', hour12: false, hour: '2-digit', minute: '2-digit', timeZoneName: 'short' })
+  const rawDate = publishedAtDate.toLocaleString('de', { year: 'numeric', month: 'long', day: 'numeric', hour12: false, hour: '2-digit', minute: '2-digit'/*, timeZoneName: 'short'*/ })
   let simpleDate = ''
   if (shorterThan60Seconds(diff)) {
     const count = Math.floor(diff)
@@ -96,7 +96,7 @@ export default function BlogPost({ data: { site, datoCmsBlogPost: post } }) {
       <header>
         <h1 className="BlogPost__heading">{ post.title }</h1>
 
-        <time className="BlogPost__date" dateTime={ post.meta.firstPublishedAt } title={ rawDate }>Published { simpleDate }</time>
+        <time className="BlogPost__date" dateTime={ post.meta.firstPublishedAt } title={ rawDate }>Veröffentlicht am { simpleDate }</time>
 
         { post.articleImage ?
           <BlogPostArticleImage image={ post.articleImage } aspectRatio={ post.articleImageAspectRatio } />

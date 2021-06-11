@@ -1,13 +1,18 @@
-// import { Link } from "gatsby"
-import * as React from "react"
-import { Navigation } from "./Navigation"
-
 import "./Header.scss"
+import { Link } from "gatsby"
+import { Navigation } from "./Navigation"
+import * as React from "react"
+import LogoIcon from '../images/icon.inline.svg'
 
-export function Header() {
+export function Header({
+  locale
+}) {
   return <header className="Header">
-    {/* <Link className="Header__logo" to="/" title="Go to home page">Simon Knittel</Link> */}
+    <Link className="Header__logo" to="/" title="Go to home page">
+      <LogoIcon className="Header__logo__icon" />
+      Simon Knittel
+    </Link>
 
-    <Navigation />
+    <Navigation locale={ locale } />
   </header>
 }

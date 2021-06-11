@@ -26,7 +26,7 @@ export function Breadcrumb({ items }) {
               {
                 "@type": "ListItem",
                 "position": 1,
-                "name": "Home",
+                "name": "Startseite",
                 "item": "${ data.site.siteMetadata.siteUrl }"
               },
 
@@ -52,12 +52,12 @@ export function Breadcrumb({ items }) {
     </Helmet>
 
     <div className="Breadcrumb">
-      <small className="Breadcrumb__heading">You are here:</small>
+      <small className="Breadcrumb__heading">Du bist hier:</small>
 
       <ol className="Breadcrumb__list">
         <li className="Breadcrumb__item">
           <Link className="Breadcrumb__link" to="/">
-            Home
+            Startseite
           </Link>
         </li>
 

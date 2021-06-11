@@ -6,7 +6,7 @@ import { Layout } from "../../../components/Layout"
 import * as React from "react"
 
 export default function Blog({ data: { site, allDatoCmsBlogPost: { nodes } } }) {
-  return <Layout>
+  return <Layout locale="en">
     <Helmet
       htmlAttributes={{
         lang: 'en',

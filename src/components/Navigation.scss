@@ -1,23 +1,37 @@
 @import '../styles/_variables.scss';
 
 .Navigation {
+  height: 100%;
+
   &__list {
     display: flex;
     list-style: none;
-    margin-left: 4rem;
+    height: 100%;
     margin-top: 0;
     margin-bottom: 0;
     padding-left: 0;
     padding-right: 1rem;
   }
 
-  &__item {}
+  &__item {
+    height: 100%;
+
+    &--with-spacing {
+      margin-left: 4rem;
+    }
+  }
 
   &__link {
-    display: inline-block;
-    padding: 1rem;
+    display: inline-flex;
+    align-items: center;
+    height: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
     text-decoration: none;
     color: $black;
+    transition: background-color .1s;
+    border-bottom-left-radius: $border-radius;
+    border-bottom-right-radius: $border-radius;
 
     @media (any-hover: hover) {
       &:hover {
@@ -26,8 +40,6 @@
     }
 
     &--active {
-      // border-top-left-radius: $border-radius;
-      // border-top-right-radius: $border-radius;
       background-color: $black;
       color: $yellow;
 
@@ -37,5 +49,12 @@
         }
       }
     }
+  }
+
+  &__icon {
+    width: 24px;
+    height: 24px;
+
+    margin-right: .5rem;
   }
 }

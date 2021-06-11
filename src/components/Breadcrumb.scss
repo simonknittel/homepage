@@ -4,7 +4,7 @@
   max-width: 768px;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 1rem;
+  padding-top: 1rem;
 
   &__heading {
     padding-left: 1rem;
@@ -21,8 +21,24 @@
   }
 
   &__item {
+    display: flex;
+    align-items: center;
+
     &::before {
-      content: '>'
+      // content: '>';
+      content: '';
+      display: inline-block;
+
+      position: relative;
+      top: 1px;
+
+      width: 8px;
+      height: 16px;
+
+      // background-image: url('../images/chevron.svg');
+      background-image: url('../images/caret.svg');
+      background-repeat: no-repeat;
+      background-position: center center;
     }
 
     &:first-of-type {

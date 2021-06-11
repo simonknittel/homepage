@@ -1,13 +1,13 @@
 import "./Hero.scss"
 import { SkTag } from "@simonknittel/components-react"
 import * as React from "react"
+import LogoIcon from '../images/icon.inline.svg'
 import VanillaTilt from 'vanilla-tilt'
 
 export function Hero({
   name,
   description = "",
   tags = [],
-  locales = [],
 }) {
   const innerRef = React.useRef()
 
@@ -22,10 +22,14 @@ export function Hero({
 
   return <div className="Hero">
     <div className="Hero__inner" ref={ innerRef }>
-      <h1>
-        <span className="Hero__headline">{ name }</span>
-        { description ? <span className="Hero__subheadline">{ description }</span> : null }
-      </h1>
+      <div className="Hero__inner2">
+        <LogoIcon className="Hero__icon" />
+
+        <h1>
+          <span className="Hero__headline">{ name }</span>
+          { description ? <span className="Hero__subheadline">{ description }</span> : null }
+        </h1>
+      </div>
 
       { tags.length > 0 ? (
         <div className="Hero__tags">
@@ -33,15 +37,5 @@ export function Hero({
         </div>
       ) : null}
     </div>
-
-    { locales.length > 0 ? (
-      <ul className="Hero__locales">
-        { locales.map(locale => (
-          <li className="Hero__locale" key={ locale }>
-            <a href={ `/${ locale }` } title={ `Switch language to ${ locale }` }>{ locale }</a>
-          </li>
-        ))}
-      </ul>
-    ) : null }
   </div>
 }
