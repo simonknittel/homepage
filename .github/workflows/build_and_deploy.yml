@@ -71,14 +71,24 @@ jobs:
       run: npm run build
 
     # TODO: Implement on Gatsby Cloud as well
+    # - name: Notify Sentry of new release and enable Suspect Commits
+    #   env:
+    #     SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+    #     HOST: ${{ github.event.inputs.host }}
+    #   run: |
+    #     VERSION=$(npx sentry-cli releases propose-version)
+    #     npx sentry-cli releases --org simonknittel deploys $VERSION new -e $HOST
+    #     npx sentry-cli releases set-commits --auto $VERSION
+
+    # https://github.com/marketplace/actions/sentry-release
     - name: Notify Sentry of new release and enable Suspect Commits
+      uses: getsentry/action-release@v1.1.5
       env:
         SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
-        HOST: ${{ github.event.inputs.host }}
-      run: |
-        VERSION=$(npx sentry-cli releases propose-version)
-        npx sentry-cli releases --org simonknittel deploys $VERSION new -e $HOST
-        npx sentry-cli releases set-commits --auto $VERSION
+        SENTRY_ORG: simonknittel
+        SENTRY_PROJECT: homepage
+      with:
+        environment: ${{ github.event.inputs.host }}
 
     - name: Set up Cloud SDK
       uses: google-github-actions/setup-gcloud@master
