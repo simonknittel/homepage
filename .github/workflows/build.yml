@@ -17,7 +17,9 @@ jobs:
       with:
         node-version: 14.17.0
 
-    - run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> .npmrc
+    - run: echo "//npm.pkg.github.com/:_authToken=$GITHUB_TOKEN" >> .npmrc
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Cache
       id: cache
@@ -30,7 +32,7 @@ jobs:
       if: steps.cache.outputs.cache-hit != 'true'
 
     - name: Build
-      run: |
-        export CI=true
-        export NODE_ENV=production
-        npm run build
+      env:
+        CI: true
+        NODE_ENV: production
+      run: npm run build
