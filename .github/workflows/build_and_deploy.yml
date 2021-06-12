@@ -70,8 +70,6 @@ jobs:
         NODE_ENV: production
       run: npm run build
 
-    - name: Set up Sentry SDK
-
     - name: Notify Sentry of new release and enable Suspect Commits
       env:
         SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
