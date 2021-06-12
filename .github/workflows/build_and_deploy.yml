@@ -30,7 +30,9 @@ jobs:
       with:
         node-version: 14.17.0
 
-    - run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> .npmrc
+    - run: echo "//npm.pkg.github.com/:_authToken=$GITHUB_TOKEN" >> .npmrc
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Cache node_modules
       id: cache
@@ -61,12 +63,23 @@ jobs:
     #   run: rm -rf .cache public
 
     - name: Build
+      env:
+        HOST: ${{ github.event.inputs.host }}
+        DATO_CMS_ENVIRONMENT: ${{ github.event.inputs.datoCmsEnvironment }}
+        CI: true
+        NODE_ENV: production
+      run: npm run build
+
+    - name: Set up Sentry SDK
+
+    - name: Notify Sentry of new release and enable Suspect Commits
+      env:
+        SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+        HOST: ${{ github.event.inputs.host }}
       run: |
-        export HOST=${{ github.event.inputs.host }}
-        export DATO_CMS_ENVIRONMENT=${{ github.event.inputs.datoCmsEnvironment }}
-        export CI=true
-        export NODE_ENV=production
-        npm run build
+        VERSION=$(sentry-cli releases propose-version)
+        sentry-cli releases --org simonknittel deploys $VERSION new -e $HOST
+        sentry-cli releases set-commits --auto $VERSION
 
     - name: Set up Cloud SDK
       uses: google-github-actions/setup-gcloud@master
@@ -81,6 +94,8 @@ jobs:
         find public -type f -name "*.*" -exec sh -c 'for pathname; do mv -i "$pathname" "${pathname%.*}"; done' sh {} +
 
     - name: Upload to Cloud Storage
+      env:
+        HOST: ${{ github.event.inputs.host }}
       run: |
         gsutil \
           -m \
@@ -89,7 +104,7 @@ jobs:
         rsync \
           -r \
           -d public \
-        gs://${{ github.event.inputs.host }}
+        gs://$HOST
 
     # Source: https://www.gatsbyjs.com/docs/caching/
     - name: Set Cache-Control headers
@@ -117,14 +132,18 @@ jobs:
 
     - name: Notify Dato CMS (Success)
       if: ${{ success() }}
+      env:
+        DATO_CMS_NIGHTLY_WEBHOOK: ${{ secrets.DATO_CMS_NIGHTLY_WEBHOOK }}
       run: |
-        curl -n -X POST https://webhooks.datocms.com/${{ secrets.DATO_CMS_NIGHTLY_WEBHOOK }}/deploy-results \
+        curl -n -X POST https://webhooks.datocms.com/$DATO_CMS_NIGHTLY_WEBHOOK/deploy-results \
           -H 'Content-Type: application/json' \
           -d '{ "status": "success" }'
 
     - name: Notify Dato CMS (Failure)
       if: ${{ failure() }}
+      env:
+        DATO_CMS_NIGHTLY_WEBHOOK: ${{ secrets.DATO_CMS_NIGHTLY_WEBHOOK }}
       run: |
-        curl -n -X POST https://webhooks.datocms.com/${{ secrets.DATO_CMS_NIGHTLY_WEBHOOK }}/deploy-results \
+        curl -n -X POST https://webhooks.datocms.com/$DATO_CMS_NIGHTLY_WEBHOOK/deploy-results \
           -H 'Content-Type: application/json' \
           -d '{ "status": "error" }'
