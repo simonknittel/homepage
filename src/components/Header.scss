@@ -19,11 +19,11 @@
     padding-right: 1rem;
     text-decoration: none;
     font-weight: bold;
-    color: $black;
-    background-color: $yellow2;
+    color: var(--black);
+    background-color: var(--yellow2);
     transition: background-color .1s;
-    border-bottom-left-radius: $border-radius;
-    border-bottom-right-radius: $border-radius;
+    border-bottom-left-radius: var(--border-radius);
+    border-bottom-right-radius: var(--border-radius);
 
     &__icon {
       width: 24px;

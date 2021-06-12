@@ -1,7 +1,7 @@
 @import '../styles/_variables.scss';
 
 .SocialMediaProfiles {
-  background-color: $black;
+  background-color: var(--black);
 
   ul {
     display: flex;
@@ -19,7 +19,7 @@
   }
 }
 
-@media (min-width: $bp--small) {
+@media (min-width: $bp-small) {
   .SocialMediaProfiles {
     li {
       margin-left: 0;
@@ -28,9 +28,9 @@
   }
 }
 
-@media (min-width: $bp--large) {
+@media (min-width: $bp-large) {
   .SocialMediaProfiles {
-    max-width: 1280px;
+    max-width: var(--max-width);
     margin-left: auto;
     margin-right: auto;
     background-color: transparent;

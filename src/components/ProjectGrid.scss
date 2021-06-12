@@ -5,7 +5,7 @@
   padding-bottom: 3rem;
 
   &__more {
-    max-width: 1280px;
+    max-width: var(--max-width);
     margin-left: auto;
     margin-right: auto;
     margin-top: 5rem;
@@ -24,7 +24,7 @@
   }
 }
 
-@media (min-width: $bp--medium) {
+@media (min-width: $bp-medium) {
   .ProjectGrid {
     padding-top: 8rem;
     padding-bottom: 0;
@@ -34,7 +34,7 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 5rem;
-      max-width: 1280px;
+      max-width: var(--max-width);
       margin-left: auto;
       margin-right: auto;
     }

@@ -28,24 +28,24 @@
     padding-left: 1rem;
     padding-right: 1rem;
     text-decoration: none;
-    color: $black;
+    color: var(--black);
     transition: background-color .1s;
-    border-bottom-left-radius: $border-radius;
-    border-bottom-right-radius: $border-radius;
+    border-bottom-left-radius: var(--border-radius);
+    border-bottom-right-radius: var(--border-radius);
 
     @media (any-hover: hover) {
       &:hover {
-        background-color: $yellow2;
+        background-color: var(--yellow2);
       }
     }
 
     &--active {
-      background-color: $black;
-      color: $yellow;
+      background-color: var(--black);
+      color: var(--yellow);
 
       @media (any-hover: hover) {
         &:hover {
-          background-color: $black;
+          background-color: var(--black);
         }
       }
     }

@@ -8,7 +8,8 @@
     "imgix",
     "npmrc",
     "nvmrc",
-    "rsync"
+    "rsync",
+    "xlarge"
   ],
   "sonarlint.connectedMode.project": {
     "connectionId": "sonarcloud.io",

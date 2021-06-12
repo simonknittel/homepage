@@ -6,15 +6,15 @@
   margin-top: 2rem;
   margin-bottom: 2rem;
 
-  @media (min-width: $bp--small) {
+  @media (min-width: $bp-small) {
     margin-top: 4rem;
     margin-bottom: 3rem;
   }
 
   &__wrapper {
     overflow: hidden;
-    border-radius: $border-radius;
-    background-color: $yellow2;
+    border-radius: var(--border-radius);
+    background-color: var(--yellow2);
   }
 
   img {

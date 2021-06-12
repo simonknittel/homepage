@@ -18,11 +18,10 @@ main,
   padding-right: 1rem;
   padding-top: 1rem;
   padding-bottom: 4rem;
-  background-color: $yellow;
-  // background-image: linear-gradient(330deg, $yellow 0%, rgba(255,226,111,1) 100%);
-  background-image: $pattern;
+  background-color: var(--yellow);
+  background-image: var(--pattern);
 
-  @media (min-width: $bp--small) {
+  @media (min-width: $bp-small) {
     justify-content: flex-start;
     align-items: flex-end;
     padding-left: 5rem;
@@ -38,27 +37,30 @@ main,
     bottom: 0;
     width: 100%;
     height: 3rem;
-    background-color: $black;
+    background-color: var(--black);
   }
 
   &__inner {
+    --scale: 25;
+    --padding: 1rem;
+
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 
-    // 16:9
-    $scale: 35;
-    $width: 16px;
-    $height: 9px;
+    width: calc(16px * var(--scale));
+    height: calc(9px * var(--scale));
+    padding: var(--padding);
 
-    width: $width * $scale;
-    height: $height * $scale;
+    border-radius: var(--border-radius);
+    background-color: var(--black);
+    background-image: linear-gradient(150deg, hsl(48, 100%, 10%) 0%, var(--black) 100%);
+    color: var(--white);
 
-    padding: 3rem;
-    border-radius: $border-radius;
-    background-color: $black;
-    background-image: linear-gradient(150deg, hsl(48, 100%, 10%) 0%, $black 100%);
-    color: $white;
+    @media (min-width: $bp-small) {
+      --scale: 35;
+      --padding: 3rem;
+    }
   }
 
   &__inner2 {
@@ -96,9 +98,9 @@ main,
 
   sk-tag {
     --sk-tag-border-color: hsla(48, 100%, 100%, .5);
-    --sk-tag-color: #{$white};
-    --sk-tag-tooltip-background-color: #{$white};
-    --sk-tag-tooltip-color: #{$black};
+    --sk-tag-color: var(--white);
+    --sk-tag-tooltip-background-color: var(--white);
+    --sk-tag-tooltip-color: var(--black);
 
     margin-left: .25rem;
     margin-right: .25rem;
