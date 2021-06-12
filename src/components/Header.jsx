@@ -8,10 +8,10 @@ export function Header({
   locale
 }) {
   return <header className="Header">
-    <Link className="Header__logo" to="/" title="Go to home page">
+    {/* <Link className="Header__logo" to="/" title="Go to home page">
       <LogoIcon className="Header__logo__icon" />
       Simon Knittel
-    </Link>
+    </Link> */}
 
     <Navigation locale={ locale } />
   </header>

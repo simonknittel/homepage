@@ -9,7 +9,7 @@ export function Navigation({
 }) {
   return <nav className="Navigation">
     <ul className="Navigation__list">
-      <li className="Navigation__item">
+      {/* <li className="Navigation__item">
         <Link className="Navigation__link" to={ locale === 'de' ? '/' : `/${ locale }`} title="Zur Startseite">Startseite</Link>
       </li>
 
@@ -21,7 +21,7 @@ export function Navigation({
           activeClassName="Navigation__link--active"
           partiallyActive={ true }
         >Blog</Link>
-      </li>
+      </li> */}
 
       <li className="Navigation__item Navigation__item--with-spacing">
         <a
@@ -48,19 +48,21 @@ export function Navigation({
         </a>
       </li>
 
-      <li className="Navigation__item Navigation__item--with-spacing">
+      {/* <li className="Navigation__item Navigation__item--with-spacing">
         <Link
           className="Navigation__link"
           to="/"
           title="Switch to english"
         >DE</Link>
+      </li>
 
+      <li className="Navigation__item">
         <Link
           className="Navigation__link"
           to="/en"
           title="Switch to german"
         >EN</Link>
-      </li>
+      </li> */}
     </ul>
   </nav>
 }

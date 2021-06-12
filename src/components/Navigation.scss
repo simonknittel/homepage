@@ -3,14 +3,22 @@
 .Navigation {
   height: 100%;
 
+  --item-padding: 1rem;
+
   &__list {
+    --outer-padding: 1rem;
+
     display: flex;
     list-style: none;
     height: 100%;
     margin-top: 0;
     margin-bottom: 0;
     padding-left: 0;
-    padding-right: 1rem;
+    padding-right: calc(var(--outer-padding) - var(--item-padding));
+
+    @media (min-width: $bp-small) {
+      --outer-padding: 5rem;
+    }
   }
 
   &__item {
@@ -25,8 +33,8 @@
     display: inline-flex;
     align-items: center;
     height: 100%;
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-left: var(--item-padding);
+    padding-right: var(--item-padding);
     text-decoration: none;
     color: var(--black);
     transition: background-color .1s;
@@ -37,6 +45,10 @@
       &:hover {
         background-color: var(--yellow2);
       }
+    }
+
+    &:focus {
+      background-color: var(--yellow2);
     }
 
     &--active {

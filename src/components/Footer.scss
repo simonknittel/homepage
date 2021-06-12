@@ -1,29 +1,95 @@
 @import '../styles/_variables.scss';
 
 .Footer {
+  --outer-padding: 1rem;
+  --font-size: .7rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
   margin-top: 4rem;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+  padding-left: var(--outer-padding);
+  padding-right: var(--outer-padding);
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+
   background-color: var(--black);
-  color: var(--yellow);
-  text-align: center;
+  background-image: linear-gradient(150deg, hsl(48, 100%, 10%) 0%, var(--black) 100%);
+
+  color: var(--white);
+  font-size: var(--font-size);
 
   @media (min-width: $bp-small) {
+    --outer-padding: 5rem;
+    --font-size: .9rem;
+
     margin-top: 6rem;
-    padding-top: 4rem;
-    padding-bottom: 4rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
   }
 
-  p {
+  &__font-awesome {
     margin-top: 0;
     margin-bottom: 0;
+
+    a {
+      color: var(--white);
+
+      // @media (any-hover: hover) {
+      //   &:hover {
+      //     color: lighten(var(--white), 25%);
+      //   }
+      // }
+    }
   }
 
-  a {
-    color: var(--yellow);
+  &__ipfs {
+    text-align: end;
 
-    &:hover {
-      color: lighten(var(--yellow), 25%);
+    &__intro {
+      margin-top: 0;
+      margin-bottom: 0;
     }
+
+    &__button {
+      margin-top: .5rem;
+      padding: .3rem .5rem;
+
+      border-radius: var(--border-radius);
+      border: 1px solid hsla(48, 100%, 100%, .5);
+      background-color: transparent;
+
+      svg {
+        vertical-align: middle;
+
+        --scale: .1;
+        width: calc(553px * var(--scale));
+        height: calc(235px * var(--scale));
+
+        filter: grayscale(100%) sepia(50%);
+        transition: filter .2s;
+      }
+
+      &:focus {
+        svg {
+          filter: grayscale(0);
+        }
+      }
+
+      @media (any-hover: hover) {
+        &:hover {
+          cursor: pointer;
+
+          svg {
+            filter: grayscale(0%);
+          }
+        }
+      }
+    }
+  }
+
+  main.main--overlapping-header + & {
+    margin-top: 0;
   }
 }

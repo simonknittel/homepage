@@ -1,23 +1,14 @@
-// import { graphql, useStaticQuery } from "gatsby"
-import * as React from "react"
-// import { Footer } from "./Footer"
+import { Footer } from "./Footer"
 import { Header } from "./Header"
+import * as React from "react"
 
 export function Layout({
   children,
   locale,
   overlappingHeader = false
 }) {
-  // const data = useStaticQuery(graphql`
-  //   query {
-  //     datoCmsGlobalConfiguration {
-  //       footer
-  //     }
-  //   }
-  // `)
-
   return <>
-    {/* <Header locale={ locale } /> */}
+    <Header locale={ locale } />
 
     <main className={
       overlappingHeader ? 'main--overlapping-header' : ''
@@ -25,6 +16,6 @@ export function Layout({
       { children }
     </main>
 
-    {/* <Footer content={ data.datoCmsGlobalConfiguration.footer } /> */}
+    <Footer />
   </>
 }

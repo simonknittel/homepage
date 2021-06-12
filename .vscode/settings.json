@@ -6,6 +6,7 @@
     "gcloud",
     "gsutil",
     "imgix",
+    "ipfs",
     "npmrc",
     "nvmrc",
     "rsync",

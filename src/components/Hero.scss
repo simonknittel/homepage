@@ -10,34 +10,29 @@ main,
 }
 
 .Hero {
-  position: relative;
+  --outer-padding: 1rem;
+  --footer-overlap: 0rem;
+
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 1rem;
-  padding-bottom: 4rem;
+
+  position: relative;
+
+  padding-left: var(--outer-padding);
+  padding-right: var(--outer-padding);
+  padding-top: var(--outer-padding);
+  padding-bottom: calc(var(--outer-padding) + var(--footer-overlap));
+
   background-color: var(--yellow);
   background-image: var(--pattern);
+  background-attachment: fixed;
 
   @media (min-width: $bp-small) {
+    --outer-padding: 5rem;
+
     justify-content: flex-start;
     align-items: flex-end;
-    padding-left: 5rem;
-    padding-right: 5rem;
-    padding-top: 5rem;
-    padding-bottom: 8rem;
-  }
-
-  &::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 3rem;
-    background-color: var(--black);
   }
 
   &__inner {
