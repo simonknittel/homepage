@@ -13,7 +13,7 @@ const plugins = [
   {
     resolve: `gatsby-plugin-manifest`,
     options: {
-      name: `Simon Knittel - Webentwickler`,
+      name: `Simon Knittel - Web Developer`,
       short_name: `Simon Knittel`,
       start_url: `/`,
       background_color: `#fff5cc`,

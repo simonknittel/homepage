@@ -25,10 +25,10 @@ export function Hero({
       <div className="Hero__inner2">
         <LogoIcon className="Hero__icon" />
 
-        <h1>
-          <span className="Hero__headline">{ name }</span>
-          { description ? <span className="Hero__subheadline">{ description }</span> : null }
-        </h1>
+        <div>
+          <h1 className="Hero__headline">{ name }</h1>
+          { description ? <p className="Hero__description" dangerouslySetInnerHTML={{ __html: description }} /> : null }
+        </div>
       </div>
 
       { tags.length > 0 ? (
