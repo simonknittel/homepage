@@ -63,6 +63,7 @@ jobs:
     #   run: rm -rf .cache public
 
     - name: Build for IPFS
+      if: github.event.inputs.host == 'simonknittel.de'
       env:
         HOST: ${{ github.event.inputs.host }}
         DATO_CMS_ENVIRONMENT: ${{ github.event.inputs.datoCmsEnvironment }}
@@ -71,6 +72,7 @@ jobs:
       run: npm run build
 
     - name: Upload to IPFS
+      if: github.event.inputs.host == 'simonknittel.de'
       id: ipfsUpload
       uses: aquiladev/ipfs-action@v0.1.6-0
       with:
