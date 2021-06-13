@@ -75,6 +75,7 @@ jobs:
       uses: aquiladev/ipfs-action@v0.1.6-0
       with:
         path: ./public
+        service: pinata
         pinataKey: ${{ secrets.PINATA_KEY }}
         pinataSecret:  ${{ secrets.PINATA_SECRET }}
 
