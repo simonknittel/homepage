@@ -73,10 +73,10 @@ jobs:
     - name: Upload to IPFS
       id: ipfsUpload
       uses: aquiladev/ipfs-action@v0.1.6-0
-        with:
-          path: ./public
-          pinataKey: ${{ secrets.PINATA_KEY }}
-          pinataSecret:  ${{ secrets.PINATA_SECRET }}
+      with:
+        path: ./public
+        pinataKey: ${{ secrets.PINATA_KEY }}
+        pinataSecret:  ${{ secrets.PINATA_SECRET }}
 
     - name: Build
       env:
