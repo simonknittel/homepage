@@ -62,14 +62,32 @@ jobs:
     #   if: github.event.inputs.useCache == 'no'
     #   run: rm -rf .cache public
 
+    - name: Build for IPFS
+      env:
+        HOST: ${{ github.event.inputs.host }}
+        DATO_CMS_ENVIRONMENT: ${{ github.event.inputs.datoCmsEnvironment }}
+        CI: true
+        NODE_ENV: production
+      run: npm run build
+
+    - name: Upload to IPFS
+      id: ipfsUpload
+      uses: aquiladev/ipfs-action@v0.1.6-0
+        with:
+          path: ./public
+          pinataKey: ${{ secrets.PINATA_KEY }}
+          pinataSecret:  ${{ secrets.PINATA_SECRET }}
+
     - name: Build
       env:
         HOST: ${{ github.event.inputs.host }}
         DATO_CMS_ENVIRONMENT: ${{ github.event.inputs.datoCmsEnvironment }}
         CI: true
         NODE_ENV: production
-        GATSBY_IPFS_CID:
-      run: npm run build
+        GATSBY_IPFS_CID: ${{ steps.ipfsUpload.outputs.hash }}
+      run: |
+        echo $GATSBY_IPFS_CID
+        npm run build
 
     # TODO: Implement on Gatsby Cloud as well
     - name: Notify Sentry of new release and enable Suspect Commits
