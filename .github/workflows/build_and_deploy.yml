@@ -68,6 +68,7 @@ jobs:
         DATO_CMS_ENVIRONMENT: ${{ github.event.inputs.datoCmsEnvironment }}
         CI: true
         NODE_ENV: production
+        GATSBY_IPFS_CID:
       run: npm run build
 
     # TODO: Implement on Gatsby Cloud as well

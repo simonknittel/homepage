@@ -8,13 +8,15 @@ export function Footer() {
       <p className="Footer__font-awesome">Die Icons werden bereitgestellt durch Font Awesome (<a href="https://fontawesome.com/license/free" rel="noopener nofollow">Lizenz</a>).</p>
     </div>
 
-    {/* <div className="Footer__right">
-      <div className="Footer__ipfs">
-        <p className="Footer__ipfs__intro">Diese Seite ist über IPFS erreichbar:</p>
-        <button className="Footer__ipfs__button">
-          <IpfsIcon />
-        </button>
+    { process.env.GATSBY_IPFS_CID ?
+      <div className="Footer__right">
+        <div className="Footer__ipfs">
+          <p className="Footer__ipfs__intro">Diese Seite ist über IPFS erreichbar:</p>
+          <button className="Footer__ipfs__button">
+            <IpfsIcon />
+          </button>
+        </div>
       </div>
-    </div> */}
+    : null }
   </footer>
 }
