@@ -86,9 +86,7 @@ jobs:
         CI: true
         NODE_ENV: production
         GATSBY_IPFS_CID: ${{ steps.ipfsUpload.outputs.hash }}
-      run: |
-        echo $GATSBY_IPFS_CID
-        npm run build
+      run: npm run build
 
     # TODO: Implement on Gatsby Cloud as well
     - name: Notify Sentry of new release and enable Suspect Commits
