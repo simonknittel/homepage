@@ -18,7 +18,7 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
-    "@sentry/gatsby": "6.5.1",
+    "@sentry/gatsby": "6.6.0",
     "@simonknittel/components-react": "0.8.2",
     "gatsby": "3.6.2",
     "gatsby-plugin-feed": "3.6.0",
