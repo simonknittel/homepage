@@ -4,10 +4,6 @@
   --outer-padding: 1rem;
   --font-size: .7rem;
 
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
   margin-top: 4rem;
   padding-left: var(--outer-padding);
   padding-right: var(--outer-padding);
@@ -23,6 +19,10 @@
   @media (min-width: $bp-small) {
     --outer-padding: 5rem;
     --font-size: .9rem;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
     margin-top: 6rem;
     padding-top: 2rem;
@@ -45,7 +45,13 @@
   }
 
   &__ipfs {
-    text-align: end;
+    margin-top: 1rem;
+
+    @media (min-width: $bp-small) {
+      margin-top: 0;
+
+      text-align: end;
+    }
 
     &__intro {
       margin-top: 0;
@@ -56,13 +62,16 @@
       position: relative;
 
       width: min-content;
-      margin-left: auto;
       margin-top: .5rem;
       padding: .3rem .5rem;
 
       border-radius: var(--border-radius);
       border: 1px solid hsla(48, 100%, 100%, .5);
       background-color: transparent;
+
+      @media (min-width: $bp-small) {
+        margin-left: auto;
+      }
 
       svg {
         vertical-align: middle;
@@ -95,6 +104,17 @@
           }
         }
       }
+
+      &--active {
+        svg {
+          filter: grayscale(0%);
+        }
+
+        .Footer__ipfs__tooltip {
+          pointer-events: initial;
+          opacity: 1;
+        }
+      }
     }
 
     &__tooltip {
@@ -103,10 +123,10 @@
       cursor: auto;
 
       position: absolute;
-      right: 0;
+      left: 0;
       bottom: 100%;
 
-      width: 100vh;
+      width: calc(100vw - 2rem);
       max-width: 480px;
       padding: 1rem;
 
@@ -119,6 +139,11 @@
       line-height: 1.5;
 
       transition: opacity .2s;
+
+      @media (min-width: $bp-small) {
+        left: auto;
+        right: 0;
+      }
 
       ul {
         list-style: none;
