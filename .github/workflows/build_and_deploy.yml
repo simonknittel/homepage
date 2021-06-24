@@ -15,6 +15,9 @@ on:
         description: 'Use cache'
         required: false
         default: 'yes'
+      ref:
+        description: 'Ref'
+        required: false
 
 jobs:
 
@@ -24,6 +27,8 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
+      with:
+        ref: ${{ github.event.inputs.ref }}
 
     - name: Set up Node.js
       uses: actions/setup-node@v2
