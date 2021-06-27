@@ -1,0 +1,45 @@
+@import '../styles/_variables.scss';
+@import '../styles/_custom-properties.scss';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  overflow-x: hidden;
+  font-family: var(--font);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-display: swap;
+  background-color: var(--white);
+  color: var(--black);
+}
+
+body {
+  margin: 0;
+}
+
+::selection {
+  background-color: var(--yellow2);
+}
+
+
+// Required for the Hero
+html,
+body,
+#__next,
+main {
+  height: 100%;
+}
+
+.main--overlapping-header + footer {
+  margin-top: 0;
+}
+
+
+header + main:not(.main--overlapping-header) {
+  margin-top: 3.5rem;
+}

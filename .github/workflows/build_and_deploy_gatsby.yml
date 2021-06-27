@@ -1,4 +1,4 @@
-name: build_and_deploy
+name: build_and_deploy_gatsby
 
 on:
   workflow_dispatch:
@@ -23,6 +23,9 @@ jobs:
 
   build_and_deploy:
     runs-on: ubuntu-20.04
+    defaults:
+      run:
+        working-directory: gatsby
 
     steps:
     - name: Checkout
@@ -33,9 +36,10 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: 14.17.0
+        node-version: 14.17.1
 
     - run: echo "//npm.pkg.github.com/:_authToken=$GITHUB_TOKEN" >> .npmrc
+      working-directory: ./
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -44,7 +48,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: node_modules
-        key: node-${{ hashFiles('package-lock.json', '.nvmrc') }}
+        key: node-${{ hashFiles('gatsby/package-lock.json', '.nvmrc') }}
 
     - name: Clear node_modules
       if: github.event.inputs.useCache == 'no'
@@ -57,8 +61,8 @@ jobs:
     #   uses: actions/cache@v2
     #   with:
     #     path: |
-    #       .cache
-    #       public
+    #       gatsby/.cache
+    #       gatsby/public
     #     key: gatsby-${{ github.run_id }}
     #     restore-keys: |
     #       gatsby-
@@ -81,7 +85,7 @@ jobs:
       id: ipfsUpload
       uses: aquiladev/ipfs-action@v0.1.6-0
       with:
-        path: ./public
+        path: ./gatsby/public
         service: pinata
         pinataKey: ${{ secrets.PINATA_KEY }}
         pinataSecret:  ${{ secrets.PINATA_SECRET }}
@@ -132,21 +136,23 @@ jobs:
 
     # Source: https://www.gatsbyjs.com/docs/caching/
     - name: Set Cache-Control headers
+      env:
+        HOST: ${{ github.event.inputs.host }}
       run: |
         gsutil -m -q setmeta -h "Cache-Control: public, max-age=31536000, immutable" \
-          gs://nightly.simonknittel.de/static/** \
-          gs://nightly.simonknittel.de/icons/** \
-          gs://nightly.simonknittel.de/favicon** \
-          gs://nightly.simonknittel.de/**.css \
-          gs://nightly.simonknittel.de/**.js || :
+          gs://$HOST/static/** \
+          gs://$HOST/icons/** \
+          gs://$HOST/favicon** \
+          gs://$HOST/**.css \
+          gs://$HOST/**.js || :
 
         gsutil -m -q setmeta -h "Cache-Control: public, max-age=0, must-revalidate" \
-          gs://nightly.simonknittel.de/**.html \
-          gs://nightly.simonknittel.de/page-data/** \
-          gs://nightly.simonknittel.de/robots.txt \
-          gs://nightly.simonknittel.de/sitemap.xml \
-          gs://nightly.simonknittel.de/manifest.webmanifest \
-          gs://nightly.simonknittel.de/rss.xml || :
+          gs://$HOST/**.html \
+          gs://$HOST/page-data/** \
+          gs://$HOST/robots.txt \
+          gs://$HOST/sitemap.xml \
+          gs://$HOST/manifest.webmanifest \
+          gs://$HOST/rss.xml || :
 
     # Source: https://cloud.google.com/cdn/docs/invalidating-cached-content
     - name: Invalidate CDN cache

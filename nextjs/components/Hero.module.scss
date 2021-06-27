@@ -1,0 +1,118 @@
+@import '../styles/_variables.scss';
+
+.Hero {
+  $bp: $bp-medium;
+
+  --outer-padding: 1rem;
+  --footer-overlap: 0rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+
+  position: relative;
+
+  height: 100%;
+
+  padding-left: var(--outer-padding);
+  padding-right: var(--outer-padding);
+  padding-top: var(--outer-padding);
+  padding-bottom: calc(var(--outer-padding) + var(--footer-overlap));
+
+  background-color: var(--yellow);
+  background-image: var(--pattern);
+  background-attachment: fixed;
+
+  @media (min-width: $bp) {
+    --outer-padding: 8rem;
+
+    justify-content: flex-start;
+    align-items: flex-end;
+  }
+
+  &__inner {
+    --padding: 1rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    padding: var(--padding);
+
+    border-radius: var(--border-radius);
+    background-color: var(--black);
+    background-image: linear-gradient(150deg, hsl(48, 100%, 10%) 0%, var(--black) 100%);
+    color: var(--white);
+
+    @media (min-width: $bp) {
+      --scale: 8;
+      --padding: 5rem 4rem;
+
+      width: calc(88px * var(--scale));
+      height: calc(55px * var(--scale));
+    }
+  }
+
+  &__inner2 {
+    display: flex;
+  }
+
+  &__icon {
+    --size: 40px;
+    --mr: 1rem;
+
+    flex: 1 0 auto;
+    width: var(--size);
+    height: var(--size);
+    margin-right: var(--mr);
+    margin-top: .5rem;
+
+    @media (min-width: $bp) {
+      --size: 54px;
+      --mr: 2rem;
+    }
+  }
+
+  &__headline,
+  &__description {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  &__description {
+    --font-size: .8rem;
+
+    margin-top: .5rem;
+
+    font-size: var(--font-size);
+    font-weight: 300;
+
+    @media (min-width: $bp) {
+      --font-size: 1.2rem;
+    }
+
+    a {
+      color: inherit;
+    }
+  }
+
+  &__tags {
+    margin-top: 2rem;
+  }
+
+  sk-tag {
+    --sk-tag-border-color: hsla(48, 100%, 100%, .5);
+    --sk-tag-color: var(--white);
+    --sk-tag-tooltip-background-color: var(--white);
+    --sk-tag-tooltip-color: var(--black);
+
+    margin-left: .25rem;
+    margin-right: .25rem;
+    margin-bottom: .5rem;
+  }
+
+  + sk-slanted {
+    z-index: 1;
+    margin-top: -7rem;
+  }
+}

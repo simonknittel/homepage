@@ -1,0 +1,72 @@
+@import '../styles/_variables.scss';
+
+.Navigation {
+  height: 100%;
+
+  --item-padding: 1rem;
+
+  &__list {
+    --outer-padding: 1rem;
+
+    display: flex;
+    list-style: none;
+    height: 100%;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    padding-right: calc(var(--outer-padding) - var(--item-padding));
+
+    @media (min-width: $bp-small) {
+      --outer-padding: 5rem;
+    }
+  }
+
+  &__item {
+    height: 100%;
+
+    &--with-spacing {
+      margin-left: 4rem;
+    }
+  }
+
+  &__link {
+    display: inline-flex;
+    align-items: center;
+    height: 100%;
+    padding-left: var(--item-padding);
+    padding-right: var(--item-padding);
+    text-decoration: none;
+    color: var(--black);
+    transition: background-color .1s;
+    border-bottom-left-radius: var(--border-radius);
+    border-bottom-right-radius: var(--border-radius);
+
+    @media (any-hover: hover) {
+      &:hover {
+        background-color: var(--yellow2);
+      }
+    }
+
+    &:focus {
+      background-color: var(--yellow2);
+    }
+
+    &--active {
+      background-color: var(--black);
+      color: var(--yellow);
+
+      @media (any-hover: hover) {
+        &:hover {
+          background-color: var(--black);
+        }
+      }
+    }
+  }
+
+  &__icon {
+    width: 24px;
+    height: 24px;
+
+    margin-right: .5rem;
+  }
+}
