@@ -39,7 +39,6 @@ jobs:
         node-version: 14.17.1
 
     - run: echo "//npm.pkg.github.com/:_authToken=$GITHUB_TOKEN" >> .npmrc
-      working-directory: ./
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
