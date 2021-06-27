@@ -11,6 +11,7 @@
     "npmrc",
     "nvmrc",
     "rsync",
+    "svgr",
     "xlarge"
   ],
   "sonarlint.connectedMode.project": {

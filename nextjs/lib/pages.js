@@ -2,9 +2,14 @@ import { client, slugForDatoCMS, pathFromSlug } from "./datocms"
 import { gql } from "@apollo/client"
 
 export async function getAllPageSlugs() {
+  /**
+   * BUG: [[...slug]].jsx can't generate the /404 route
+   * See: https://github.com/vercel/next.js/issues?q=+ENOENT%3A+no+such+file+or+directory%2C+rename
+   */
   const result = await client.query({ query: gql`
       query {
-        allPages {
+        allPages(filter: {slug: {neq: "/404"}}) {
+        # allPages {
           slug(locale: de)
         }
       }
