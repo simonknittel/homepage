@@ -97,7 +97,7 @@ jobs:
 
     # TODO: Implement on Gatsby Cloud as well
     - name: Notify Sentry of new release and enable Suspect Commits
-      uses: getsentry/action-release@v1.1.5
+      uses: getsentry/action-release@v1.1.6
       env:
         SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
         SENTRY_ORG: simonknittel
