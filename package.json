@@ -47,6 +47,6 @@
     "last 2 iOS versions"
   ],
   "devDependencies": {
-    "@sentry/cli": "1.67.2"
+    "@sentry/cli": "1.68.0"
   }
 }
