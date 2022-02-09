@@ -1,0 +1,12 @@
+name: owasp_zap
+
+on:
+  schedule:
+    - cron:  '0 3 * * *'
+  workflow_dispatch:
+    
+steps:
+  - name: Scan
+    uses: zaproxy/action-full-scan@v0.3.0
+    with:
+      target: 'https://simonknittel.de/'
